@@ -18,6 +18,8 @@ define("PK_DB_PASS",$env->DB_PASS);
 #web socket
 define("WS_LINK",$env->WS_LINK);
 define("WS_PORT",$env->WS_PORT);
+#base uri
+define("BASEURI",$env->BASEURI);
 // define("email",$env->EMAIL);
 #Define real location of file
 define ('RPATH', realpath(dirname(__FILE__)));
@@ -45,8 +47,7 @@ define("TOKEN_URL",$env->TOKEN_URL);
 define("USER_DATA_URL",$env->USER_DATA_URL);
 #Database password
 define("APP_SECRET",$env->APP_SECRET);
-#base uri
-define("BASEURI",$env->BASEURI);
+
 
 // General Codes
 function import($var=null,$context="",$many=false)
