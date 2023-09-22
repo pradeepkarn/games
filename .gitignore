@@ -3,6 +3,6 @@
 FlexStart
 info.txt
 /tour
-/media
+# /media
 data/json/media/images/pages/gallery.json
 *_temp
