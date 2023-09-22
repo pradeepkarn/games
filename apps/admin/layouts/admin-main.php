@@ -61,18 +61,21 @@
           <img src="/<?php echo STATIC_URL; ?>/admin/assets/img/logo.png" alt="">
           <span class="d-none d-lg-block"><?php echo SITE_NAME; ?></span>
         </a>
-        <a href="/<?php echo home; ?>/" target="_blank" class="logo d-flex align-items-center">
+        
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <a href="/<?php echo home; ?>/" target="_blank" class="ps-5 logo d-flex align-items-center">
           <i style="font-size:20px;" class="ri-external-link-fill"></i>
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div><!-- End Logo -->
+      <!-- End Logo -->
 
-      <div class="search-bar">
+      <!-- <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
           <input type="text" name="query" placeholder="Search" title="Enter search keyword">
           <button type="submit" title="Search"><i class="bi bi-search"></i></button>
         </form>
-      </div><!-- End Search Bar -->
+      </div> -->
+      <!-- End Search Bar -->
 
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -302,7 +305,7 @@
           <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Posts</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
             <li>
               <a href="/<?php echo home . route('postCreate'); ?>">
                 <i class="bi bi-circle"></i><span>Add Post</span>
@@ -658,6 +661,25 @@
         }
       });
     </script>
+
+<script>
+    // // Check if the collapse state is stored in local storage
+    // const menuOpened = localStorage.getItem('menuOpened');
+
+    // // If it's not null and 'true', collapse the element
+    // if (menuOpened === true) {
+    //     $('#components-pages').removeClass('show');
+    // }
+
+    // // Add an event listener to save the collapse state when it changes
+    // $('#components-pages').on('click', function () {
+    //   if ( $('#components-pages').hasClass('show')) {
+    //     localStorage.setItem('menuOpened', true);
+    //   }else{
+    //     localStorage.setItem('menuOpened', false);
+    //   }
+    // });
+</script>
   </body>
 
   </html>

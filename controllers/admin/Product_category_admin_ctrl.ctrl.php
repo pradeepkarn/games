@@ -287,12 +287,12 @@ class Product_category_admin_ctrl
              if ($content_exists) {
                  if ((new Model('content'))->destroy($req->id)) {
                      echo js_alert('Content deleted permanatly');
-                     echo go_to(route('postCatTrashList'));
+                     echo go_to(route('productCatTrashList'));
                      exit;
                  }
              }
              echo js_alert('Content does not exixt');
-             echo go_to(route('postCatTrashList'));
+             echo go_to(route('productCatTrashList'));
              exit;
          } catch (PDOException $e) {
              echo js_alert('Content not deleted');

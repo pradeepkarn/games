@@ -56,26 +56,8 @@ if ($pd->json_obj != "") {
                     <input type="text" name="title" value="<?php echo $pd->title; ?>" class="form-control my-3" placeholder="Title">
                     <h6>Slug</h6>
                     <input type="text" name="slug" value="<?php echo $pd->slug; ?>" class="form-control my-3" placeholder="slug">
-                    <h4>Category</h4>
-                    <select name="parent_id" class="form-select my-3">
-                        <option <?php echo $pd->parent_id == 0 ? "selected" : null; ?> value="0">Uncategorised</option>
-                        <?php foreach ($catlist as  $cv) {
-                            $cv = obj($cv);
-                        ?>
-                            <option <?php echo $pd->parent_id == $cv->id ? "selected" : null; ?> value="<?php echo $cv->id; ?>"><?php echo $cv->title; ?></option>
-                        <?php } ?>
-                        <?php ?>
-                    </select>
-                    <div class="row">
-                        <div class="col">
-                            <label for="">Latitude</label>
-                            <input type="text" class="form-control my-2" name="lat" value="<?php echo $pd->lat ?? null; ?>">
-                        </div>
-                        <div class="col">
-                            <label for="">Longitude</label>
-                            <input type="text" class="form-control my-2" name="lon" value="<?php echo $pd->lon ?? null; ?>">
-                        </div>
-                    </div>
+                   
+                   
                     <textarea class="tinymce-editor" name="content" id="mce_0" aria-hidden="true"><?php echo $pd->content; ?></textarea>
                     <h4>Tags</h4>
                     <textarea class="form-control" name="meta_tags" aria-hidden="true"><?php echo $meta_tags; ?></textarea>
@@ -165,28 +147,23 @@ if ($pd->json_obj != "") {
                             <hr>
                         <?php } ?>
                     </div>
-
+                    <h4>Category</h4>
+                    <select name="parent_id" class="form-select my-3">
+                        <option <?php echo $pd->parent_id == 0 ? "selected" : null; ?> value="0">Uncategorised</option>
+                        <?php foreach ($catlist as  $cv) {
+                            $cv = obj($cv);
+                        ?>
+                            <option <?php echo $pd->parent_id == $cv->id ? "selected" : null; ?> value="<?php echo $cv->id; ?>"><?php echo $cv->title; ?></option>
+                        <?php } ?>
+                        <?php ?>
+                    </select>
                     <h4>Price/Unit</h4>
                     <input type="number" scope="any" name="price" value="<?php echo $pd->price; ?>" class="form-control my-3" placeholder="Price">
 
-                    <h4>Min. Age</h4>
-                    <input type="text" name="min_age" value="<?php echo $pd->min_age; ?>" class="form-control my-3" placeholder="Min age">
+                    <h4>Game Link</h4>
+                    <input type="text" name="link" value="<?php echo $pd->link; ?>" class="form-control my-3" placeholder="Game link">
 
-                    <h4>Max. People</h4>
-                    <input type="text" name="max_people" value="<?php echo $pd->max_people; ?>" class="form-control my-3" placeholder="Max people">
-
-                    <h4>Pickup</h4>
-                    <input type="text" name="pickup" value="<?php echo $pd->pickup; ?>" class="form-control my-3" placeholder="Airport">
-
-                    <h4>Languages</h4>
-                    <input type="text" name="languages" value="<?php echo $pd->languages; ?>" class="form-control my-3" placeholder="Hindi, Arabic, English, Spanish">
-
-                    <h4>No. of days for tours</h4>
-                    <input type="number" scope="any" name="days" value="<?php echo $pd->days; ?>" class="form-control my-3" placeholder="Days for tours">
-
-                    <h4>City</h4>
-                    <input type="text" name="city" value="<?php echo $pd->city; ?>" class="form-control my-3" placeholder="City">
-
+                   
                     <div class="d-grid">
                         <button id="update-game-btn" type="button" class="btn btn-primary my-3">Update</button>
                     </div>

@@ -126,12 +126,7 @@ class Game_ctrl
             'banner' => 'required|file',
             'parent_id' => 'required|integer',
             'price' => 'required|numeric',
-            'days' => 'required|numeric',
-            'city' => 'required|string',
-            'min_age' => 'required|numeric',
-            'max_people' => 'required|numeric',
-            'pickup' => 'required|string',
-            'languages' => 'required|string',
+            'link' => 'required|string',
         ];
 
         $pass = validateData(data: $data, rules: $rules);
@@ -153,18 +148,12 @@ class Game_ctrl
             $arr['content_group'] = "game";
             $arr['title'] = $request->title;
             $arr['slug'] = generate_slug(trim($request->slug));
-            $arr['days'] = $request->days;
             $arr['price'] = $request->price;
-            $arr['city'] = $request->city;
             $arr['content'] = $request->content;
             $arr['parent_id'] = $request->parent_id;
             $arr['created_at'] = date('Y-m-d H:i:s');
-            $arr['min_age'] = $request->min_age;
-            $arr['max_people'] = $request->max_people;
-            $arr['pickup'] = $request->pickup;
-            $arr['languages'] = $request->languages;
-            $arr['lat'] = $request->lat??null;
-            $arr['lon'] = $request->lon??null;
+            $arr['link'] = $request->link;
+            
             $moreimg = [];
             if (isset($_FILES['moreimgs'])) {
                 $fl = $_FILES['moreimgs'];
@@ -249,12 +238,9 @@ class Game_ctrl
             'content' => 'required|string',
             'parent_id' => 'required|integer',
             'price' => 'required|numeric',
-            'days' => 'required|numeric',
-            'city' => 'required|string',
-            'min_age' => 'required|numeric',
-            'max_people' => 'required|numeric',
-            'pickup' => 'required|string',
-            'languages' => 'required|string',
+            'link' => 'required|string',
+           
+           
         ];
         $pass = validateData(data: $data, rules: $rules);
         if (!$pass) {
@@ -283,12 +269,7 @@ class Game_ctrl
             $arr['city'] = $request->city;
             $arr['parent_id'] = $request->parent_id;
             $arr['updated_at'] = date('Y-m-d H:i:s');
-            $arr['min_age'] = $request->min_age;
-            $arr['max_people'] = $request->max_people;
-            $arr['pickup'] = $request->pickup;
-            $arr['languages'] = $request->languages;
-            $arr['lat'] = $request->lat??null;
-            $arr['lon'] = $request->lon??null;
+            $arr['link'] = $request->link;
             $imsgjsn = json_decode($content->imgs??'[]',true);
             $moreimg = [];
             if (isset($_FILES['moreimgs'])) {
