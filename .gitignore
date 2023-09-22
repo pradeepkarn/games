@@ -1,0 +1,7 @@
+*.env
+*.zip
+FlexStart
+info.txt
+/tour
+/media
+data/json/media/images/pages/gallery.json
