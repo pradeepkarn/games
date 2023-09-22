@@ -66,25 +66,25 @@
                                     <a class="nav-link" href="<?php echo BASEURI; ?>">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">About Us</a>
+                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">FAQs</a>
+                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">FAQs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Blog</a>
+                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Newsroom</a>
+                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">Newsroom</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact Us</a>
+                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">Contact Us</a>
                                 </li>
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
-                                <a href="login.html" class="login">Login</a>
-                                <a href="register.html" class="cmn-btn">Sign Up
+                                <a href="<?php echo BASEURI.route('userLogin'); ?>" class="login">Login</a>
+                                <a href="<?php echo BASEURI.route('register'); ?>" class="cmn-btn">Sign Up
                                     <i class="icon-d-right-arrow-2"></i>
                                 </a>
                             </div>

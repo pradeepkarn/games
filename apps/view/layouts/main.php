@@ -72,12 +72,8 @@ $meta = isset($GLOBALS['meta_seo']) ? $GLOBALS['meta_seo'] : $default_meta;
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="/<?php echo home . route('home'); ?>"><?php echo lang("nav")->home; ?></a></li>
-                    <li><a class="nav-link scrollto" href="/<?php echo home . route('aboutUs'); ?>"><?php echo lang("nav")->about; ?></a></li>
-                   
-
-                    <li><a class="nav-link scrollto" href="/<?php echo home . route('contact'); ?>"><?php echo lang("nav")->contact; ?></a></li>
-                    <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
+                    
+                             
                     <li class="dropdown"><a href="#"><span><?php echo lang("nav")->account; ?></span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             
@@ -85,19 +81,11 @@ $meta = isset($GLOBALS['meta_seo']) ? $GLOBALS['meta_seo'] : $default_meta;
 
                                 <?php if (USER) : ?>
                                     <a href="/<?php echo home . route('logout'); ?>"><?php echo lang("nav")->logout ?? "Logout"; ?></a>
-                                <?php else : ?>
-                                    <a href="/<?php echo home . route('userLogin'); ?>"><?php echo lang("nav")->login ?? "Login"; ?></a>
-                                    <a href="/<?php echo home . route('register'); ?>"><?php echo lang("nav")->register ?? "Register"; ?></a>
                                 <?php endif; ?>
                             </li>
                         </ul>
                     </li>
-                    <li><?php if (isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en') : ?>
-                            <a id="set-lang-hi" class="nav-link scrollto pk-pointer"><?php echo lang("nav")->hi ?? "Hi"; ?></a>
-                        <?php else : ?>
-                            <a id="set-lang-en" class="nav-link scrollto pk-pointer"><?php echo lang("nav")->en ?? "En"; ?></a>
-                        <?php endif; ?>
-                    </li>
+                    
                     <input type="hidden" class="lang" name="lang" value="">
                     <div id="res-lang"></div>
                     <?php

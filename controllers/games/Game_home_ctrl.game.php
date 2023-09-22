@@ -41,7 +41,7 @@ class Game_home_ctrl extends  Main_ctrl
             $acc = new Account;
             $acc->loginWithCookie($_COOKIE['remember_token']);
         }
-        $this->render_layout($context,"apps/games/layouts/main.php");
+        $this->render_layout($context);
     }
     public function homepage_slider($ord = "DESC", $catid=362, $limit = 10, $active = 1)
     {

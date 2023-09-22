@@ -10,7 +10,7 @@ class Main_ctrl
         $this->get = obj($_GET);
         $this->files = isset($_FILES) ? obj($_FILES) : null;
     }
-    public function render_layout($context = null, $layout = "apps/travel/layouts/main.php")
+    public function render_layout($context = null, $layout = "apps/games/layouts/main.php")
     {
         import($layout, $context);
     }
