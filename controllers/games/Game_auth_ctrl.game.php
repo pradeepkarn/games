@@ -87,6 +87,7 @@ class Game_auth_ctrl extends Main_ctrl
         $data = $_POST;
         $rules = [
             'email' => 'required|email',
+            'username' => 'required|string|min:4|max:12',
             'otp' => 'required|integer|min:4|max:6',
             'password' => 'required|string|min:6|max:20',
             'confirm_password' => 'required|string|min:6|max:16',
@@ -105,12 +106,26 @@ class Game_auth_ctrl extends Main_ctrl
                 echo js_alert(msg_ssn(return: true));
                 exit;
             }
+            if ($data->username != generate_clean_username($data->username)) {
+                $_SESSION['msg'][] = 'Invalid character in username';
+                echo js_alert(msg_ssn(return: true));
+                exit;
+            }
+            $username = generate_clean_username($data->username);
             $obj = new stdClass;
             $obj->col = 'email';
             $obj->val = $data->email;
             $emailcheck = $this->check_dup($obj);
+            $obj->col = 'username';
+            $obj->val = $username;
+            $usernamecheck = $this->check_dup($obj);
             if ($emailcheck) {
                 $_SESSION['msg'][] = 'This email is already taken';
+                msg_ssn();
+                exit;
+            }
+            if ($usernamecheck) {
+                $_SESSION['msg'][] = 'This username is already taken';
                 msg_ssn();
                 exit;
             }
@@ -124,7 +139,7 @@ class Game_auth_ctrl extends Main_ctrl
                 msg_ssn();
                 exit;
             }
-            $username = generate_username_by_email($data->email);
+            // $username = generate_username_by_email($data->email);
             $password = md5($data->password);
             $role = 'subscriber';
 
@@ -147,6 +162,84 @@ class Game_auth_ctrl extends Main_ctrl
             } catch (PDOException $e) {
                 // echo "Error: " . $e->getMessage();
                 $_SESSION['msg'][] = 'Something went wrong while saving in database';
+                msg_ssn("msg");
+                exit;
+            }
+        } else {
+            msg_ssn("msg");
+            exit;
+        }
+    }
+    public function game_register()
+    {
+        $data = null;
+        $data = $_POST;
+        $rules = [
+            'gameid' => 'required|integer',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|string',
+            'isd_code' => 'required|integer',
+            'price' => 'required|numeric',
+            'mobile' => 'required|integer',
+            'terms_and_conditions_and_privacy_policy' => 'required',
+        ];
+        $pass = validateData(data: $_POST, rules: $rules);
+        if ($pass) {
+            $data = obj($data);
+            $status = 'paid';
+            $db = new Dbobjects;
+            $pdo = $db->dbpdo();
+            $pdo->beginTransaction();
+            $game = $db->showOne("select id,is_sold,price,qty from content where is_sold = 0 and content_group='game' and content.id = $data->gameid");
+            if (!$game) {
+                $_SESSION['msg'][] = 'Game not available';
+                msg_ssn("msg");
+                exit;
+            }
+            $game = obj($game);
+            $db->tableName = 'payment';
+            $db->insertData = array(
+                'user_id' => $data->gameid,
+                'unique_id' => uniqid('gm'),
+                'isd_code' => $data->isd_code,
+                'mobile' => $data->mobile,
+                'first_name' => $data->first_name,
+                'last_name' => $data->last_name,
+                'amount' => $game->price,
+                'status' => $status,
+                'payment_method' => 'stripe',
+                'user_id' => USER['id'],
+                'created_at' => date('Y-m-d H:i:s'),
+            );
+            try {
+                $paymentid = $db->create();
+                $db->tableName = 'customer_order';
+                $db->insertData = array(
+                    'item_id' => $data->gameid,
+                    'payment_id' => $paymentid,
+                    'qty' => 1,
+                    'price' => $game->price,
+                    'status' => 'confirmed',
+                    'customer_email' => $data->email,
+                    'user_id' => USER['id'],
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'is_paid' => true,
+                );
+                $db->create();
+                $db->insertData = null;
+                $db->tableName = 'content';
+                $db->insertData['is_sold'] = 1;
+                $db->pk($game->id);
+                $db->update();
+                $pdo->commit();
+                $_SESSION['msg'][] = 'Success';
+                msg_ssn("msg");
+                echo go_to("/");
+                exit;
+            } catch (PDOException $th) {
+                $pdo->rollBack();
+                $_SESSION['msg'][] = 'Failed';
                 msg_ssn("msg");
                 exit;
             }
@@ -537,6 +630,24 @@ class Game_auth_ctrl extends Main_ctrl
             'page' => 'auth/registration.php',
             'data' => (object) array(
                 'req' => obj($req)
+            )
+        );
+        $this->render_layout($context);
+    }
+    public function game_registration_page($req = null)
+    {
+        $req = obj($req);
+        $db = new Dbobjects;
+        $game = $db->showOne("select id,title,content,banner,price,is_sold,imgs from content where content_group='game' and content.id='$req->gameid'");
+        if (!is_numeric($req->gameid) || !$game) {
+            header('location:' . BASEURI);
+            return;
+        }
+        $context = (object) array(
+            'page' => 'auth/game-registration.php',
+            'data' => (object) array(
+                'req' => obj($req),
+                'game' => obj($game),
             )
         );
         $this->render_layout($context);

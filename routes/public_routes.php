@@ -4,8 +4,7 @@ $public_routes = [
     "/" => "Game_home_ctrl@index@name.homeSlash",
     "/fetch-packages-by-cat-id-ajax" => "Travel_home_ctrl@fetch_packages_by_catid@name.fetchPkgAjax",
     "/about" => "Game_about_ctrl@index@name.about",
-    "/visa" => "Travel_visa_ctrl@index@name.visa",
-    "/tours" => "Travel_tours_ctrl@index@name.tours",
-    "/services" => "Travel_services_ctrl@index@name.services",
-    "/contact" => "Travel_contact_ctrl@index@name.contact",
+    "/blog" => "Game_blog_ctrl@index@name.blog",
+    "/contact" => "Game_contact_ctrl@index@name.contact",
+    "/faqs" => "Game_faqs_ctrl@index@name.faqs",
 ];

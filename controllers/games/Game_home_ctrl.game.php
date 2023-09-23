@@ -13,7 +13,7 @@ class Game_home_ctrl extends  Main_ctrl
             $load_page = (abs($req->page) - 1) * $data_limit;
             $row_limit = "$load_page,$data_limit";
         }
-        $total_products = $this->package_list(ord: "DESC", limit: 10000, active: 1);
+        $total_products = $this->game_list(ord: "DESC", limit: 10000, active: 1);
         $to = count($total_products);
         if ($to %  $data_limit == 0) {
             $to = $to / $data_limit;
@@ -22,7 +22,7 @@ class Game_home_ctrl extends  Main_ctrl
         }
 
         $cat_list = $this->cat_list($ord = "DESC", $limit = $row_limit, $active = 1);
-        $package_list = $this->package_list($ord = "DESC", $limit = $row_limit, $active = 1);
+        $game_list = $this->game_list($ord = "DESC", $limit = $row_limit, $active = 1);
 
         $GLOBALS['meta_seo'] = (object) array('title' => 'Home', 'description' => 'Welcome to our Gift shop', 'keywords' => 'gifts,shop,wedding,birthday');
         $context = (object) array(
@@ -30,7 +30,7 @@ class Game_home_ctrl extends  Main_ctrl
             'data' => (object) array(
                 'req' => obj($req),
                 'cat_list' => $cat_list,
-                'package_list' => $package_list,
+                'game_list' => $game_list,
                 'current_page' => $cp,
                 'total_object' => $to,
                 'about' => $this->about_content(),
@@ -49,17 +49,17 @@ class Game_home_ctrl extends  Main_ctrl
         $cntobj->tableName = 'content';
         return $cntobj->filter(array('content_group' => 'slider', 'parent_id'=>$catid, 'is_active' => $active), $ord, $limit);
     }
-    public function package_list($ord = "DESC", $limit = 1, $active = 1)
+    public function game_list($ord = "DESC", $limit = 1, $active = 1)
     {
         $cntobj = new Dbobjects;
         $cntobj->tableName = 'content';
-        return $cntobj->filter(array('content_group' => 'package', 'is_active' => $active), $ord, $limit);
+        return $cntobj->filter(array('content_group' => 'game', 'is_active' => $active, 'is_sold'=>0), $ord, $limit);
     }
-    public function package_list_by_catid($catid, $ord = "DESC", $limit = 1, $active = 1)
+    public function game_list_by_catid($catid, $ord = "DESC", $limit = 1, $active = 1)
     {
         $cntobj = new Dbobjects;
         $cntobj->tableName = 'content';
-        return $cntobj->filter(array('content_group' => 'package', 'parent_id' => $catid, 'is_active' => $active), $ord, $limit);
+        return $cntobj->filter(array('content_group' => 'game', 'parent_id' => $catid, 'is_active' => $active), $ord, $limit);
     }
     public function cat_list($ord = "DESC", $limit = 1, $active = 1)
     {
@@ -67,7 +67,7 @@ class Game_home_ctrl extends  Main_ctrl
         $cntobj->tableName = 'content';
         return $cntobj->filter(array('content_group' => 'product_category', 'is_active' => $active), $ord, $limit);
     }
-    function fetch_packages_by_catid($req = null)
+    function fetch_games_by_catid($req = null)
     {
         $req = obj($req);
         $data = $_POST;
@@ -80,9 +80,9 @@ class Game_home_ctrl extends  Main_ctrl
             echo js_alert(msg_ssn(return:true));
             return false;
         }
-        $package_list = $this->package_list_by_catid($catid = $req->post->cat_id, $ord = "DESC", $limit = 100, $active = 1);
-        if (count($package_list)==0) {
-            echo "<h3 class='text-center'>No packages</h3>";
+        $game_list = $this->game_list_by_catid($catid = $req->post->cat_id, $ord = "DESC", $limit = 100, $active = 1);
+        if (count($game_list)==0) {
+            echo "<h3 class='text-center'>No games</h3>";
             return false;
         }
         $cat = (object)getData('content',$req->post->cat_id);
@@ -90,7 +90,7 @@ class Game_home_ctrl extends  Main_ctrl
             'page' => 'home.php',
             'data' => (object) array(
                 'req' => obj($req),
-                'package_list' => $package_list,
+                'game_list' => $game_list,
                 'cat_name' => $cat->title,
                 'cat_details' => pk_excerpt($cat->content,100),
             )

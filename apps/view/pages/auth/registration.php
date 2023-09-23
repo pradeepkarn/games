@@ -5,7 +5,7 @@
         <div class="card">
 
           <div class="card-header">
-          <?php echo lang('global')->registration??'Registration'; ?> <div id="res"></div>
+           <?php echo lang('global')->registration??'Registration'; ?> <div id="res"></div>
           </div>
           <div class="card-body">
             <form id="my-form" action="/<?php echo home . route('registerAjax'); ?>" method="post">
@@ -17,8 +17,8 @@
                 </div>
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label"><?php echo lang('global')->otp??'OTP'; ?></label>
-                <input type="email" class="form-control" id="email" name="otp" required>
+                <label for="otp" class="form-label"><?php echo lang('global')->otp??'OTP'; ?></label>
+                <input type="text" class="form-control" id="otp" name="otp" required>
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label"><?php echo lang('global')->password??'Password'; ?></label>
@@ -37,7 +37,7 @@
                 <?php echo lang('global')->i_agree??'I agree'; ?>
               </div>
               <div class="d-grid gap-2">
-                <button disabled id="login-btn" type="button" class="btn btn-primary"><?php echo lang('nav')->register??'Register'; ?></button>
+                <button disabled id="reg-btn" type="button" class="btn btn-primary"><?php echo lang('nav')->register??'Register'; ?></button>
                 <a class="my-3" href="/<?php echo home . route('userLogin'); ?>"><?php echo lang('nav')->login??'Login'; ?></a>
               </div>
             </form>
@@ -50,7 +50,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const checkbox = document.getElementById('tnc');
-    const registerBtn = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('reg-btn');
 
     checkbox.addEventListener('change', function () {
       if (checkbox.checked) {
@@ -88,7 +88,7 @@
 
 send_to_server_wotf("#send-otp-btn",".email","handleOtpSend",route('sendOtpAjax'));
 
-pkAjax_form("#login-btn", "#my-form", "#res"); 
+pkAjax_form("#reg-btn", "#my-form", "#res"); 
 ?>
 <script>
   document.getElementById('popup').style.display = 'none';

@@ -1,5 +1,6 @@
  <!-- Login Reg In start -->
  <section class="login-reg">
+     <?php $game = $context->data->game; ?>
      <div class="overlay pb-120">
          <div class="container">
 
@@ -8,39 +9,41 @@
                      <div class="login-reg-main text-center">
                          <div class="form-area">
                              <div class="section-text">
-                                 <h4>Create Account</h4>
-                                 <p>Sign Up to get exciting games!</p>
+                                 <h4><?php echo $game->title; ?></h4>
+                                 <img style="height: 100px; object-fit:contain;" src="/<?php echo MEDIA_URL . "/images/pages/" . $game->banner; ?>" class="w-100" alt="icon">
                              </div>
-                             <form id="my-form" action="/<?php echo home . route('registerAjax'); ?>" method="post">
+                             <form id="my-form" action="/<?php echo home . route('gameRegisterAjax'); ?>" method="post">
                                  <div class="row">
                                      <div class="col-12">
-                                        
+
                                          <div class="single-input">
                                              <label for="email">Email Address</label>
                                              <div class="input-box">
-                                                 <input type="text" id="email" name="email" class="email" placeholder="Enter Your Email">
-                                             </div>
-                                             <button type="button" id="send-otp-btn" class="btn btn-sm btn-primary my-2">Send me OTP</button>
-                                             <div class="input-box">
-                                                 <input type="text" id="otp" name="otp" class="otp" placeholder="Enter the OTP you just received on above email">
+                                                 <input type="text" id="email" name="email" readonly value="<?php echo USER['email'] ?? null; ?>" class="email" placeholder="Enter Your Email">
                                              </div>
                                          </div>
                                          <div class="single-input">
-                                             <label for="name">User Name</label>
+                                             <label for="isdcode">ISD CODE</label>
                                              <div class="input-box">
-                                                 <input type="text" name="username" id="name" placeholder="Enter User Name">
+                                                 <input type="number" id="isdcode" name="isd_code" class="email" placeholder="Enter Dial code">
                                              </div>
                                          </div>
                                          <div class="single-input">
-                                             <label for="passInput">Password</label>
+                                             <label for="mobile">Mobile</label>
                                              <div class="input-box">
-                                                 <input type="password" name="password" id="passInput" placeholder="Enter Your Password">
+                                                 <input type="text" id="mobile" name="mobile" class="email" placeholder="Enter Your Mobile">
                                              </div>
                                          </div>
                                          <div class="single-input">
-                                             <label for="cnfpassInput">Confirm Password</label>
+                                             <label for="fname">First name</label>
                                              <div class="input-box">
-                                                 <input type="password" name="confirm_password" id="cnfpassInput" placeholder="Enter Your Password">
+                                                 <input type="text" name="first_name" id="fname" placeholder="Enter First Name">
+                                             </div>
+                                         </div>
+                                         <div class="single-input">
+                                             <label for="lname">Last name</label>
+                                             <div class="input-box">
+                                                 <input type="text" name="last_name" id="lname" placeholder="Enter Last Name">
                                              </div>
                                          </div>
                                      </div>
@@ -62,7 +65,11 @@
                                          </label>
                                      </div>
                                  </div>
-                                 <button id="reg-btn" type="button" class="cmn-btn mt-40 w-100">Sign Up</button>
+                                 <input type="hidden" name="gameid" value="<?php echo $game->id; ?>">
+                                 <input type="hidden" name="price" value="<?php echo $game->price; ?>">
+                                 <button id="reg-btn" type="button" class="cmn-btn mt-40 w-100">
+                                     $<?php echo $game->price; ?>/- Buy Now
+                                 </button>
                                  <div id="res" class="text-white"></div>
                              </form>
                              <div class="reg-with">
@@ -89,18 +96,18 @@
      </div>
  </section>
  <script>
-       document.addEventListener('DOMContentLoaded', function () {
+     document.addEventListener('DOMContentLoaded', function() {
          const checkbox = document.getElementById('tnc');
          const registerBtn = document.getElementById('reg-btn');
 
-         checkbox.addEventListener('change', function () {
-           if (checkbox.checked) {
-             registerBtn.disabled = false;
-           } else {
-             registerBtn.disabled = true;
-           }
+         checkbox.addEventListener('change', function() {
+             if (checkbox.checked) {
+                 registerBtn.disabled = false;
+             } else {
+                 registerBtn.disabled = true;
+             }
          });
-       });
+     });
  </script>
  <script>
      function handleOtpSend(res) {

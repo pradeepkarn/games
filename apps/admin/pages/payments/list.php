@@ -1,5 +1,5 @@
 <?php
-$pl = $context->game_list;
+$pl = $context->payment_list;
 $tp = $context->total_page;
 $cp = $context->current_page;
 $active = $context->is_active;
@@ -19,11 +19,8 @@ $active = $context->is_active;
                 <div class="card-body">
                     <div class="row">
                         <div class="col my-3">
-                            <h5 class="card-title">All games</h5>
-                            <nav class="nav">
-                                <a class="nav-link <?php echo $active ? "btn btn-sm btn-primary text-white" : ""; ?>" href="/<?php echo home . route('gameList'); ?>">Active List</a>
-                                <a class="nav-link <?php echo $active ? "" : "btn btn-sm btn-danger text-white"; ?>" href="/<?php echo home . route('gameTrashList'); ?>">Trash List</a>
-                            </nav>
+                            <h5 class="card-title">All payments</h5>
+
 
                         </div>
                         <div class="col my-3">
@@ -39,7 +36,7 @@ $active = $context->is_active;
                             </form>
                         </div>
                         <div class="col text-end my-3">
-                            <a class="btn btn-dark" href="/<?php echo home . route('gameCreate'); ?>">Add New</a>
+                            <a class="btn btn-dark" href="/<?php echo home . route('paymentCreate'); ?>">Add New</a>
                         </div>
                     </div>
 
@@ -48,96 +45,57 @@ $active = $context->is_active;
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">
-                                    <div class="text-center">
-                                        Trending
-                                    </div>
-                                </th>
-                                <th scope="col">
-                                    <div class="text-center">
-                                        Featured
-                                    </div>
-                                </th>
-                                <th scope="col">Banner</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">category</th>
-                                <!-- <th scope="col">Hits</th> -->
+                                <th scope="col">TR NO.</th>
+                                <th scope="col">Game Name</th>
+
                                 <th scope="col">Status</th>
-                                <th scope="col">Publish Date</th>
+                                <th scope="col">Order Date</th>
                                 <?php
                                 if ($active == true) { ?>
 
-                                    <th scope="col">Edit</th>
+                                    <!-- <th scope="col">Detail</th> -->
 
                                 <?php    }
                                 ?>
-                                <th scope="col">Action</th>
-                                <?php
-                                if ($active == false) { ?>
-                                    <th scope="col">Restore</th>
-                                <?php    }
-                                ?>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($pl as $key => $pv) :
+                            <?php 
+                            $db = new Dbobjects;
+                           
+                            foreach ($pl as $key => $pv) :
                                 $pv = obj($pv);
-                                $cat = getData(table: "content", id: $pv->parent_id);
-                                $cat_title =  $cat ? $cat['title'] : "Uncategorised";
-                                if ($pv->is_active == true) {
-                                    $move_to_text = "Trash";
-                                    $move_to_link = route('gameTrash', ['id' => $pv->id]);
-                                } else {
-                                    $move_to_link = route('gameDelete', ['id' => $pv->id]);
-                                    $move_to_text = "Delete";
-                                    $restore_text = "Restore";
-                                    $restore_link = route('gameRestore', ['id' => $pv->id]);
-                                }
+                                $sql = "SELECT customer_order.*, content.id as game_id, content.title as game_name,
+                                content.link as game_link, content.banner, content.is_sold
+                                FROM customer_order
+                                JOIN content ON customer_order.item_id = content.id
+                                WHERE customer_order.payment_id = '$pv->id';
+                                ";
+                                $items = $db->show($sql);
+                                // myprint($items);
+                                foreach ($items as $key => $ord) :
+                                    $ord = obj($ord);
                             ?>
 
                                 <tr>
                                     <th scope="row"><?php echo $pv->id; ?></th>
-                                    <th scope="row">
-                                        <div class="text-center">
-                                            <?php echo $pv->is_trending ? "<i data-trending='{$pv->id}' class='trending-post pk-pointer text-primary bx bxs-star'></i>" : "<i data-trending='{$pv->id}' class='trending-post pk-pointer bx bx-star'></i>"; ?>
-                                        </div>
-                                    </th>
-                                    <th scope="row">
-                                        <div class="text-center">
-                                            <?php echo $pv->is_featured ? "<i data-featured='{$pv->id}' class='featured-post pk-pointer text-success bx bxs-star'></i>" : "<i data-featured='{$pv->id}' class='featured-post pk-pointer bx bx-star'></i>"; ?>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <img style="width:100%; max-height:30px; object-fit:cover;" id="banner" src="/<?php echo MEDIA_URL; ?>/images/pages/<?php echo $pv->banner; ?>" alt="">
-                                    </th>
-                                    <td><?php echo $pv->title; ?></td>
-                                    <td><?php echo $cat_title; ?></td>
-                                    <!-- <td><?php //echo $pv->views; ?></td> -->
-                                    <td>
-                                    <span class="<?php echo $pv->is_sold==1?'badge bg-success text-white':null; ?>"><?php echo $pv->is_sold?'Sold':'Not sold'; ?></span>
-                                    </td>
+
+                                    <td><?php echo $pv->unique_id; ?></td>
+                                    <td><?php echo $ord->game_name; ?></td>
+                                    <td><?php echo $pv->status; ?></td>
                                     <td><?php echo $pv->created_at; ?></td>
                                     <?php
                                     if ($active == true) { ?>
                                         <td>
-                                            <a class="btn-primary btn btn-sm" href="/<?php echo home . route('gameEdit', ['id' => $pv->id]); ?>">Edit</a>
-                                        </td>
-                                    <?php    }
-                                    ?>
-
-                                    <td>
-                                        <a class="btn-danger btn btn-sm" href="/<?php echo home . $move_to_link; ?>"><?php echo $move_to_text; ?></a>
-                                    </td>
-                                    <?php
-                                    if ($active == false) { ?>
-                                        <td>
-                                            <a class="btn-success btn btn-sm" href="/<?php echo home . $restore_link; ?>"><?php echo $restore_text; ?></a>
+                                            <!-- <a class="btn-primary btn btn-sm" href="#">Open</a> -->
                                         </td>
                                     <?php    }
                                     ?>
 
                                 </tr>
 
+                            <?php endforeach; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -150,9 +108,9 @@ $active = $context->is_active;
                             $tp = $tp;
                             $current_page = $cp; // Assuming first page is the current page
                             if ($active == true) {
-                                $link =  route('gameList');
+                                $link =  route('paymentList');
                             } else {
-                                $link =  route('gameTrashList');
+                                $link =  route('paymentTrashList');
                             }
                             // Show first two pages
                             for ($i = 1; $i <= $tp; $i++) {
@@ -186,7 +144,7 @@ $active = $context->is_active;
                         content_id: content_id,
                         action: 'is_trending'
                     },
-                    `/<?php echo home . route('gameToggleMarked') ?>`,
+                    `/<?php echo home . route('paymentToggleMarked') ?>`,
                     (err, response) => {
                         if (err) {
                             // console.error('Error:', err);
@@ -214,7 +172,7 @@ $active = $context->is_active;
                         content_id: content_id,
                         action: 'is_featured'
                     },
-                    `/<?php echo home . route('gameToggleMarked') ?>`,
+                    `/<?php echo home . route('paymentToggleMarked') ?>`,
                     (err, response) => {
                         if (err) {
                             // console.error('Error:', err);

@@ -40,61 +40,31 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="games-carousel">
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="single-item">
-                                        <div class="thumb">
-                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/games-img-1.png" class="w-100" alt="icon">
-                                            <span class="mdr">9 Am (Usa)</span>
-                                        </div>
-                                        <div class="text-area">
-                                            <h5>Fortnite</h5>
-                                            <div class="footer d-flex justify-content-between align-items-center">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="register.html" style="background-image: linear-gradient(to right, #33001b, #ff0084);  padding: 0 25px; border-radius: 50px;">Register</a>
+                        <?php
+                            $games = $context->data->game_list;
+                            foreach ($games as $key => $gm) { 
+                                $gm = obj($gm);
+                                ?>
+                                <div class="single-slide">
+                                    <div class="single">
+                                        <div class="single-item">
+                                            <div class="thumb">
+                                                <img src="/<?php echo MEDIA_URL."/images/pages/".$gm->banner; ?>" class="w-100" alt="icon">
+                                                <span class="mdr">9 Am (Usa)</span>
+                                            </div>
+                                            <div class="text-area">
+                                                <h5><?php echo $gm->title; ?></h5>
+                                                <div class="footer d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="<?php echo USER?BASEURI.route('gameRegister',['gameid'=>$gm->id]):BASEURI.route('register'); ?>" style="background-image: linear-gradient(to right, #33001b, #ff0084);  padding: 0 25px; border-radius: 50px;"><?php echo USER?"Play":"Register"; ?></a>
+                                                    </div>
+                                                    <p class="mdr">$ <?php echo $gm->price; ?></p>
                                                 </div>
-                                                <p class="mdr">$20</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="single-item">
-                                        <div class="thumb">
-                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/games-img-2.png" class="w-100" alt="icon">
-                                            <span class="mdr">9 Am (Usa)</span>
-                                        </div>
-                                        <div class="text-area">
-                                            <h5>Rainbow Six</h5>
-                                            <div class="footer d-flex justify-content-between align-items-center">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="register.html" style="background-image: linear-gradient(to right, #8e2de2, #4a00e0); padding: 0 25px; border-radius: 50px;">Register</a>
-                                                </div>
-                                                <p class="mdr">$20</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single">
-                                <div class="single-item">
-                                    <div class="thumb">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/games-img-3.png" class="w-100" alt="icon">
-                                        <span class="mdr">9 Am (Usa)</span>
-                                    </div>
-                                    <div class="text-area">
-                                        <h5>league of legends</h5>
-                                        <div class="footer d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <a href="register.html" style="background-image: linear-gradient(to right, #00b4db, #0083b0); padding: 0 25px; border-radius: 50px;">Register</a>
-                                            </div>
-                                            <p class="mdr">$20</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

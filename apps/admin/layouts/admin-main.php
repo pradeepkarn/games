@@ -366,6 +366,11 @@
 
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?php echo BASEURI.route('paymentList') ?>">
+            <i class="bi bi-menu-button-wide"></i><span>Payment</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+        </li>
         <!-- Porducts components -->
         <li class="nav-item">
           <a class="nav-link collapsed" data-bs-target="#products-nav" data-bs-toggle="collapse" href="#">

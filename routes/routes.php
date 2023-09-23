@@ -2,21 +2,25 @@
 $home = home;
 // Define the routes
 include_once 'login_routes.php';
+include_once 'game_routes.php';
 include_once 'public_routes.php';
 include_once 'user_routes.php';
 include_once 'api_routes.php';
 include_once 'chat_routes.php';
 include_once 'admin_routes.php';
 include_once 'admin_game_routes.php';
+include_once 'admin_payment_routes.php';
 include_once 'ajax_routes.php';
 include_once 'travel_pages_routes.php';
 
 $routes = array_merge(
     $public_routes,
     $login_routes,
+    $game_routes,
     $user_routes,
     $admin_routes,
     $admin_game_routes,
+    $admin_payment_routes,
     $chat_routes,
     $api_routes,
     $ajax,

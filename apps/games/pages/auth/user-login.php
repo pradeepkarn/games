@@ -11,20 +11,20 @@
                                     <h4>Welcome Back!</h4>
                                     <p>We're so excited to see you again! Log In to your Egamlio Account!</p>
                                 </div>
-                                <form action="#">
+                                <form id="my-form" action="/<?php echo home . route('userLoginAjax'); ?>">
                                     <div class="row">
                                         <div class="col-12">
+                                            <div id="res"></div>
                                             <div class="single-input">
                                                 <label for="email">Email Address</label>
                                                 <div class="input-box">
-                                                    <input type="text" id="email" placeholder="Enter Your Email">
+                                                    <input type="text" id="email" name="username" placeholder="Enter Your Email">
                                                 </div>
                                             </div>
                                             <div class="single-input">
                                                 <label for="passInput">Password</label>
                                                 <div class="input-box">
-                                                    <input type="text" id="passInput" placeholder="Enter Your Password">
-                                                    <img class="showPass" src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/show-hide.png" alt="icon">
+                                                    <input type="password" id="passInput" name="password" placeholder="Enter Your Password">
                                                 </div>
                                             </div>
                                             <div class="remember-me">
@@ -43,7 +43,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="cmn-btn mt-40 w-100">Login</button>
+                                    <button type="button" id="login-btn" class="cmn-btn mt-40 w-100">Login</button>
                                 </form>
                                 <div class="reg-with">
                                     <div class="or">
@@ -68,4 +68,5 @@
             </div>
         </div>
     </section>
+    <?php pkAjax_form("#login-btn", "#my-form", "#res"); ?>
     <!-- Login Reg In end -->

@@ -270,6 +270,7 @@ class Game_ctrl
             $arr['parent_id'] = $request->parent_id;
             $arr['updated_at'] = date('Y-m-d H:i:s');
             $arr['link'] = $request->link;
+            $arr['is_sold'] = isset($request->is_sold)?1:0;
             $imsgjsn = json_decode($content->imgs??'[]',true);
             $moreimg = [];
             if (isset($_FILES['moreimgs'])) {

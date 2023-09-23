@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/games/assets/css/arafat-font.css">
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/games/assets/css/plugin/animate.css">
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/games/assets/css/style.css">
+    <script src="/<?php echo STATIC_URL; ?>/view/js/jq.3.5.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
     <script>
@@ -63,30 +64,34 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo BASEURI; ?>">Home</a>
+                                    <a class="nav-link" href="<?php echo BASEURI.route('home'); ?>">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">About Us</a>
+                                    <a class="nav-link" href="<?php echo BASEURI.route('about'); ?>">About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">FAQs</a>
+                                    <a class="nav-link" href="<?php echo BASEURI.route('faqs'); ?>">FAQs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">Blog</a>
+                                    <a class="nav-link" href="<?php echo BASEURI.route('blog'); ?>">Blog</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">Newsroom</a>
-                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" href="<?php //echo BASEURI; ?>#">Newsroom</a>
+                                </li> -->
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo BASEURI; ?>#">Contact Us</a>
+                                    <a class="nav-link" href="<?php echo BASEURI.route('contact');; ?>">Contact Us</a>
                                 </li>
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
-                                <a href="<?php echo BASEURI.route('userLogin'); ?>" class="login">Login</a>
-                                <a href="<?php echo BASEURI.route('register'); ?>" class="cmn-btn">Sign Up
-                                    <i class="icon-d-right-arrow-2"></i>
-                                </a>
+                                <?php if (!USER) : ?>
+                                    <a href="<?php echo BASEURI . route('userLogin'); ?>" class="login">Login</a>
+                                    <a href="<?php echo BASEURI . route('register'); ?>" class="cmn-btn">Sign Up
+                                        <i class="icon-d-right-arrow-2"></i>
+                                    </a>
+                                <?php else: ?>
+                                    <a href="<?php echo BASEURI . route('logout'); ?>" class="login">Logout</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </nav>
@@ -211,22 +216,22 @@
     <?php
     ajaxActive("#global-progress-bar");
     ?>
-   <script>
-    $.ajaxSetup({
-        xhr: function() {
-          var xhr = new XMLHttpRequest();
-          xhr.upload.addEventListener('progress', function(evt) {
-            if (evt.lengthComputable) {
-              var percentComplete = Math.round((evt.loaded / evt.total) * 100);
-              // Update the width of the progress bar inside #global-progress-bar
-              $('#global-progress-bar .progress-bar').css('width', percentComplete + '%');
-              // Update the text inside the progress bar (if needed)
-              // $('#global-progress-bar .progress-bar').html(percentComplete + '%');
+    <script>
+        $.ajaxSetup({
+            xhr: function() {
+                var xhr = new XMLHttpRequest();
+                xhr.upload.addEventListener('progress', function(evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = Math.round((evt.loaded / evt.total) * 100);
+                        // Update the width of the progress bar inside #global-progress-bar
+                        $('#global-progress-bar .progress-bar').css('width', percentComplete + '%');
+                        // Update the text inside the progress bar (if needed)
+                        // $('#global-progress-bar .progress-bar').html(percentComplete + '%');
+                    }
+                }, false);
+                return xhr;
             }
-          }, false);
-          return xhr;
-        }
-      });
+        });
     </script>
 </body>
 
