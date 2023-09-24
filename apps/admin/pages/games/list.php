@@ -62,7 +62,7 @@ $active = $context->is_active;
                                 </th>
                                 <!-- <th scope="col">Banner</th> -->
                                 <th scope="col">Title</th>
-                                <th scope="col">category</th>
+                                <th scope="col">Game</th>
                                 <!-- <th scope="col">Hits</th> -->
                                 <th scope="col">Status</th>
                                 <th scope="col">Publish Date</th>
