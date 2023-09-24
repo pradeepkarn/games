@@ -43,6 +43,8 @@ $active = $context->is_active;
                         </div>
                     </div>
 
+                    
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
@@ -58,7 +60,7 @@ $active = $context->is_active;
                                         Featured
                                     </div>
                                 </th>
-                                <th scope="col">Banner</th>
+                                <!-- <th scope="col">Banner</th> -->
                                 <th scope="col">Title</th>
                                 <th scope="col">category</th>
                                 <!-- <th scope="col">Hits</th> -->
@@ -107,9 +109,9 @@ $active = $context->is_active;
                                             <?php echo $pv->is_featured ? "<i data-featured='{$pv->id}' class='featured-post pk-pointer text-success bx bxs-star'></i>" : "<i data-featured='{$pv->id}' class='featured-post pk-pointer bx bx-star'></i>"; ?>
                                         </div>
                                     </th>
-                                    <th>
-                                        <img style="width:100%; max-height:30px; object-fit:cover;" id="banner" src="/<?php echo MEDIA_URL; ?>/images/pages/<?php echo $pv->banner; ?>" alt="">
-                                    </th>
+                                    <!-- <th>
+                                        <img style="width:100%; max-height:30px; object-fit:cover;" id="banner" src="/<?php // echo MEDIA_URL; ?>/images/pages/<?php //echo $pv->banner; ?>" alt="">
+                                    </th> -->
                                     <td><?php echo $pv->title; ?></td>
                                     <td><?php echo $cat_title; ?></td>
                                     <!-- <td><?php //echo $pv->views; ?></td> -->

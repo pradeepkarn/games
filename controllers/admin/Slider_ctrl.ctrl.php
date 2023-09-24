@@ -115,7 +115,8 @@ class Slider_ctrl
             'slug' => 'required|string',
             'content' => 'required|string',
             'banner' => 'required|file',
-            'parent_id' => 'required|integer'
+            'parent_id' => 'required|integer',
+            'link' => 'required|string'
         ];
         $pass = validateData(data: $data, rules: $rules);
         if (!$pass) {
@@ -139,6 +140,7 @@ class Slider_ctrl
             $arr['slug'] = generate_slug(trim($request->slug));
             $arr['content'] = $request->content;
             $arr['parent_id'] = $request->parent_id;
+            $arr['link'] = $request->link;
             $arr['created_at'] = date('Y-m-d H:i:s');
             $postid = (new Model('content'))->store($arr);
             if (intval($postid)) {
@@ -204,7 +206,8 @@ class Slider_ctrl
             'id' => 'required|integer',
             'title' => 'required|string',
             'content' => 'required|string',
-            'parent_id' => 'required|integer'
+            'parent_id' => 'required|integer',
+            'link' => 'required|string'
         ];
         $pass = validateData(data: $data, rules: $rules);
         if (!$pass) {
@@ -229,6 +232,7 @@ class Slider_ctrl
             }
             $arr['content'] = $request->content;
             $arr['parent_id'] = $request->parent_id;
+            $arr['link'] = $request->link;
             $arr['updated_at'] = date('Y-m-d H:i:s');
             if ($request->banner['name'] != "" && $request->banner['error'] == 0) {
                 $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);

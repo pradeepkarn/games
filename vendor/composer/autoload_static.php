@@ -17,6 +17,7 @@ class ComposerStaticInitc4a19b76d3b82431af5fc8587419040d
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '9e4824c5afbdc1482b6025ce3d4dfde8' => __DIR__ . '/..' . '/league/csv/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -48,6 +49,10 @@ class ComposerStaticInitc4a19b76d3b82431af5fc8587419040d
             'Psr\\Http\\Message\\' => 17,
             'PhpOption\\' => 10,
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'L' => 
+        array (
+            'League\\Csv\\' => 11,
         ),
         'G' => 
         array (
@@ -147,6 +152,10 @@ class ComposerStaticInitc4a19b76d3b82431af5fc8587419040d
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'League\\Csv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/csv/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
