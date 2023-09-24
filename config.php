@@ -1,9 +1,10 @@
 <?php 
 //phpinfo();
-date_default_timezone_set("Asia/Kolkata");
 require_once 'vendor/autoload.php'; // Load Composer's autoloader
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__); // Path to your project root
 $env = (object) $dotenv->load();
+define("TIME_ZONE",$env->TIME_ZONE);
+date_default_timezone_set(TIME_ZONE);
 #server host name or simply leave it as it is
 define("MY_DOMAIN",$env->MY_DOMAIN);
 define("SERVER_DOMAIN",$env->SERVER_DOMAIN);

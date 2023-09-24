@@ -31,17 +31,19 @@ $catlist = $context->cat_list;
                         <?php } ?>
                         <?php ?>
                     </select>
-                    <textarea class="tinymce-editor" name="content" id="mce_0" aria-hidden="true"></textarea>
+                    <h4>Slider Text</h4>
+                    <textarea class="form-control" name="content" id="mce_0" aria-hidden="true"></textarea>
                     <h4>Tags</h4>
                     <textarea class="form-control" name="meta_tags" aria-hidden="true"></textarea>
                     <h4>Meta description</h4>
                     <textarea class="form-control" name="meta_description" aria-hidden="true"></textarea>
                 </div>
                 <div class="col-md-4">
-                    <h4>Banner</h4>
+                    <h4>Banner 16:9</h4>
                     <input accept="image/*" id="image-input" type="file" name="banner" class="form-control my-3">
                     <img style="width:100%; max-height:300px; object-fit:contain;" id="banner" src="" alt="">
-
+                    <h4>Link</h4>
+                    <input type="text" name="link" class="form-control my-3" placeholder="Button link">
                     <div class="d-grid">
                         <button id="save-page-btn" type="button" class="btn btn-primary my-3">Save</button>
                     </div>

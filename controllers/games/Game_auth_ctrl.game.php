@@ -191,7 +191,7 @@ class Game_auth_ctrl extends Main_ctrl
             $db = new Dbobjects;
             $pdo = $db->dbpdo();
             $pdo->beginTransaction();
-            $game = $db->showOne("select id,is_sold,price,qty from content where is_sold = 0 and content_group='game' and content.id = $data->gameid");
+            $game = $db->showOne("select id,is_sold,price,qty,link from content where is_sold = 0 and content_group='game' and content.id = $data->gameid");
             if (!$game) {
                 $_SESSION['msg'][] = 'Game not available';
                 msg_ssn("msg");
@@ -224,6 +224,7 @@ class Game_auth_ctrl extends Main_ctrl
                     'customer_email' => $data->email,
                     'user_id' => USER['id'],
                     'created_at' => date('Y-m-d H:i:s'),
+                    'link' => $game->link,
                     'is_paid' => true,
                 );
                 $db->create();
@@ -235,7 +236,7 @@ class Game_auth_ctrl extends Main_ctrl
                 $pdo->commit();
                 $_SESSION['msg'][] = 'Success';
                 msg_ssn("msg");
-                echo go_to("/");
+                // echo go_to("/");
                 exit;
             } catch (PDOException $th) {
                 $pdo->rollBack();

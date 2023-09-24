@@ -379,23 +379,23 @@
           <ul id="products-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
               <a href="/<?php echo home . route('productCatCreate'); ?>">
-                <i class="bi bi-circle"></i><span>Add Category</span>
+                <i class="bi bi-circle"></i><span>Add Game</span>
               </a>
             </li>
             <li>
               <a href="/<?php echo home . route('productCatList'); ?>">
-                <i class="bi bi-circle"></i><span>Categories</span>
+                <i class="bi bi-circle"></i><span>All Games</span>
               </a>
             </li>
             <hr>
             <li>
               <a href="/<?php echo home . route('gameCreate'); ?>">
-                <i class="bi bi-circle"></i><span>Add Games</span>
+                <i class="bi bi-circle"></i><span>Add Games URL</span>
               </a>
             </li>
             <li>
               <a href="/<?php echo home . route('gameList'); ?>">
-                <i class="bi bi-circle"></i><span>All Games</span>
+                <i class="bi bi-circle"></i><span>All Games URL</span>
               </a>
             </li>
           </ul>

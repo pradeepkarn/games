@@ -47,6 +47,7 @@ $active = $context->is_active;
                                 <th scope="col">Id</th>
                                 <th scope="col">TR NO.</th>
                                 <th scope="col">Game Name</th>
+                                <th scope="col">Game Link</th>
 
                                 <th scope="col">Status</th>
                                 <th scope="col">Order Date</th>
@@ -83,6 +84,7 @@ $active = $context->is_active;
 
                                     <td><?php echo $pv->unique_id; ?></td>
                                     <td><?php echo $ord->game_name; ?></td>
+                                    <td><?php echo $ord->link; ?></td>
                                     <td><?php echo $pv->status; ?></td>
                                     <td><?php echo $pv->created_at; ?></td>
                                     <?php

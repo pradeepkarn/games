@@ -45,8 +45,7 @@ $active = $context->is_active;
                                 <th scope="col">Id</th>
                                 <th scope="col">Banner</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">category</th>
-                                <th scope="col">Status</th>
+                                
                                 <th scope="col">Publish Date</th>
                                 <?php
                                 if ($active == true) { ?>
@@ -83,8 +82,7 @@ $active = $context->is_active;
                                         <img style="width:100%; max-height:30px; object-fit:cover;" id="banner" src="/<?php echo MEDIA_URL; ?>/images/pages/<?php echo $pv->banner; ?>" alt="">
                                     </th>
                                     <td><?php echo $pv->title; ?></td>
-                                    <td><?php echo $pv->parent_id; ?></td>
-                                    <td><?php echo $pv->status; ?></td>
+                                   
                                     <td><?php echo $pv->created_at; ?></td>
                                     <?php
                                     if ($active == true) { ?>

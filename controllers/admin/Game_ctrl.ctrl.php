@@ -1,4 +1,6 @@
 <?php
+use League\Csv\Reader;
+
 class Game_ctrl
 {
     // Cretae page
@@ -117,16 +119,18 @@ class Game_ctrl
         $request = null;
         $data = null;
         $data = $_POST;
-        $data['banner'] = $_FILES['banner'];
+        $data['banner'] = $_FILES['banner']??null;
 
         $rules = [
             'title' => 'required|string',
             'slug' => 'required|string',
             'content' => 'required|string',
-            'banner' => 'required|file',
+            // 'banner' => 'required|file',
             'parent_id' => 'required|integer',
             'price' => 'required|numeric',
             'link' => 'required|string',
+            'opens_at' => 'required|time',
+            'closes_at' => 'required|time',
         ];
 
         $pass = validateData(data: $data, rules: $rules);
@@ -153,7 +157,9 @@ class Game_ctrl
             $arr['parent_id'] = $request->parent_id;
             $arr['created_at'] = date('Y-m-d H:i:s');
             $arr['link'] = $request->link;
-            
+            $arr['opens_at'] = $request->opens_at;
+            $arr['closes_at'] = $request->closes_at;
+
             $moreimg = [];
             if (isset($_FILES['moreimgs'])) {
                 $fl = $_FILES['moreimgs'];
@@ -173,11 +179,14 @@ class Game_ctrl
             }
             $postid = (new Model('content'))->store($arr);
             if (intval($postid)) {
-                $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);
-                $imgstr = getUrlSafeString($request->title);
-                $imgname = str_replace(" ", "_", $imgstr) . uniqid("_") . "." . $ext;
-                $dir = MEDIA_ROOT . "images/pages/" . $imgname;
-                $upload = move_uploaded_file($request->banner['tmp_name'], $dir);
+                $upload = false;
+                if (isset($request->banner)) {
+                    $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);
+                    $imgstr = getUrlSafeString($request->title);
+                    $imgname = str_replace(" ", "_", $imgstr) . uniqid("_") . "." . $ext;
+                    $dir = MEDIA_ROOT . "images/pages/" . $imgname;
+                    $upload = move_uploaded_file($request->banner['tmp_name'], $dir);
+                }
                 if ($upload) {
                     (new Model('content'))->update($postid, array('banner' => $imgname));
                 }
@@ -186,6 +195,59 @@ class Game_ctrl
             } else {
                 echo js_alert('game not created');
                 return false;
+            }
+        }
+    }
+    function upload_bulk_game($req = null)
+    {
+        $req = obj($req);
+        $data = null;
+        $data = $_POST;
+        $data['csvfile'] = $_FILES['csvfile'] ?? null;
+
+        $rules = [
+            'csvfile' => 'required|file',
+        ];
+
+        $pass = validateData(data: $data, rules: $rules);
+        if (!$pass) {
+            echo js_alert(msg_ssn("msg", true));
+            exit;
+        }
+        $req = obj($data);
+        if ($req->csvfile['name'] != "" && $req->csvfile['error'] == 0) {
+            $ext = pathinfo($req->csvfile['name'], PATHINFO_EXTENSION);
+            if ($ext != 'csv') {
+                msg_set('Invalid file format, please provide .csv');
+                echo js_alert(msg_ssn("msg", true));
+                exit;
+            } else {
+                $csvFilePath = $req->csvfile['tmp_name'];
+                $csv = Reader::createFromPath($csvFilePath, 'r');
+                $csv->setHeaderOffset(0); // Assumes the first row contains headers
+                $db = new Dbobjects;
+                $db->tableName = 'content';
+                $total = iterator_count($csv->getRecords());
+                foreach ($csv->getRecords() as $key => $record) {
+                    set_time_limit(60);
+                    $rc = obj($record);
+                    $db->insertData['title'] = $rc->url_title;
+                    $db->insertData['content'] = $rc->details;
+                    $db->insertData['price'] = $rc->price;
+                    $db->insertData['link'] = $rc->url;
+                    $db->insertData['parent_id'] = $rc->game_id;
+                    $db->insertData['content_group'] = 'game';
+                    $db->insertData['slug'] = generate_slug(uniqid($rc->url_title));
+                    $db->insertData['opens_at'] = $rc->opens_at;
+                    $db->insertData['closes_at'] = $rc->closes_at;
+                    $db->insertData['created_by'] = USER['id'];
+                    try {
+                        $db->create();
+                    } catch (PDOException $th) {
+                        // throw $th;
+                    };
+                    echo server_progress($key,$total)."<br>";
+                }
             }
         }
     }
@@ -231,7 +293,7 @@ class Game_ctrl
         $data = null;
         $data = $_POST;
         $data['id'] = $req->id;
-        $data['banner'] = $_FILES['banner'];
+        $data['banner'] = $_FILES['banner']??null;
         $rules = [
             'id' => 'required|integer',
             'title' => 'required|string',
@@ -239,9 +301,10 @@ class Game_ctrl
             'parent_id' => 'required|integer',
             'price' => 'required|numeric',
             'link' => 'required|string',
-           
-           
+            'opens_at' => 'required|time',
+            'closes_at' => 'required|time',
         ];
+
         $pass = validateData(data: $data, rules: $rules);
         if (!$pass) {
             echo js_alert(msg_ssn("msg", true));
@@ -264,14 +327,16 @@ class Game_ctrl
                 $arr['slug'] = generate_slug(trim($request->slug));
             }
             $arr['content'] = $request->content;
-            $arr['days'] = $request->days;
+            // $arr['days'] = $request->days;
             $arr['price'] = $request->price;
-            $arr['city'] = $request->city;
+            // $arr['city'] = $request->city;
             $arr['parent_id'] = $request->parent_id;
             $arr['updated_at'] = date('Y-m-d H:i:s');
             $arr['link'] = $request->link;
-            $arr['is_sold'] = isset($request->is_sold)?1:0;
-            $imsgjsn = json_decode($content->imgs??'[]',true);
+            $arr['opens_at'] = $request->opens_at;
+            $arr['closes_at'] = $request->closes_at;
+            $arr['is_sold'] = isset($request->is_sold) ? 1 : 0;
+            $imsgjsn = json_decode($content->imgs ?? '[]', true);
             $moreimg = [];
             if (isset($_FILES['moreimgs'])) {
                 $fl = $_FILES['moreimgs'];
@@ -287,24 +352,25 @@ class Game_ctrl
                         }
                     }
                 }
-                $newimgs = array_merge($imsgjsn,$moreimg);
+                $newimgs = array_merge($imsgjsn, $moreimg);
                 $arr['imgs'] = json_encode($newimgs);
             }
-
-            if ($request->banner['name'] != "" && $request->banner['error'] == 0) {
-                $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);
-                $imgstr = getUrlSafeString($request->title);
-                $imgname = str_replace(" ", "_", $imgstr) . uniqid("_") . "." . $ext;
-                $dir = MEDIA_ROOT . "images/pages/" . $imgname;
-                $upload = move_uploaded_file($request->banner['tmp_name'], $dir);
-                if ($upload) {
-                    $arr['banner'] = $imgname;
-                    $old = obj($content);
-                    if ($old) {
-                        if ($old->banner != "") {
-                            $olddir = MEDIA_ROOT . "images/pages/" . $old->banner;
-                            if (file_exists($olddir)) {
-                                unlink($olddir);
+            if (isset($request->banner)) {
+                if ($request->banner['name'] != "" && $request->banner['error'] == 0) {
+                    $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);
+                    $imgstr = getUrlSafeString($request->title);
+                    $imgname = str_replace(" ", "_", $imgstr) . uniqid("_") . "." . $ext;
+                    $dir = MEDIA_ROOT . "images/pages/" . $imgname;
+                    $upload = move_uploaded_file($request->banner['tmp_name'], $dir);
+                    if ($upload) {
+                        $arr['banner'] = $imgname;
+                        $old = obj($content);
+                        if ($old) {
+                            if ($old->banner != "") {
+                                $olddir = MEDIA_ROOT . "images/pages/" . $old->banner;
+                                if (file_exists($olddir)) {
+                                    unlink($olddir);
+                                }
                             }
                         }
                     }
@@ -313,6 +379,7 @@ class Game_ctrl
             try {
                 (new Model('content'))->update($request->id, $arr);
                 echo js_alert('game updated');
+                // echo js_alert($request->closes_at);
                 echo go_to(route('gameEdit', ['id' => $request->id]));
                 exit;
             } catch (PDOException $e) {
@@ -358,7 +425,7 @@ class Game_ctrl
                     $db->update();
                     $pdo->commit();
                     msg_set("Image deleted");
-                    $data['msg'] = msg_ssn(return: true,lnbrk:"\n");
+                    $data['msg'] = msg_ssn(return: true, lnbrk: "\n");
                     $data['success'] = true;
                     $data['data'] = null;
                     echo json_encode($data);
@@ -366,7 +433,7 @@ class Game_ctrl
                 } catch (PDOException $th) {
                     $pdo->rollback();
                     msg_set("Image not deleted");
-                    $data['msg'] = msg_ssn(return: true,lnbrk:"\n");
+                    $data['msg'] = msg_ssn(return: true, lnbrk: "\n");
                     $data['success'] = false;
                     $data['data'] = null;
                     echo json_encode($data);
@@ -375,7 +442,7 @@ class Game_ctrl
             }
         } else {
             msg_set("content not found");
-            $data['msg'] = msg_ssn(return: true,lnbrk:"\n");
+            $data['msg'] = msg_ssn(return: true, lnbrk: "\n");
             $data['success'] = false;
             $data['data'] = null;
             echo json_encode($data);
@@ -403,7 +470,7 @@ class Game_ctrl
         }
         try {
             (new Model('content'))->update($req->id, array('is_active' => 0));
-            echo js_alert('Content moved to trash');
+            // echo js_alert('Content moved to trash');
             echo go_to(route('gameList'));
             exit;
         } catch (PDOException $e) {
@@ -432,7 +499,7 @@ class Game_ctrl
         }
         try {
             (new Model('content'))->update($req->id, array('is_active' => 1));
-            echo js_alert('Content moved to active list');
+            // echo js_alert('Content moved to active list');
             echo go_to(route('gameTrashList'));
             exit;
         } catch (PDOException $e) {
@@ -463,12 +530,12 @@ class Game_ctrl
             $content_exists = (new Model('content'))->exists(['id' => $req->id, 'is_active' => 0]);
             if ($content_exists) {
                 if ((new Model('content'))->destroy($req->id)) {
-                    echo js_alert('Content deleted permanatly');
+                    // echo js_alert('Content deleted permanatly');
                     echo go_to(route('gameTrashList'));
                     exit;
                 }
             }
-            echo js_alert('Content does not exixt');
+            echo js_alert('Content does not exist');
             echo go_to(route('gameTrashList'));
             exit;
         } catch (PDOException $e) {

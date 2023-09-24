@@ -836,6 +836,11 @@ function validateData($data, $rules)
             $errors[] = str_replace("_", " ", ucfirst($field)) . ' must be a valid date format';
           }
           break;
+        case 'time':
+          if (isset($data[$field]) && !strtotime($data[$field])) {
+            $errors[] = str_replace("_", " ", ucfirst($field)) . ' must be a valid time format';
+          }
+          break;
         case 'numeric':
           if (isset($data[$field]) && !is_numeric($data[$field])) {
             $errors[] = str_replace("_", " ", ucfirst($field)) . ' must be a numeric value';
@@ -870,7 +875,7 @@ function validateData($data, $rules)
           if (!isset($_FILES[$field]) || $_FILES[$field]['error'] !== UPLOAD_ERR_OK) {
             $errors[] = str_replace("_", " ", ucfirst($field)) . ' is required';
           } else {
-            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif','csv'];
             $extension = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
             if (!in_array($extension, $allowedExtensions)) {
               $errors[] = 'Only files with extensions ' . implode(', ', $allowedExtensions) . ' are allowed for ' . $field;
@@ -1395,4 +1400,17 @@ function showStars($rating)
   }
 
   return $starsHtml;
+}
+function changeToAMPM($timeString) {
+  $formattedTime = date("g:i A", strtotime($timeString));
+  return $formattedTime;
+}
+function server_progress($current, $total)
+{
+    $percent = ($current / $total) * 100;
+    $barWidth = 50;
+    $numBars = (int) ($percent / (100 / $barWidth));
+    $progressBar = "[" . str_repeat("=", $numBars) . str_repeat(" ", $barWidth - $numBars) . "] $percent%";
+    return "\r$progressBar";
+    // flush();
 }

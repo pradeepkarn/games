@@ -43,16 +43,20 @@ if ($pd->json_obj != "") {
                         <?php } ?>
                         <?php ?>
                     </select>
-                    <textarea class="tinymce-editor" name="content" id="mce_0" aria-hidden="true"><?php echo $pd->content; ?></textarea>
+                    <h4>Slider Text</h4>
+                    <textarea class="form-control" name="content" id="mce_0" aria-hidden="true"><?php echo $pd->content; ?></textarea>
                     <h4>Tags</h4>
                     <textarea class="form-control" name="meta_tags" aria-hidden="true"><?php echo $meta_tags; ?></textarea>
                     <h4>Meta description</h4>
                     <textarea class="form-control" name="meta_description" aria-hidden="true"><?php echo $meta_desc; ?></textarea>
                 </div>
                 <div class="col-md-4">
-                    <h4>Banner</h4>
+                    <h4>Banner 16:9</h4>
                     <input accept="image/*" id="image-input" type="file" name="banner" class="form-control my-3">
                     <img style="width:100%; max-height:300px; object-fit:contain;" id="banner" src="/<?php echo MEDIA_URL; ?>/images/pages/<?php echo $pd->banner; ?>" alt="<?php echo $pd->banner; ?>">
+
+                    <h4>Link</h4>
+                    <input type="text" name="link" value="<?php echo $pd->link; ?>" class="form-control my-3" placeholder="Button link">
                     <div class="d-grid">
                         <button id="update-page-btn" type="button" class="btn btn-primary my-3">Update</button>
                     </div>

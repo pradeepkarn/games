@@ -34,7 +34,7 @@ class Game_home_ctrl extends  Main_ctrl
                 'current_page' => $cp,
                 'total_object' => $to,
                 'about' => $this->about_content(),
-                "hero" => $this->homepage_slider($ord = "DESC", $catid=354, $limit = 20, $active = 1)
+                "hero" => $this->homepage_slider($ord = "DESC", $catid = 354, $limit = 20, $active = 1)
             )
         );
         if (isset($_COOKIE['remember_token'])) {
@@ -43,17 +43,28 @@ class Game_home_ctrl extends  Main_ctrl
         }
         $this->render_layout($context);
     }
-    public function homepage_slider($ord = "DESC", $catid=362, $limit = 10, $active = 1)
+    public function homepage_slider($ord = "DESC", $catid = 362, $limit = 10, $active = 1)
     {
         $cntobj = new Dbobjects;
         $cntobj->tableName = 'content';
-        return $cntobj->filter(array('content_group' => 'slider', 'parent_id'=>$catid, 'is_active' => $active), $ord, $limit);
+        return $cntobj->filter(array('content_group' => 'slider', 'parent_id' => $catid, 'is_active' => $active), $ord, $limit);
     }
     public function game_list($ord = "DESC", $limit = 1, $active = 1)
     {
         $cntobj = new Dbobjects;
-        $cntobj->tableName = 'content';
-        return $cntobj->filter(array('content_group' => 'game', 'is_active' => $active, 'is_sold'=>0), $ord, $limit);
+        $cats = $cntobj->show("select * from content where content_group='product_category'");
+        $now = date('H:i:s');
+        $allgames = [];
+        foreach ($cats as $key => $ct) {
+            $ct = obj($ct);
+            $sql = "SELECT * FROM `content` WHERE content_group='game' and parent_id='$ct->id' AND '$now' BETWEEN `opens_at` AND `closes_at` and is_active=1 and is_sold=0 order by id $ord limit $limit;";
+            $game = $cntobj->showOne($sql);
+            if ($game) {
+                $game['banner'] = $ct->banner;
+                $allgames[] = $game;
+            }
+        }
+        return $allgames;
     }
     public function game_list_by_catid($catid, $ord = "DESC", $limit = 1, $active = 1)
     {
@@ -77,28 +88,28 @@ class Game_home_ctrl extends  Main_ctrl
         ];
         $pass = validateData(data: $data, rules: $rules);
         if (!$pass) {
-            echo js_alert(msg_ssn(return:true));
+            echo js_alert(msg_ssn(return: true));
             return false;
         }
         $game_list = $this->game_list_by_catid($catid = $req->post->cat_id, $ord = "DESC", $limit = 100, $active = 1);
-        if (count($game_list)==0) {
+        if (count($game_list) == 0) {
             echo "<h3 class='text-center'>No games</h3>";
             return false;
         }
-        $cat = (object)getData('content',$req->post->cat_id);
+        $cat = (object)getData('content', $req->post->cat_id);
         $context = (object) array(
             'page' => 'home.php',
             'data' => (object) array(
                 'req' => obj($req),
                 'game_list' => $game_list,
                 'cat_name' => $cat->title,
-                'cat_details' => pk_excerpt($cat->content,100),
+                'cat_details' => pk_excerpt($cat->content, 100),
             )
         );
-        echo render_template("packages/top-picks.php",$context);
+        echo render_template("packages/top-picks.php", $context);
         return true;
     }
-   
+
     function about_content()
     {
         $db = new Model('content');
