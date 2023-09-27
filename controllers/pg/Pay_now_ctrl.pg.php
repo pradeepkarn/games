@@ -183,7 +183,7 @@ class Pay_now_ctrl
             try {
                 $phpobj = new SimpleXMLElement(strval($apiResponse));
             } catch (\Throwable $th) {
-                msg_set("XML parsing error");
+                msg_set("Too many request please wait some times");
                 $phpobj = null;
             }
             if ($phpobj !== false) {
