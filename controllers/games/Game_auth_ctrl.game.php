@@ -187,7 +187,7 @@ class Game_auth_ctrl extends Main_ctrl
         $pass = validateData(data: $_POST, rules: $rules);
         if ($pass) {
             $data = obj($data);
-            $status = 'paid';
+            $status = 'initiated';
             $db = new Dbobjects;
             $pdo = $db->dbpdo();
             $pdo->beginTransaction();
@@ -208,7 +208,7 @@ class Game_auth_ctrl extends Main_ctrl
                 'last_name' => $data->last_name,
                 'amount' => $game->price,
                 'status' => $status,
-                'payment_method' => 'stripe',
+                'payment_method' => 'dpo',
                 'user_id' => USER['id'],
                 'created_at' => date('Y-m-d H:i:s'),
             );
@@ -236,7 +236,11 @@ class Game_auth_ctrl extends Main_ctrl
                 $pdo->commit();
                 $_SESSION['msg'][] = 'Success';
                 msg_ssn("msg");
-                // echo go_to("/");
+                $_SESSION['cp'] = array(
+                    'user_id'=>USER['id'],
+                    'payment_id'=>$paymentid,
+                );
+                echo go_to(route("payNow"));
                 exit;
             } catch (PDOException $th) {
                 $pdo->rollBack();

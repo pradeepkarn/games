@@ -11,6 +11,7 @@ include_once 'admin_routes.php';
 include_once 'admin_game_routes.php';
 include_once 'admin_payment_routes.php';
 include_once 'ajax_routes.php';
+include_once 'pay_now_routes.php';
 include_once 'travel_pages_routes.php';
 
 $routes = array_merge(
@@ -24,6 +25,7 @@ $routes = array_merge(
     $chat_routes,
     $api_routes,
     $ajax,
+    $pay_now_routes,
     $travel_pages,
 );
 // define('ROUTES',$routes);

@@ -7,6 +7,7 @@ spl_autoload_register('cmdControllersLoader');
 spl_autoload_register('frontControllersLoader');
 spl_autoload_register('travelControllersLoader');
 spl_autoload_register('gamesControllersLoader');
+spl_autoload_register('pgControllersLoader');
 
 function classLoader($className){
     $path = RPATH ."/classes/";
@@ -87,6 +88,28 @@ function travelControllersLoader($className){
 function gamesControllersLoader($className){
     $path = RPATH ."/controllers/games/";
     $extension = ".game.php";
+    $fullPath = $path . $className . $extension;
+    
+    if(file_exists($fullPath)){
+        include_once $fullPath;
+    }else{
+        return false;
+    }
+}
+function pgControllersLoader($className){
+    $path = RPATH ."/controllers/pg/";
+    $extension = ".pg.php";
+    $fullPath = $path . $className . $extension;
+    
+    if(file_exists($fullPath)){
+        include_once $fullPath;
+    }else{
+        return false;
+    }
+}
+function smsControllersLoader($className){
+    $path = RPATH ."/controllers/sms/";
+    $extension = ".sms.php";
     $fullPath = $path . $className . $extension;
     
     if(file_exists($fullPath)){

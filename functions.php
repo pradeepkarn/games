@@ -1414,3 +1414,19 @@ function server_progress($current, $total)
     return "\r$progressBar";
     // flush();
 }
+function lineBreakBySemicolon($inputString) {
+  // Split the input string by semicolons
+  $instructionsArray = explode(';', $inputString);
+
+  // Create a new string with line breaks
+  $formattedInstructions = '';
+  foreach ($instructionsArray as $instruction) {
+      // Trim any leading/trailing spaces
+      $instruction = trim($instruction);
+      if (!empty($instruction)) {
+          $formattedInstructions .= $instruction . "<br>";
+      }
+  }
+
+  return $formattedInstructions;
+}

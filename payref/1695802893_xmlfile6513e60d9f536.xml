@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<API3G>
+  <Code>000</Code>
+  <Explanation>Results Found</Explanation>
+  <Transactions>
+    <Transaction>
+      <TransactionToken>2B4A048B-EBBE-472F-A766-2DEACBFDC89A</TransactionToken>
+      <TransactionCreatedDate>2019-12-25 12:45:49</TransactionCreatedDate>
+      <TransactionPartPayment>0</TransactionPartPayment>
+      <TransactionStatus>Authorised</TransactionStatus>
+      <TransactionBookRef>dess</TransactionBookRef>
+      <TransactionAmount>1.00</TransactionAmount>
+      <TransactionCurrency>USD</TransactionCurrency>
+      <TransactionNetAmount>1.00</TransactionNetAmount>
+      <TransactionSettlementDate>2019-12-25</TransactionSettlementDate>
+      <TransactionRollingReserveAmount>0.00</TransactionRollingReserveAmount>
+      <TransactionRollingReserveDate></TransactionRollingReserveDate>
+      <TransactionFinalAmount>1.00</TransactionFinalAmount>
+      <TransactionFinalCurrency>USD</TransactionFinalCurrency>
+      <TransactionCreditCard>8367</TransactionCreditCard>
+      <TransactionCityId>0</TransactionCityId>
+      <TransactionPhone></TransactionPhone>
+      <TransactionPhonePrefix></TransactionPhonePrefix>
+      <TransactionRef>8412B4A0</TransactionRef>
+      <TransactionPaymentDate>2019-12-25 12:47:30</TransactionPaymentDate>
+      <TransactionCardType>Mastercard</TransactionCardType>
+      <TransactionUserName>nathan841</TransactionUserName>
+      <TransactionApprovalNumber>4444444447</TransactionApprovalNumber>
+      <TransactionServiceDescription>
+        <ServiceDescription>this is it</ServiceDescription>
+      </TransactionServiceDescription>
+      <TransactionCustomerPhone></TransactionCustomerPhone>
+      <TransactionCustomerEmail>nathan@aerocrs.com</TransactionCustomerEmail>
+      <TransactionCustomerName>nathan nathan</TransactionCustomerName>
+      <TransactionFraudAlert>004</TransactionFraudAlert>
+      <TransactionFraudExplanation>Very high risk</TransactionFraudExplanation>
+      <TransactionExpiryDate>2020-02-03 12:00:00</TransactionExpiryDate>
+      <TransactionAdditionalAirlineFields>
+        <TicketType>TICKET_PURCHASE</TicketType>
+        <DocumentType>ADDITIONAL_COLLECTION</DocumentType>
+        <DateIssued>2013/12/20 19:00</DateIssued>
+        <IATACarrierCode>CP</IATACarrierCode>
+        <IATATravelAgencyNbr>CPT</IATATravelAgencyNbr>
+        <TicketCarrierName>KenyaAirways</TicketCarrierName>
+        <TicketIssuerCityName>Nairobi</TicketIssuerCityName>
+        <PassengerCount>3</PassengerCount>
+        <ConjTicketIndicator>12233</ConjTicketIndicator>
+        <ElecTicketIndicator>1A848F</ElecTicketIndicator>
+        <ExchTicketIndicator>1A848E5</ExchTicketIndicator>
+        <FlightLegDetails>
+          <FlightLeg>
+            <FlightDescription>Flight from TelAviv to CapeTown</FlightDescription>
+            <FlightType>45</FlightType>
+            <FightDate>2013/12/20 19:00</FightDate>
+            <FlightFrom>TLV</FlightFrom>
+            <FlightTo>CPT</FlightTo>
+            <FlightRef>1234ABC</FlightRef>
+            <CarrierCode>AI</CarrierCode>
+            <ServiceClass>A</ServiceClass>
+            <FlightNumber>101</FlightNumber>
+            <FareBasisCode>SPRSVR</FareBasisCode>
+            <StopOverCode>X</StopOverCode>
+          </FlightLeg>
+          <FlightLeg>
+            <FlightDescription>Flight from CapeTown to TelAviv</FlightDescription>
+            <FlightType>45</FlightType>
+            <FlightDate>2013/12/21 16:00</FlightDate>
+            <FlightFrom>CPT</FlightFrom>
+            <FlightTo>TLV</FlightTo>
+            <FlightRef>1234ABC</FlightRef>
+            <CarrierCode>AI</CarrierCode>
+            <ServiceClass>A</ServiceClass>
+            <FlightNumber>101</FlightNumber>
+            <FareBasisCode>SPRSVR</FareBasisCode>
+            <StopOverCode>X</StopOverCode>
+          </FlightLeg>
+        </FlightLegDetails>
+        <Travellers>
+          <Traveler>
+            <TravelerFirstName>John</TravelerFirstName>
+            <TravelerLastName>Doe</TravelerLastName>
+            <TravelerPhone>456887014</TravelerPhone>
+            <TravelerPhonePrefix>123</TravelerPhonePrefix>
+            <TravelerDateOfBirth>2001/12/21</TravelerDateOfBirth>
+            <TravelerCountryCode>US</TravelerCountryCode>
+          </Traveler>
+          <Traveler>
+            <TravelerFirstName>Rose</TravelerFirstName>
+            <TravelerLastName>Doe</TravelerLastName>
+          </Traveler>
+        </Travellers>
+      </TransactionAdditionalAirlineFields>
+    </Transaction>
+  </Transactions>
+</API3G>
