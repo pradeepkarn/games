@@ -243,7 +243,6 @@ class Game_auth_ctrl extends Main_ctrl
                 echo go_to(route("payNow"));
                 exit;
             } catch (PDOException $th) {
-                echo $th;
                 $pdo->rollBack();
                 $_SESSION['msg'][] = 'Failed';
                 msg_ssn("msg");
