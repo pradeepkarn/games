@@ -239,6 +239,7 @@ class Game_auth_ctrl extends Main_ctrl
                 $_SESSION['cp'] = array(
                     'user_id'=>USER['id'],
                     'payment_id'=>$paymentid,
+                    'amount'=>floatval($game->price),
                 );
                 echo go_to(route("payNow"));
                 exit;

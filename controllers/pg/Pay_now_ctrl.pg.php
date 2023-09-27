@@ -3,7 +3,7 @@
 class Pay_now_ctrl
 {
 
-    function create_token()
+    function create_token($amt=0)
     {
         $apiUrl = "https://secure.3gdirectpay.com/API/v6/";
         $companyToken = "8D3DA73D-9D7F-4E09-96D4-3D44E7A83EA3";
@@ -13,7 +13,7 @@ class Pay_now_ctrl
         $back_url = "<BackURL>" . BASEURI . route('home') . "</BackURL>";
         $redirect_url = null;
         $back_url = null;
-        $amount = 45.00;
+        $amount = $amt??0;
         $currency = "USD";
         $Company_ref = "The ticket City";
         $xmlreq = <<<XML
@@ -60,7 +60,7 @@ class Pay_now_ctrl
     {
         // print_r($_SESSION['cp']);
         // return;
-        $php = $this->create_token();
+        $php = $this->create_token($_SESSION['cp']['amount']);
         // $php->Result;
         // $php->ResultExplanation;
         // $php->TransToken;
