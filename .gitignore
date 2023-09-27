@@ -8,3 +8,4 @@ data/json/media/images/pages/gallery.json
 *_temp
 error_log
 /.htaccess
+/payref/*.xml
