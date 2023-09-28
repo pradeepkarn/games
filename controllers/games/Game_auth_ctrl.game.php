@@ -1,9 +1,30 @@
 <?php
 
+use Paynow\Payments\Paynow;
 use PHPMailer\PHPMailer\PHPMailer;
-
 class Game_auth_ctrl extends Main_ctrl
 {
+    function pay($db,$paymentid,$item,$amount,$invoice,$mobile="0772222222",$email="virgil@dealcity.co.ke")
+    {
+        $paynow = new Paynow(
+            INTEGRATION_ID,
+            INTEGRATION_KEY,
+            BASEURI,
+            // The return url can be set at later stages. You might want to do this if you want to pass data to the return url (like the reference of the transaction)
+            BASEURI
+        );
+        $payment = $paynow->createPayment($invoice."-PMT".$paymentid, $email);
+        $payment->add($item, $amount);
+        $response = $paynow->sendMobile($payment, $mobile, 'ecocash');
+        if($response->success()) {
+            $db->tableName='payment';
+            $db->pk($paymentid);
+            $parr['pollurl'] = $response->pollUrl();
+            $parr['instructions'] = $response->instructions();
+            $db->insertData = $parr;
+            $db->update();
+        }
+    }
     function send_otp($req = null)
     {
         $req = obj($_POST);
@@ -241,7 +262,8 @@ class Game_auth_ctrl extends Main_ctrl
                     'payment_id'=>$paymentid,
                     'amount'=>floatval($game->price),
                 );
-                echo go_to(route("payNow"));
+                $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$paymentid,$mobile="0772222222",$email="virgil@dealcity.co.ke");
+                echo go_to(route("checkStatusPage",['pid'=>$paymentid]));
                 exit;
             } catch (PDOException $th) {
                 // echo $th;
@@ -254,6 +276,20 @@ class Game_auth_ctrl extends Main_ctrl
             msg_ssn("msg");
             exit;
         }
+    }
+    function check_status_page($req=null)  {
+        if (!authenticate()) {
+            header("Location:/" . home);
+            exit;
+        }
+        $req = obj($req);
+        $context = (object) array(
+            'page' => 'auth/paymentupdate.php',
+            'data' => (object) array(
+                'req' => obj($req)
+            )
+        );
+        $this->render_layout($context);
     }
     function reset_password_page($req = null)
     {

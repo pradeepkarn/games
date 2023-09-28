@@ -21,6 +21,9 @@ define("WS_LINK",$env->WS_LINK);
 define("WS_PORT",$env->WS_PORT);
 #base uri
 define("BASEURI",$env->BASEURI);
+#paynow data
+define("INTEGRATION_ID",$env->INTEGRATION_ID);
+define("INTEGRATION_KEY",$env->INTEGRATION_KEY);
 // define("email",$env->EMAIL);
 #Define real location of file
 define ('RPATH', realpath(dirname(__FILE__)));
