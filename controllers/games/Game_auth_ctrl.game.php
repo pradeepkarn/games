@@ -4,18 +4,19 @@ use Paynow\Payments\Paynow;
 use PHPMailer\PHPMailer\PHPMailer;
 class Game_auth_ctrl extends Main_ctrl
 {
-    function pay($db,$paymentid,$item,$amount,$invoice,$mobile="0772222222",$email="virgil@dealcity.co.ke")
+    function pay($db,$paymentid,$item,$amount,$mobile="0772222222",$email="virgil@dealcity.co.ke")
     {
         $paynow = new Paynow(
             INTEGRATION_ID,
             INTEGRATION_KEY,
-            BASEURI.route('checkStatusPage',['pid'=>$paymentid]),
+            BASEURI,
             // The return url can be set at later stages. You might want to do this if you want to pass data to the return url (like the reference of the transaction)
-            BASEURI.route('checkStatusPage',['pid'=>$paymentid])
+            BASEURI
         );
-        $payment = $paynow->createPayment($invoice."-PMT".$paymentid, $email);
+        $payment = $paynow->createPayment("INV".$paymentid, $email);
         $payment->add($item, $amount);
         $response = $paynow->sendMobile($payment, $mobile, 'ecocash');
+        $this->save_json_file($response);
         if($response->success()) {
             $db->tableName='payment';
             $db->pk($paymentid);
@@ -23,6 +24,18 @@ class Game_auth_ctrl extends Main_ctrl
             $parr['instructions'] = $response->instructions();
             $db->insertData = $parr;
             $db->update();
+        }
+    }
+    function save_json_file($response)
+    {
+        $filename = "payref/" . uniqid(time() . '_json') . '.json';
+        $content = json_encode($response);
+        $file = fopen($filename, 'w');
+        if ($file) {
+            // Write the content to the file
+            fwrite($file, $content);
+            // Close the file
+            fclose($file);
         }
     }
     function send_otp($req = null)
@@ -262,8 +275,9 @@ class Game_auth_ctrl extends Main_ctrl
                     'payment_id'=>$paymentid,
                     'amount'=>floatval($game->price),
                 );
-                $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$paymentid,$mobile="0772222222",$email="virgil@dealcity.co.ke");
-                echo go_to(route("checkStatusPage",['pid'=>$paymentid]));
+                $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile="0772222222",$email="virgil@dealcity.co.ke");
+                $link = BASEURI.route("checkStatusPage",['pid'=>$paymentid]);
+                echo "<a class='btn btn-warning text-dark' href='$link'>Check Status</a>";
                 exit;
             } catch (PDOException $th) {
                 // echo $th;
