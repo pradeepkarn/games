@@ -242,7 +242,7 @@ class Game_auth_ctrl extends Main_ctrl
                 'last_name' => $data->last_name,
                 'amount' => $game->price,
                 'status' => $status,
-                'payment_method' => 'dpo',
+                'payment_method' => 'paynow',
                 'user_id' => USER['id'],
                 'created_at' => date('Y-m-d H:i:s'),
             );
