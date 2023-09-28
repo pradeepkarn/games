@@ -16,6 +16,8 @@ class Game_auth_ctrl extends Main_ctrl
         $payment = $paynow->createPayment("INV".$paymentid, $email);
         $payment->add($item, $amount);
         $response = $paynow->sendMobile($payment, $mobile, 'ecocash');
+        $data = $response->data();
+        $this->save_json_file($data);
         $this->save_json_file($response);
         if($response->success()) {
             $db->tableName='payment';
