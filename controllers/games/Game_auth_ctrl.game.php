@@ -9,9 +9,9 @@ class Game_auth_ctrl extends Main_ctrl
         $paynow = new Paynow(
             INTEGRATION_ID,
             INTEGRATION_KEY,
-            BASEURI,
+            BASEURI.route('checkStatusPage',['pid'=>$paymentid]),
             // The return url can be set at later stages. You might want to do this if you want to pass data to the return url (like the reference of the transaction)
-            BASEURI
+            BASEURI.route('checkStatusPage',['pid'=>$paymentid])
         );
         $payment = $paynow->createPayment($invoice."-PMT".$paymentid, $email);
         $payment->add($item, $amount);
