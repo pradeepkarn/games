@@ -45,6 +45,13 @@ class Pay2play_ctrl
             echo json_encode($data);
             exit;
         }
+        if ($pollUrl=='') {
+            $data['msg'] = "Payment not done";
+            $data['success'] = false;
+            $data['data'] = null;
+            echo json_encode($data);
+            exit;
+        }
         $status = $this->paynow->pollTransaction($pollUrl);
         if ($status->paid()) {
             $db = new Dbobjects;
