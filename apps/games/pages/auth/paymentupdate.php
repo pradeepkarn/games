@@ -27,17 +27,17 @@
                                  <div id="res" class="text-white"></div>
                              </form>
                              <div class="reg-with">
-                                 <div class="or">
+                                 <!-- <div class="or">
                                      <p>OR</p>
-                                 </div>
-                                 <div class="social">
+                                 </div> -->
+                                 <!-- <div class="social">
                                      <ul class="footer-link d-flex justify-content-center align-items-center">
                                          <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
                                          <li><a href="javascript:void(0)"><i class="fab fa-google"></i></a></li>
                                          <li><a href="javascript:void(0)"><i class="fab fa-twitch"></i></a></li>
                                          <li><a href="javascript:void(0)"><i class="fab fa-apple"></i></a></li>
                                      </ul>
-                                 </div>
+                                 </div> -->
                              </div>
                          </div>
 
