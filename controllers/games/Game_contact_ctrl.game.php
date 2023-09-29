@@ -47,7 +47,7 @@ class Game_contact_ctrl extends Main_ctrl
     {
         $cntobj = new Dbobjects;
         $cntobj->tableName = 'content';
-        return $cntobj->filter(array('content_group' => 'game', 'is_active' => $active), $ord, $limit);
+        return $cntobj->filter(array('content_group' => 'game', 'is_active' => $active), $ord, $limit,$change_order_by_col = "id");
     }
     public function cat_list($ord = "DESC", $limit = 1, $active = 1)
     {

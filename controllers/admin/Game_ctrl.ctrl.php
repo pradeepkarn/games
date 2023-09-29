@@ -549,7 +549,7 @@ class Game_ctrl
         import("apps/admin/layouts/admin-main.php", $context);
     }
     // Post list
-    public function game_list($ord = "DESC", $limit = 5, $active = 1, $sort_by = 'views')
+    public function game_list($ord = "DESC", $limit = 5, $active = 1, $sort_by = 'id')
     {
         $cntobj = new Model('content');
         return $cntobj->filter_index(array('content_group' => 'game', 'is_active' => $active), $ord, $limit, $change_order_by_col = $sort_by);
