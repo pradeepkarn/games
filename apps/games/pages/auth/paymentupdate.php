@@ -1,6 +1,9 @@
  <!-- Login Reg In start -->
  <section class="login-reg">
-     <?php $req = $context->data->req; ?>
+     <?php $req = $context->data->req; 
+     $db = new Dbobjects;
+     $inst = $db->showOne("select instructions as inst from payment where payment.id = '$req->pid'");
+     ?>
      <div class="overlay pb-120">
          <div class="container">
 
@@ -14,6 +17,9 @@
                              <form id="my-form" action="/<?php echo home . route('payStatusAjax'); ?>" method="post">
 
                                  <h4>Payment ID: <?php echo $req->pid; ?></h4>
+                                 <p>
+                                    <?php echo $inst['inst']??null; ?>
+                                 </p>
                                  <input type="hidden" class="pmt" name="paymentid" value="<?php echo $req->pid; ?>">
                                  <button id="reg-btn" type="button" class="cmn-btn mt-40 w-100">
                                      Check Status

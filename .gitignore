@@ -9,4 +9,4 @@ data/json/media/images/pages/gallery.json
 error_log
 /.htaccess
 /payref/*.xml
-/payref/*.json
+/payref/sms/*.json

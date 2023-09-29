@@ -8,6 +8,7 @@ spl_autoload_register('frontControllersLoader');
 spl_autoload_register('travelControllersLoader');
 spl_autoload_register('gamesControllersLoader');
 spl_autoload_register('pgControllersLoader');
+spl_autoload_register('smsControllersLoader');
 
 function classLoader($className){
     $path = RPATH ."/classes/";
