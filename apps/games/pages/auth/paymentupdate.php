@@ -18,7 +18,7 @@
 
                                  <h4>Payment ID: <?php echo $req->pid; ?></h4>
                                  <p>
-                                    <?php echo $inst['inst']??null; ?>
+                                    <?php echo $inst['inst']." (In case of not paid)"??null; ?>
                                  </p>
                                  <input type="hidden" class="pmt" name="paymentid" value="<?php echo $req->pid; ?>">
                                  <button id="reg-btn" type="button" class="cmn-btn mt-40 w-100">
