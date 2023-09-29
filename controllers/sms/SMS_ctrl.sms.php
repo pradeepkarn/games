@@ -14,7 +14,7 @@ class SMS_ctrl
     $client = new \GuzzleHttp\Client();
     $body = array(
       "to" => $mobiles,
-      "from" => "Pay2Play-{$pmtid}",
+      "from" => "ORACOM-KE",
       "text" => "Payment confirmed!! TR No. $trn.  you have only one chance to use this coupon link, so don't share with anyone: $link Good luck!"
     );
     try {
@@ -58,6 +58,3 @@ class SMS_ctrl
   }
 }
 
-// Usage
-// $smsCtrl = new SMS_ctrl();
-// $smsCtrl->send();
