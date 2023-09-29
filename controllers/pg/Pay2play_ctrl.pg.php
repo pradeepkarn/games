@@ -56,6 +56,7 @@ class Pay2play_ctrl
         $mobile = "$pmt->isd_code"."$pmt->mobile";
         $db->tableName = 'payment';
         $pmtarr = $db->pk($paymentid);
+        $co = (object)$db->showOne("select link from customer_order where payment_id = '$pmt->id'");
         if ($pmtarr['status']=='paid') {
             $pmtdata = json_decode($pmtarr['paynowjson']??[]);
             $stsd = $pmtdata->status??null;
@@ -63,7 +64,7 @@ class Pay2play_ctrl
                 $data['msg'] = "Payment status";
                 $data['success'] = $stsd->status=='paid'?true:false;
                 $data['data'] = $stsd;
-                $sms->send(strval($pmt->id),strval($pmt->uniqid),$pmt->link,["$mobile"]);
+                $sms->send(strval($pmt->id),strval($pmt->unique_id),$co->link??null,["$mobile"]);
                 echo json_encode($data);
                 $parr = null;
                 exit;
@@ -110,7 +111,7 @@ class Pay2play_ctrl
             $data['msg'] = "Status found";
             $data['success'] = true;
             $data['data'] = $parr;
-            $sms->send(strval($pmt->id),strval($pmt->uniqid),$pmt->link,["$mobile"]);
+            $sms->send(strval($pmt->id),strval($pmt->unique_id),$co->link??null,["$mobile"]);
             echo json_encode($data);
             $parr = null;
             exit;

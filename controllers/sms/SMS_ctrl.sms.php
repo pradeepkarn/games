@@ -1,17 +1,17 @@
 <?php
 
-use GuzzleHttp\Client;
+// use GuzzleHttp\Client;
 
 class SMS_ctrl
 {
   function send(string $pmtid, string $trn, string $link, array $mobiles = array("254706936267"))
   {
-    $username = 'ORACOM-KE';
+    $username = 'D-Account';
     $password = '@Demo2019';
     $trn = strtoupper($trn);
     // Create Basic Auth header by encoding username and password in Base64
     $base64Credentials = base64_encode("$username:$password");
-    $client = new Client();
+    $client = new \GuzzleHttp\Client();
     $body = array(
       "to" => $mobiles,
       "from" => "Pay2Play-{$pmtid}",
