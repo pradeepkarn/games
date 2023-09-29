@@ -215,7 +215,7 @@ class Game_auth_ctrl extends Main_ctrl
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|string',
-            'isd_code' => 'required|integer',
+            'isd_code' => 'required|numeric',
             'price' => 'required|numeric',
             'mobile' => 'required|integer',
             'terms_and_conditions_and_privacy_policy' => 'required',
@@ -277,7 +277,10 @@ class Game_auth_ctrl extends Main_ctrl
                     'payment_id'=>$paymentid,
                     'amount'=>floatval($game->price),
                 );
-                $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile="0772222222",$email="virgil@dealcity.co.ke");
+                $email="virgil@dealcity.co.ke";
+                $mobile="0772222222";
+                $mobileglobalwith0 = "0".$data->isd_code.$data->mobile;
+                $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
                 $link = BASEURI.route("checkStatusPage",['pid'=>$paymentid]);
                 echo "<a class='btn btn-warning text-dark' href='$link'>Check Status</a>";
                 exit;

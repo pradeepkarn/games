@@ -19,7 +19,7 @@
                                          <div class="single-input">
                                              <label for="email">Email Address</label>
                                              <div class="input-box">
-                                                 <input type="text" id="email" name="email" readonly value="<?php echo USER['email'] ?? null; ?>" class="email" placeholder="Enter Your Email">
+                                                 <input type="text" id="email" name="email" value="<?php echo USER['email'] ?? null; ?>" class="email" placeholder="Enter Your Email">
                                              </div>
                                          </div>
                                          <div class="single-input">
@@ -87,7 +87,8 @@
                              </div>
                          </div>
                          <!-- <div class="account mt-30">
-                            <p>Have an account? <a href="<?php //echo BASEURI.route('login'); ?>">Login</a></p>
+                            <p>Have an account? <a href="<?php //echo BASEURI.route('login'); 
+                                                            ?>">Login</a></p>
                          </div> -->
                      </div>
                  </div>
