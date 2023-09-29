@@ -74,6 +74,25 @@ class Pay2play_ctrl
                 exit;
             }
         }
+        if ($pmt['status']=='cancelled') {
+            $pmtdata = json_decode($pmt['paynowjson']??[]);
+            $stsd = $pmtdata->status??null;
+            if ($stsd) {
+                $data['msg'] = "Payment status";
+                $data['success'] = $stsd->status=='paid'?true:false;
+                $data['data'] = $stsd;
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            }else{
+                $data['msg'] = "Something went wrong";
+                $data['success'] = false;
+                $data['data'] = null;
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            }
+        }
         $status = $this->paynow->pollTransaction($pollUrl);
         if ($status->paid()) {
             $parr = null;
