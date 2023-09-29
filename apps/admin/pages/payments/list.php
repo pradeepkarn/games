@@ -42,31 +42,32 @@ $active = $context->is_active;
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
-                        <thead>
+                        <!-- <thead>
                             <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">TR NO.</th>
                                 <th scope="col">Game Name</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Game Link</th>
 
                                 <th scope="col">Status</th>
                                 <th scope="col">Order Date</th>
-                                <?php
-                                if ($active == true) { ?>
-
-                                    <!-- <th scope="col">Detail</th> -->
-
-                                <?php    }
-                                ?>
+                               
 
                             </tr>
-                        </thead>
+                        </thead> -->
                         <tbody>
                             <?php 
                             $db = new Dbobjects;
                            
                             foreach ($pl as $key => $pv) :
                                 $pv = obj($pv);
+                                $trn = strtoupper($pv->unique_id);
+                                $amt = $pv->amount;
+                                echo "<tr>
+                                <th>ORDER ID: {$pv->id}</th>
+                                <th>TR No.: $trn</th>
+                                <th>Amount: &#x24;{$amt}/-</th>
+                                <th>Status: {$pv->status}</th>
+                                </tr>";
                                 $sql = "SELECT customer_order.*, content.id as game_id, content.title as game_name,
                                 content.link as game_link, content.banner, content.is_sold
                                 FROM customer_order
@@ -80,13 +81,12 @@ $active = $context->is_active;
                             ?>
 
                                 <tr>
-                                    <th scope="row"><?php echo $pv->id; ?></th>
-
-                                    <td><?php echo strtoupper($pv->unique_id); ?></td>
-                                    <td><?php echo $ord->game_name; ?></td>
-                                    <td><?php echo $ord->link; ?></td>
-                                    <td><?php echo $pv->status; ?></td>
-                                    <td><?php echo $pv->created_at; ?></td>
+                                    
+                                    <td>Game: <?php echo $ord->game_name; ?></td>
+                                    <td>Email: <?php echo $ord->customer_email; ?></td>
+                                    <td>Mobile: <?php echo "{$pv->isd_code}{$pv->mobile}"; ?></td>
+                                    <td>Link: <?php echo $ord->link; ?></td>
+                                    <td>Date: <?php echo $pv->created_at; ?></td>
                                     <?php
                                     if ($active == true) { ?>
                                         <td>
