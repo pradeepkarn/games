@@ -67,9 +67,7 @@
          let reference = null;
          let paynowReference = null;
          let status = null;
-         if (res.success === true) {
-             // console.log(res.data['status']);
-             if (res.data && res.data['status']) {
+         if (res.data && res.data['status']) {
                 const paystatus = res.data;
                  amount = paystatus['amount'];
                  reference = paystatus['reference'];
@@ -80,6 +78,8 @@
              Reference: ${reference}<br> 
              PaynowReference: ${paynowReference}<br>
              Status: ${status}<br>`;
+         if (res.success === true) {
+             // console.log(res.data['status']);
              swalert({
                  title: 'Success',
                  msg: msgshow,
@@ -88,7 +88,7 @@
          } else if (res.success === false) {
              swalert({
                  title: 'Failed',
-                 msg: res.msg,
+                 msg: msgshow,
                  icon: 'error'
              });
          } else {
