@@ -35,9 +35,7 @@ $active = $context->is_active;
                                 </div>
                             </form>
                         </div>
-                        <div class="col text-end my-3">
-                            <a class="btn btn-dark" href="/<?php echo home . route('paymentCreate'); ?>">Add New</a>
-                        </div>
+                        
                     </div>
 
                     <!-- Table with stripped rows -->
