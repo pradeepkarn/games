@@ -244,7 +244,7 @@ class Game_ctrl
                     try {
                         $db->create();
                     } catch (PDOException $th) {
-                        // throw $th;
+                        throw $th;
                     };
                     echo server_progress($key,$total)."<br>";
                 }
