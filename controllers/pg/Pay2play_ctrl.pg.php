@@ -45,18 +45,37 @@ class Pay2play_ctrl
             echo json_encode($data);
             exit;
         }
-        if ($pollUrl=='') {
+        if ($pollUrl == '') {
             $data['msg'] = "Payment not done";
             $data['success'] = false;
             $data['data'] = null;
             echo json_encode($data);
             exit;
         }
+        $db = new Dbobjects;
+        $db->tableName = 'payment';
+        $pmt = $db->pk($paymentid);
+        if ($pmt['status']=='paid') {
+            $pmtdata = json_decode($pmt['paynowjson']??[]);
+            $stsd = $pmtdata->status??null;
+            if ($stsd) {
+                $data['msg'] = "Payment status";
+                $data['success'] = $stsd->status=='paid'?true:false;
+                $data['data'] = $stsd;
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            }else{
+                $data['msg'] = "Something went wrong";
+                $data['success'] = false;
+                $data['data'] = null;
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            }
+        }
         $status = $this->paynow->pollTransaction($pollUrl);
         if ($status->paid()) {
-            $db = new Dbobjects;
-            $db->tableName = 'payment';
-            $db->pk($paymentid);
             $parr = null;
             $parr['reference'] = $status->reference();
             $parr['paynowReference'] = $status->paynowReference();
@@ -71,25 +90,24 @@ class Pay2play_ctrl
             $data['success'] = true;
             $data['data'] = $parr;
             echo json_encode($data);
-            exit;
-        } else if($status->status()){
-            $db = new Dbobjects;
-            $db->tableName = 'payment';
-            $db->pk($paymentid);
             $parr = null;
-            $parr['reference'] = $status->reference()??'NA';
-            $parr['paynowReference'] = $status->paynowReference()??'NA';
-            $parr['amount'] = $status->amount()??0;
-            $parr['status'] = $status->status()??'NA';
+            exit;
+        } else if ($status->status()) {
+            $parr = null;
+            $parr['reference'] = $status->reference() ?? 'NA';
+            $parr['paynowReference'] = $status->paynowReference() ?? 'NA';
+            $parr['amount'] = $status->amount() ?? 0;
+            $parr['status'] = $status->status() ?? 'NA';
             $pd = array('status' => $parr);
             $json = json_encode($pd);
             $db->insertData['paynowjson'] = $json;
-            $db->insertData['status'] = $status->status()??'NA';
+            $db->insertData['status'] = $status->status() ?? 'NA';
             $db->update();
             $data['msg'] = "Payment not done";
             $data['success'] = false;
             $data['data'] = $parr;
             echo json_encode($data);
+            $parr = null;
             exit;
         }
     }
