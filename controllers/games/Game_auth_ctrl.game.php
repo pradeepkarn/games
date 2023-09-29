@@ -4,7 +4,7 @@ use Paynow\Payments\Paynow;
 use PHPMailer\PHPMailer\PHPMailer;
 class Game_auth_ctrl extends Main_ctrl
 {
-    function pay($db,$paymentid,$item,$amount,$mobile="0772222222",$email="virgil@dealcity.co.ke")
+    function pay($pdo,$db,$paymentid,$item,$amount,$mobile="0772222222",$email="virgil@dealcity.co.ke")
     {
         $paynow = new Paynow(
             INTEGRATION_ID,
@@ -26,6 +26,9 @@ class Game_auth_ctrl extends Main_ctrl
             $parr['instructions'] = $response->instructions();
             $db->insertData = $parr;
             $db->update();
+            return true;
+        }else{
+            return false;
         }
     }
     function save_json_file($response)
@@ -269,7 +272,6 @@ class Game_auth_ctrl extends Main_ctrl
                 $db->insertData['is_sold'] = 1;
                 $db->pk($game->id);
                 $db->update();
-                $pdo->commit();
                 $_SESSION['msg'][] = 'Success';
                 msg_ssn("msg");
                 $_SESSION['cp'] = array(
@@ -280,10 +282,19 @@ class Game_auth_ctrl extends Main_ctrl
                 $email="virgil@dealcity.co.ke";
                 $mobile="0772222222";
                 $mobileglobalwith0 = "0".$data->isd_code.$data->mobile;
-                $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
-                $link = BASEURI.route("checkStatusPage",['pid'=>$paymentid]);
-                echo "<a class='btn btn-warning text-dark' href='$link'>Check Status</a>";
-                exit;
+                $paycheck = $$this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
+                if ($paycheck==true) {
+                    $link = BASEURI.route("checkStatusPage",['pid'=>$paymentid]);
+                    echo "<a class='btn btn-warning text-dark' href='$link'>Check Status</a>";
+                    $pdo->commit();
+                    exit;
+                }else{
+                    $pdo->rollBack();
+                    $_SESSION['msg'][] = 'Failed';
+                    msg_ssn("msg");
+                    exit;
+                }
+                
             } catch (PDOException $th) {
                 // echo $th;
                 $pdo->rollBack();
