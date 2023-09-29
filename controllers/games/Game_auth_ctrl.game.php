@@ -4,7 +4,7 @@ use Paynow\Payments\Paynow;
 use PHPMailer\PHPMailer\PHPMailer;
 class Game_auth_ctrl extends Main_ctrl
 {
-    function pay($pdo,$db,$paymentid,$item,$amount,$mobile="0772222222",$email="virgil@dealcity.co.ke")
+    function pay($db,$paymentid,$item,$amount,$mobile="0772222222",$email="virgil@dealcity.co.ke")
     {
         $paynow = new Paynow(
             INTEGRATION_ID,
