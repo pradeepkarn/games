@@ -279,8 +279,8 @@ class Game_auth_ctrl extends Main_ctrl
                     'payment_id'=>$paymentid,
                     'amount'=>floatval($game->price),
                 );
-                $email="virgil@dealcity.co.ke";
-                $mobile="0772222222";
+                // $email="virgil@dealcity.co.ke";
+                // $mobile="0772222222";
                 $mobileglobalwith0 = strval("0".$data->isd_code.$data->mobile);
                 $paycheck = $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
                 if ($paycheck==true) {

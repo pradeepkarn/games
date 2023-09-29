@@ -72,10 +72,23 @@ class Pay2play_ctrl
             $data['data'] = $parr;
             echo json_encode($data);
             exit;
-        } else {
-            $data['msg'] = "Payment not done";
-            $data['success'] = false;
-            $data['data'] = null;
+        } else if($status->status()){
+            $db = new Dbobjects;
+            $db->tableName = 'payment';
+            $db->pk($paymentid);
+            $parr = null;
+            $parr['reference'] = $status->reference()??'NA';
+            $parr['paynowReference'] = $status->paynowReference()??'NA';
+            $parr['amount'] = $status->amount()??0;
+            $parr['status'] = $status->status()??'NA';
+            $pd = array('status' => $parr);
+            $json = json_encode($pd);
+            $db->insertData['paynowjson'] = $json;
+            $db->insertData['status'] = $status->status()??'NA';
+            $db->update();
+            $data['msg'] = "Status found";
+            $data['success'] = true;
+            $data['data'] = $parr;
             echo json_encode($data);
             exit;
         }
