@@ -56,7 +56,7 @@
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="<?php echo BASEURI; ?>">
                             <!--<img src="/<?php echo STATIC_URL; ?>/games/assets/images/logo.png" class="logo" alt="logo">-->
-                            <h3>LOGO</h3>
+                            <h3><?php echo SITE_NAME; ?></h3>
                         </a>
                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
                             <i class="fas fa-bars"></i>
