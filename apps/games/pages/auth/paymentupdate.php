@@ -87,7 +87,7 @@
              });
          } else if (res.success === false) {
              swalert({
-                 title: 'Failed',
+                 title: 'Payment not done',
                  msg: msgshow,
                  icon: 'error'
              });
