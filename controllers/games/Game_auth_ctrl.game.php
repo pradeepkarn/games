@@ -15,9 +15,9 @@ class Game_auth_ctrl extends Main_ctrl
         );
         $payment = $paynow->createPayment("INV".$paymentid, $email);
         $payment->add($item, $amount);
-        $response = $paynow->sendMobile($payment, $mobile, 'ecocash');
-        $data = $response->data();
-        $this->save_json_file($data);
+        $response = $paynow->sendMobile($payment, strval($mobile), 'ecocash');
+        $datas = $response->data();
+        $this->save_json_file($datas);
         $this->save_json_file($response);
         if($response->success()) {
             $db->tableName='payment';
@@ -281,8 +281,8 @@ class Game_auth_ctrl extends Main_ctrl
                 );
                 $email="virgil@dealcity.co.ke";
                 $mobile="0772222222";
-                $mobileglobalwith0 = "0".$data->isd_code.$data->mobile;
-                $paycheck = $$this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
+                $mobileglobalwith0 = strval("0".$data->isd_code.$data->mobile);
+                $paycheck = $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
                 if ($paycheck==true) {
                     $link = BASEURI.route("checkStatusPage",['pid'=>$paymentid]);
                     echo "<a class='btn btn-warning text-dark' href='$link'>Check Status</a>";
