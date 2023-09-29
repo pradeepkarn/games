@@ -82,7 +82,7 @@ $active = $context->is_active;
                                 <tr>
                                     <th scope="row"><?php echo $pv->id; ?></th>
 
-                                    <td><?php echo $pv->unique_id; ?></td>
+                                    <td><?php echo strtoupper($pv->unique_id); ?></td>
                                     <td><?php echo $ord->game_name; ?></td>
                                     <td><?php echo $ord->link; ?></td>
                                     <td><?php echo $pv->status; ?></td>

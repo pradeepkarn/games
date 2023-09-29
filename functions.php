@@ -152,7 +152,7 @@ function send_to_server($button, $data, $callback, $event = 'click')
 </script>";
   echo $ajax;
 }
-function send_to_server_wotf($button, $data, $callback, $url="/", $event = 'click',$method='post')
+function send_to_server_wotf($button, $data, $callback, $url = "/", $event = 'click', $method = 'post')
 {
   $home = home;
   $ajax = "<script>
@@ -267,7 +267,7 @@ function generate_dummy_email($prefix = null)
 {
   return uniqid($prefix . "_" . rand(1, 50)) . "@example.com";
 }
-function bsmodal($id = "", $title = "", $body = "", $btn_id="", $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $modalclasses = "")
+function bsmodal($id = "", $title = "", $body = "", $btn_id = "", $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $modalclasses = "")
 {
   $str = "
 <div class='modal fade' id='$id' tabindex='-1' aria-hidden='true'>
@@ -289,7 +289,7 @@ $body
 </div>";
   return $str;
 }
-function popmodal($id = "", $title = "", $body = "", $btn_id="", $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $close_btn_class = "")
+function popmodal($id = "", $title = "", $body = "", $btn_id = "", $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $close_btn_class = "")
 {
   $str = "
 <div class='modal fade' id='$id' tabindex='-1' aria-hidden='true'>
@@ -822,7 +822,7 @@ function validateData($data, $rules)
     foreach ($rulesArr as $singleRule) {
       // Check if rule has a parameter
       preg_match('/^([a-z]+)(?::([0-9]+))?$/i', $singleRule, $matches);
-      $ruleName = $matches[1]??null;
+      $ruleName = $matches[1] ?? null;
       $ruleParam = isset($matches[2]) ? (int) $matches[2] : null;
 
       switch ($ruleName) {
@@ -875,7 +875,7 @@ function validateData($data, $rules)
           if (!isset($_FILES[$field]) || $_FILES[$field]['error'] !== UPLOAD_ERR_OK) {
             $errors[] = str_replace("_", " ", ucfirst($field)) . ' is required';
           } else {
-            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif','csv'];
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'csv'];
             $extension = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
             if (!in_array($extension, $allowedExtensions)) {
               $errors[] = 'Only files with extensions ' . implode(', ', $allowedExtensions) . ' are allowed for ' . $field;
@@ -1098,7 +1098,7 @@ function getDOBFromAge($age)
 }
 function getAgeFromDOB($birthdate)
 {
-  if ($birthdate==null) {
+  if ($birthdate == null) {
     return 0;
   }
   $today = new DateTime();
@@ -1109,7 +1109,7 @@ function getAgeFromDOB($birthdate)
 
 function gender_view($gender)
 {
-  if ($gender==null) {
+  if ($gender == null) {
     return "NA";
   }
   switch (strtolower($gender)) {
@@ -1126,18 +1126,18 @@ function gender_view($gender)
 }
 function bride_or_grom($gender)
 {
-  if ($gender==null) {
+  if ($gender == null) {
     return 'NA';
   }
   switch (strtolower($gender)) {
     case 'm':
-      return lang('global')->groom??"Groom";
+      return lang('global')->groom ?? "Groom";
       break;
     case 'f':
-      return lang('global')->bride??"Bride";
+      return lang('global')->bride ?? "Bride";
       break;
     default:
-      return lang('global')->na??"NA";
+      return lang('global')->na ?? "NA";
       break;
   }
 }
@@ -1336,7 +1336,8 @@ function compressImage($sourceFile, $maxFileSize)
   return $targetFile;
 }
 
-function getUrlSafeString($inputString) {
+function getUrlSafeString($inputString)
+{
   // Replace spaces with hyphens and remove other special characters
   $urlSafeString = preg_replace('/[^a-zA-Z0-9\-]/', '-', $inputString);
 
@@ -1349,34 +1350,36 @@ function getUrlSafeString($inputString) {
   return $urlSafeString;
 }
 
-function get_image_list($jsn) {
-  if (json_decode($jsn??'[]')) {
+function get_image_list($jsn)
+{
+  if (json_decode($jsn ?? '[]')) {
     return json_decode($jsn);
   }
   return [];
 }
 
-function modifyJsonArray($jsonString, $valueToDelete = null, $valueToInsert = null) {
+function modifyJsonArray($jsonString, $valueToDelete = null, $valueToInsert = null)
+{
   // Decode the JSON string into a PHP array
   $array = json_decode($jsonString);
 
   // Check if JSON decoding was successful
   if ($array === null && json_last_error() !== JSON_ERROR_NONE) {
-      // Return an error message or handle the error as needed
-      return false;
+    // Return an error message or handle the error as needed
+    return false;
   }
 
   // Delete a value if specified
   if ($valueToDelete !== null) {
-      $key = array_search($valueToDelete, $array);
-      if ($key !== false) {
-          array_splice($array, $key, 1);
-      }
+    $key = array_search($valueToDelete, $array);
+    if ($key !== false) {
+      array_splice($array, $key, 1);
+    }
   }
 
   // Insert a value if specified
   if ($valueToInsert !== null) {
-      $array[] = $valueToInsert;
+    $array[] = $valueToInsert;
   }
 
   // Encode the modified array back to JSON
@@ -1401,31 +1404,33 @@ function showStars($rating)
 
   return $starsHtml;
 }
-function changeToAMPM($timeString) {
+function changeToAMPM($timeString)
+{
   $formattedTime = date("g:i A", strtotime($timeString));
   return $formattedTime;
 }
 function server_progress($current, $total)
 {
-    $percent = ($current / $total) * 100;
-    $barWidth = 50;
-    $numBars = (int) ($percent / (100 / $barWidth));
-    $progressBar = "[" . str_repeat("=", $numBars) . str_repeat(" ", $barWidth - $numBars) . "] $percent%";
-    return "\r$progressBar";
-    // flush();
+  $percent = ($current / $total) * 100;
+  $barWidth = 50;
+  $numBars = (int) ($percent / (100 / $barWidth));
+  $progressBar = "[" . str_repeat("=", $numBars) . str_repeat(" ", $barWidth - $numBars) . "] $percent%";
+  return "\r$progressBar";
+  // flush();
 }
-function lineBreakBySemicolon($inputString) {
+function lineBreakBySemicolon($inputString)
+{
   // Split the input string by semicolons
   $instructionsArray = explode(';', $inputString);
 
   // Create a new string with line breaks
   $formattedInstructions = '';
   foreach ($instructionsArray as $instruction) {
-      // Trim any leading/trailing spaces
-      $instruction = trim($instruction);
-      if (!empty($instruction)) {
-          $formattedInstructions .= $instruction . "<br>";
-      }
+    // Trim any leading/trailing spaces
+    $instruction = trim($instruction);
+    if (!empty($instruction)) {
+      $formattedInstructions .= $instruction . "<br>";
+    }
   }
 
   return $formattedInstructions;
