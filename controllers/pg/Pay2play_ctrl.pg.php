@@ -64,7 +64,7 @@ class Pay2play_ctrl
                 $data['msg'] = "Payment status";
                 $data['success'] = $stsd->status=='paid'?true:false;
                 $data['data'] = $stsd;
-                $sms->send(strval($pmt->id),strval($pmt->unique_id),$co->link??null,["$mobile"]);
+                // $sms->send(strval($pmt->id),strval($pmt->unique_id),$co->link??null,["$mobile"]);
                 echo json_encode($data);
                 $parr = null;
                 exit;

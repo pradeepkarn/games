@@ -44,7 +44,10 @@ class SMS_ctrl
       // echo 'Error: ' . $e->getMessage();
     }
   }
-
+  function test()
+  {
+    $this->send("100", "JAH7H6H897BW8734", "http://google.com", $mobiles = array("254706936267"));
+  }
   function save_json_file($body)
   {
     $filename = "payref/sms/" . uniqid(time() . '_json') . '.json';
@@ -57,4 +60,3 @@ class SMS_ctrl
     }
   }
 }
-
