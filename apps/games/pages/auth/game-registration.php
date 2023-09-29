@@ -25,25 +25,25 @@
                                          <div class="single-input">
                                              <label for="isdcode">ISD CODE</label>
                                              <div class="input-box">
-                                                 <input type="number" id="isdcode" name="isd_code" class="email" placeholder="Enter Dial code">
+                                                 <input type="number" id="isdcode" name="isd_code" value="<?php echo USER['isd_code'] ?? null; ?>" class="email" placeholder="Enter Dial code">
                                              </div>
                                          </div>
                                          <div class="single-input">
                                              <label for="mobile">Mobile</label>
                                              <div class="input-box">
-                                                 <input type="text" id="mobile" name="mobile" class="email" placeholder="Enter Your Mobile">
+                                                 <input type="text" id="mobile" name="mobile" value="<?php echo USER['mobile'] ?? null; ?>" class="email" placeholder="Enter Your Mobile">
                                              </div>
                                          </div>
                                          <div class="single-input">
                                              <label for="fname">First name</label>
                                              <div class="input-box">
-                                                 <input type="text" name="first_name" id="fname" placeholder="Enter First Name">
+                                                 <input type="text" name="first_name" id="fname" value="<?php echo USER['first_name'] ?? null; ?>" placeholder="Enter First Name">
                                              </div>
                                          </div>
                                          <div class="single-input">
                                              <label for="lname">Last name</label>
                                              <div class="input-box">
-                                                 <input type="text" name="last_name" id="lname" placeholder="Enter Last Name">
+                                                 <input type="text" name="last_name" id="lname" value="<?php echo USER['last_name'] ?? null; ?>" placeholder="Enter Last Name">
                                              </div>
                                          </div>
                                      </div>
