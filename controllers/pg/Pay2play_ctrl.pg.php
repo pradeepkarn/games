@@ -87,7 +87,7 @@ class Pay2play_ctrl
             $db->insertData['status'] = $status->status()??'NA';
             $db->update();
             $data['msg'] = "Status found";
-            $data['success'] = true;
+            $data['success'] = false;
             $data['data'] = $parr;
             echo json_encode($data);
             exit;
