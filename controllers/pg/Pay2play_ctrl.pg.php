@@ -86,8 +86,8 @@ class Pay2play_ctrl
             $db->insertData['paynowjson'] = $json;
             $db->insertData['status'] = $status->status()??'NA';
             $db->update();
-            $data['msg'] = "Status found";
-            $data['success'] = false;
+            $data['msg'] = "Payment not done";
+            $data['success'] = true;
             $data['data'] = $parr;
             echo json_encode($data);
             exit;
