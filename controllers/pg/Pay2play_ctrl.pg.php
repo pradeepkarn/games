@@ -52,16 +52,18 @@ class Pay2play_ctrl
             echo json_encode($data);
             exit;
         }
-        $db = new Dbobjects;
+        $sms = new SMS_ctrl;
+        $mobile = "$pmt->isd_code"."$pmt->mobile";
         $db->tableName = 'payment';
-        $pmt = $db->pk($paymentid);
-        if ($pmt['status']=='paid') {
-            $pmtdata = json_decode($pmt['paynowjson']??[]);
+        $pmtarr = $db->pk($paymentid);
+        if ($pmtarr['status']=='paid') {
+            $pmtdata = json_decode($pmtarr['paynowjson']??[]);
             $stsd = $pmtdata->status??null;
             if ($stsd) {
                 $data['msg'] = "Payment status";
                 $data['success'] = $stsd->status=='paid'?true:false;
                 $data['data'] = $stsd;
+                $sms->send(strval($pmt->id),strval($pmt->uniqid),$pmt->link,["$mobile"]);
                 echo json_encode($data);
                 $parr = null;
                 exit;
@@ -74,8 +76,8 @@ class Pay2play_ctrl
                 exit;
             }
         }
-        if ($pmt['status']=='cancelled') {
-            $pmtdata = json_decode($pmt['paynowjson']??[]);
+        if ($pmtarr['status']=='cancelled') {
+            $pmtdata = json_decode($pmtarr['paynowjson']??[]);
             $stsd = $pmtdata->status??null;
             if ($stsd) {
                 $data['msg'] = "Payment status";
@@ -108,6 +110,7 @@ class Pay2play_ctrl
             $data['msg'] = "Status found";
             $data['success'] = true;
             $data['data'] = $parr;
+            $sms->send(strval($pmt->id),strval($pmt->uniqid),$pmt->link,["$mobile"]);
             echo json_encode($data);
             $parr = null;
             exit;
