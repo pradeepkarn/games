@@ -104,8 +104,25 @@
     <?php import("apps/games/pages/{$context->page}", $context); ?>
 
     <!-- Footer Area Start -->
-    <footer class="footer-section"  style="background-color: #ff3c10;">
+    <footer class="footer-section">
         <div class="container">
+            <div class="newsletter">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-area mb-30 text-center">
+                            <h5 class="sub-title">Get ready for the next level</h5>
+                            <h3 class="title">Subscribe for updates</h3>
+                        </div>
+                        <form action="#">
+                            <div class="form-group d-flex align-items-center">
+                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/email.png" alt="icon">
+                                <input type="text" placeholder="Your email address">
+                                <button class="cmn-btn">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="footer-area pt-120">
                 <div class="footer-top pb-120">
                     <div class="row">

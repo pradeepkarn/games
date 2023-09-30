@@ -221,9 +221,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="section-header text-center">
-                        <h5 class="sub-title">IMPROVE WITH COURSES & COACHES</h5>
-                        <h2 class="title">SUPPORTED GAMES</h2>
-                        <p>Lorem is a platform dedicated to helping players get better at the video games and esports they love most</p>
+                       
+                        <p>TicketCity is a platform dedicated to helping players get better at the video games and esports they love most.</p>
                     </div>
                 </div>
             </div>
@@ -269,11 +268,11 @@
     <div class="overlay pt-120">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12 justify-content-center align-items-center">
                     <div class="section-header">
-                        <h5 class="sub-title">ENJOY YOUR GAMING EXPERIENCE MORE</h5>
-                        <h2 class="title">Quality rather than Quantity!</h2>
-                        <p>“We are not another corporation with hundreds of random Coaches”</p>
+                        
+                        <h2 class="title" style="color: #524e4e" >How To Play</h2>
+                        <p>The memory game is open to individuals who are at least 18 years old or hav the consent of a parent or leagal guardian. Employees, representatives, or affiliates of the game organizers, including their immediate family memebers, are not eligible to participate.</p>
                     </div>
                 </div>
             </div>
@@ -281,300 +280,317 @@
                 <div class="col-lg-7">
                     <div class="single-area d-flex align-items-center">
                         <div class="img-area">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/features-icon-1.png" alt="icon">
+                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icons/edit (1).png" alt="icon">
                         </div>
                         <div class="text-area">
-                            <h5>Be Coached By The Best!</h5>
-                            <p>Our team consists only of Experienced Coaches who are currently in the Challenger League.</p>
+                            
+                            <p>Upon registering for the game, you will receive a inique coupon link., that can only be used once and is non-tranferable. Participants are responsible for keeping the coupon link private and not sharing with others.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="single-area d-flex align-items-center">
                         <div class="img-area">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/features-icon-2.png" alt="icon">
+                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icons/partnership.png" alt="icon">
                         </div>
                         <div class="text-area">
-                            <h5>Improvment or Cash Back!</h5>
-                            <p>If you consider that you did not learn anything at all we will refund your money.</p>
+                           
+                            <p>The Objective of the game is to match all the faces within the shortest time possible. Praticipants must complete the game using their own skills and abilities without any external assistance or cheating.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="single-area d-flex align-items-center">
                         <div class="img-area">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/features-icon-3.png" alt="icon">
+                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icons/avoid-crowds.png" alt="icon">
                         </div>
                         <div class="text-area">
-                            <h5>Coaching in Every Region</h5>
-                            <p>We will be coaching you regardless of the region and time zone from which you are playing.</p>
+                            
+                            <p>Any form of unfair play, including hacking, exploiting bugs, or using automated scripts, will result in immediate disqualification.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="single-area d-flex align-items-center">
-                        <div class="img-area">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/features-icon-4.png" alt="icon">
-                        </div>
-                        <div class="text-area">
-                            <h5>97% Satisfied Customers</h5>
-                            <p>All our existing customers have expressed their satisfaction with the coaching that we provide.</p>
-                        </div>
+                <style>
+                    /* Hide the element with class "mobile-hidden" on mobile devices */
+    @media (max-width: 767px) {
+      .mobile-hidden {
+        display: none;
+        z-index: -1;
+      }
+    }
+                </style>
+                <div class="col-lg-5 mobile-hidden" style="position: absolute; margin-left: 50%; ">
+                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/player.jpg"  alt="">
                     </div>
-                </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Features second end -->
 
-<!-- Counter start -->
-<div class="counter-section index-2">
-    <div class="container pt-120 wow fadeInUp">
-        <div class="main-content">
-            <div class="row cus-mar">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-area d-flex align-items-center">
-                        <div class="img-area">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/counter-icon-1.png" alt="icon">
-                        </div>
-                        <div class="text-area">
-                            <h2><span class="counter">1230</span></h2>
-                            <p>Games</p>
+ <!-- Features second start -->
+ <section class="features-second" style="background-color: #d1d4e7; margin-top: 30px; margin-bottom: 30px; ">
+        <div class="overlay pt-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 justify-content-center">
+                        <div class="section-header">
+                            
+                            <h2 class="title">Terms and Conditions</h2>
+                            <p>Please read these Terms and Conditions carefully before participating in our online memory game. By accessing or using the game, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please refrain from accesing or using the game.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-area d-flex align-items-center">
-                        <div class="img-area">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/counter-icon-2.png" alt="icon">
-                        </div>
-                        <div class="text-area">
-                            <h2><span class="counter">398</span><span>K</span></h2>
-                            <p>Pro Coaches</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-area d-flex align-items-center">
-                        <div class="img-area">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/counter-icon-3.png" alt="icon">
-                        </div>
-                        <div class="text-area">
-                            <h2><span class="counter">398</span><span>K</span></h2>
-                            <p>Pro Coaches</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Counter end -->
-
-<!-- call to action start -->
-<section class="call-to-action">
-    <div class="overlay pt-120 pb-120">
-        <div class="container">
-            <div class="main-content">
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-lg-4 cus-mar">
-                        <div class="section-text">
-                            <h5 class="sub-title">Become Player One</h5>
-                            <h2 class="title">Unable to hit the Rank you aim for?</h2>
-                            <p>Take your gaming skills to the next level in our Masterclass coaching.</p>
-                        </div>
-                        <a href="coaching-grid-list.html" class="cmn-btn alt">browse more</a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <div class="feature-item text-center">
-                                    <div class="thumb">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/call-action-image-1.png" alt="icon">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 gap-3">
-                                <div class="feature-item text-center">
-                                    <div class="thumb mb-20">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/call-action-image-2.png" alt="icon">
-                                    </div>
-                                </div>
-                                <div class="feature-item text-center">
-                                    <div class="thumb">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/call-action-image-3.png" alt="icon">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- call to action end -->
-
-<!-- How it works start -->
-<section class="how-works index-2 index-3">
-    <div class="overlay pt-120 pb-120">
-        <div class="container wow fadeInUp">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-lg-6 order-lg-0 order-1">
-                    <div class="sec-image d-rtl">
-                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/character.png" alt="image" class="max-un">
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="section-header">
-                        <h5 class="sub-title">Gaming Masterclasses & Coaching</h5>
-                        <h2 class="title">How Lorem works</h2>
-                        <p>With Lorem you book your sessions, instantly, and chat with coaches in real time (without breaking the bank).</p>
-                    </div>
-                    <div class="cus-mar">
-                        <div class="single-item">
-                            <div class="thumb">
-                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/how-works-icon-1.png" alt="icon">
-                                <span class="xlr">01</span>
+                <div class="row gap-3">
+                    
+                    <div class="col-lg-7">
+                        <div class="single-area d-flex align-items-center">
+                            <div class="img-area">
+                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/eligibility-icon.png" alt="icon">
                             </div>
                             <div class="text-area">
-                                <h5>Choose Your Game</h5>
-                            </div>
-                        </div>
-                        <div class="single-item">
-                            <div class="thumb">
-                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/how-works-icon-2.png" alt="icon">
-                                <span class="xlr">02</span>
-                            </div>
-                            <div class="text-area">
-                                <h5>Register Your Profile</h5>
-                            </div>
-                        </div>
-                        <div class="single-item">
-                            <div class="thumb">
-                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/how-works-icon-3.png" alt="icon">
-                                <span class="xlr">03</span>
-                            </div>
-                            <div class="text-area">
-                                <h5>Become a pro</h5>
+                                <h5>Eligiblity</h5>
+                                <p>The memory game is open to individuals who are at least 18 years old or have the consent of a parent or legal guardian. <br> Employees, representatives, or affiliates of the game organizers, including their immediate family members, are not eligible to participate.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-7">
+                        <div class="single-area d-flex align-items-center">
+                            <div class="img-area">
+                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/game-rules-icon.png" alt="icon">
+                            </div>
+                            <div class="text-area">
+                                <h5>Game Rules</h5>
+                                <p>The objective of the game is to match all the faces within the shortest time possible. <br> Participants must complete the game using their own skills and abilities without any ecternal assistance or cheating. <br> Any form of unfair play, including hacking, exploiting bugs, or using automated scripts, will result in immediate disqualification.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-7">
+                        <div class="single-area d-flex align-items-center">
+                            <div class="img-area">
+                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/privacy-icon.png" alt="icon">
+                            </div>
+                            <div class="text-area">
+                                <h5>Privacy</h5>
+                                <p>We respect your privacy and handle your personal information in accordance with our Privacy Policy. By paricipating in the game, you consent to the collection, use, and disclosure of your personal information as described in the Privacy Policy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 " style="margin-bottom: 20px;">
+                        <div class="single-area d-flex align-items-center">
+                            <div class="img-area">
+                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/intellectual-property-icon.png" alt="icon">
+                            </div>
+                            <div class="text-area">
+                                <h5>Intellectual Property:</h5>
+                                <p>All intellectual property rights, including copyrights and trademarks, associated with the game, its content, and materials belong to the game organizers. <br> You may not reproduce, distribute, modify, or create derivative permission from the game organizers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <style>/* Hide the element with class "mobile-hidden" on mobile devices */
+                        @media (max-width: 767px) {
+                          .mobile-hidden {
+                            display: none;
+                            z-index: -1;
+                          }
+                        }</style>
+                                        <div class="col-lg-5 mobile-hidden" style="position: absolute; margin-left: 40%; width: 100%;">
+                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/terms-and-conditions-removebg-preview.png" alt="">
+                                        </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- How it works end -->
+    </section>
+    <!-- Features second end -->
 
-<!-- Communtiy start -->
-<section class="communtiy second">
-    <div class="overlay pt-120 pb-120">
-        <div class="container wow fadeInUp">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-6">
-                    <div class="section-text">
-                        <h5 class="sub-title">Out of 3M+ total Lorem users</h5>
-                        <h2 class="title">Join The Lorem Community</h2>
-                        <p>A professional trainer will help you make better decisions, know what to watch out for, and level up quickly.</p>
-                    </div>
-                    <a href="register.html" class="cmn-btn">Join our community</a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="main-content">
-                        <div class="bg-area">
-                            <img class="bg-item max-un" src="/<?php echo STATIC_URL; ?>/games/assets/images/comunity-circle.png" alt="image">
-                        </div>
-                        <div class="community-item">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/community-01.png" alt="image" class="item item-1">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/community-02.png" alt="image" class="item item-2">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/community-03.png" alt="image" class="item item-3">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/community-04.png" alt="image" class="item item-4">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/community-05.png" alt="image" class="item item-5">
-                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/community-06-alt.png" alt="image" class="item item-6">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Communtiy end -->
+
+
+
+
+
 
 <!-- FAQs In start -->
-<section class="faqs-section index-3">
-    <div class="overlay pt-120 pb-120">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-7">
-                    <div class="section-header text-center">
-                        <h5 class="sub-title">Frequently Asked Questions</h5>
-                        <h2 class="title">If you got questions we have answer</h2>
-                        <p>We have a list of frequently asked questions about us</p>
+<section class="faqs-section index-3" style="background-image: url(https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80); margin-top: -30px;" >
+        <div class="overlay pt-120 pb-120">
+            <div class="container" style="margin-top: 30px;">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="section-header text-center">
+                           
+                            <h2 class="title" style="color: white;">FAQ</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row cus-mar justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="accordion" id="accordionFaqs">
+                            <div class="accordion-item">
+                                <h6 class="accordion-header" id="headingLeftOne" style="color: white;">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLeftOne" aria-expanded="false"
+                                        aria-controls="collapseLeftOne">
+                                        WHAT IS PAY2PLAY?
+                                    </button>
+                                </h6>
+                                <div id="collapseLeftOne" class="accordion-collapse collapse"
+                                    aria-labelledby="headingLeftOne" data-bs-parent="#accordionFaqs">
+                                    <div class="accordion-body">
+                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h6 class="accordion-header" id="headingLeftTwo" style="color: white;">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLeftTwo" aria-expanded="false"
+                                        aria-controls="collapseLeftTwo">
+                                        HOW DOES THE PAY2PLAY GAME WORK?
+                                    </button>
+                                </h6>
+                                <div id="collapseLeftTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="headingLeftTwo" data-bs-parent="#accordionFaqs">
+                                    <div class="accordion-body">
+                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h6 class="accordion-header" id="headingLeftThree" style="color: white;">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLeftThree" aria-expanded="false"
+                                        aria-controls="collapseLeftThree">
+                                        HOW DO I REGISTER? 
+                                    </button>
+                                </h6>
+                                <div id="collapseLeftThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingLeftThree" data-bs-parent="#accordionFaqs">
+                                    <div class="accordion-body">
+                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h6 class="accordion-header" id="headingLeftFour" style="color: white;">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLeftFour" aria-expanded="false"
+                                        aria-controls="collapseLeftFour">
+                                       HOW DO I CLAIM MY PRIZE?
+                                    </button>
+                                </h6>
+                                <div id="collapseLeftFour" class="accordion-collapse collapse"
+                                    aria-labelledby="headingLeftFour" data-bs-parent="#accordionFaqs">
+                                    <div class="accordion-body">
+                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row cus-mar justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion" id="accordionFaqs">
-                        <div class="accordion-item">
-                            <h6 class="accordion-header" id="headingLeftOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLeftOne" aria-expanded="false" aria-controls="collapseLeftOne">
-                                    WHAT IS LOREM?
-                                </button>
-                            </h6>
-                            <div id="collapseLeftOne" class="accordion-collapse collapse" aria-labelledby="headingLeftOne" data-bs-parent="#accordionFaqs">
-                                <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+        </div>
+         <!-- Testomonial start -->
+    <section class="testomonial">
+        <div class="overlay pt-120 pb-120">
+            <div class="container wow fadeInUp">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="section-text text-center">
+                            <h5 class="sub-title" style="color: white;">HEAR WHAT OUR PLAYERS HAVE TO SAY.</h5>
+                            <h2 class="title" style="color: white;">TESTIMONIAL</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="testimonials-carousel">
+                            <div class="single-slide">
+                                <div class="single">
+                                    <div class="img-area">
+                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
+                                    </div>
+                                    <div class="info-area">
+                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
+                                        <div class="bottom d-flex align-items-center">
+                                            <div class="img-area">
+                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
+                                            </div>
+                                            <p style="color: white;">JAYLON SARIS</p>
+                                            <span style="color: white;">FIFA Gamer</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h6 class="accordion-header" id="headingLeftTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLeftTwo" aria-expanded="false" aria-controls="collapseLeftTwo">
-                                    I'VE MADE ORDER. WHAT NOW?
-                                </button>
-                            </h6>
-                            <div id="collapseLeftTwo" class="accordion-collapse collapse" aria-labelledby="headingLeftTwo" data-bs-parent="#accordionFaqs">
-                                <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                            <div class="single-slide">
+                                <div class="single">
+                                    <div class="img-area">
+                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
+                                    </div>
+                                    <div class="info-area">
+                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
+                                        <div class="bottom d-flex align-items-center">
+                                            <div class="img-area">
+                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
+                                            </div>
+                                            <p style="color: white;">JAYLON SARIS</p>
+                                            <span style="color: white;">FIFA Gamer</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h6 class="accordion-header" id="headingLeftThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLeftThree" aria-expanded="false" aria-controls="collapseLeftThree">
-                                    CAN I GET A DISCOUNT ON THIS PRICE?
-                                </button>
-                            </h6>
-                            <div id="collapseLeftThree" class="accordion-collapse collapse" aria-labelledby="headingLeftThree" data-bs-parent="#accordionFaqs">
-                                <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                            <div class="single-slide">
+                                <div class="single">
+                                    <div class="img-area">
+                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
+                                    </div>
+                                    <div class="info-area">
+                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
+                                        <div class="bottom d-flex align-items-center">
+                                            <div class="img-area">
+                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
+                                            </div>
+                                            <p style="color: white;">JAYLON SARIS</p>
+                                            <span style="color: white;">FIFA Gamer</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h6 class="accordion-header" id="headingLeftFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLeftFour" aria-expanded="false" aria-controls="collapseLeftFour">
-                                    HOW CAN I KNOW YOU ARE LEGIT?
-                                </button>
-                            </h6>
-                            <div id="collapseLeftFour" class="accordion-collapse collapse" aria-labelledby="headingLeftFour" data-bs-parent="#accordionFaqs">
-                                <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                            <div class="single-slide">
+                                <div class="single">
+                                    <div class="img-area">
+                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
+                                    </div>
+                                    <div class="info-area">
+                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
+                                        <div class="bottom d-flex align-items-center">
+                                            <div class="img-area">
+                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
+                                            </div>
+                                            <p style="color: white;">JAYLON SARIS</p>
+                                            <span style="color: white;">FIFA Gamer</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h6 class="accordion-header" id="headingLeftFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLeftFive" aria-expanded="false" aria-controls="collapseLeftFive">
-                                    WHY GET A COACH FROM LOREM?
-                                </button>
-                            </h6>
-                            <div id="collapseLeftFive" class="accordion-collapse collapse" aria-labelledby="headingLeftFive" data-bs-parent="#accordionFaqs">
-                                <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                            <div class="single-slide">
+                                <div class="single">
+                                    <div class="img-area">
+                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
+                                    </div>
+                                    <div class="info-area">
+                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
+                                        <div class="bottom d-flex align-items-center">
+                                            <div class="img-area">
+                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
+                                            </div>
+                                            <p style="color: white;">JAYLON SARIS</p>
+                                            <span style="color: white;">FIFA Gamer</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -582,115 +598,25 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- FAQs In end -->
-
-<!-- Testomonial start -->
-<section class="testomonial">
-    <div class="overlay pt-120 pb-120">
-        <div class="container wow fadeInUp">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-text text-center">
-                        <h5 class="sub-title">HEAR WHAT OUR PLAYERS HAVE TO SAY.</h5>
-                        <h2 class="title">DON'T TAKE OUR WORD FOR IT</h2>
-                        <p>Take your gaming skills to the next level in our Masterclass coaching</p>
-                    </div>
+    </section>
+    <div class="newsletter">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px; border-radius: 30px;">
+                <div class="section-area mb-30 text-center">
+                    <h5 class="sub-title" style="color: white;">Get ready for the next level</h5>
+                    <h3 class="title" style="color: white;">Subscribe for updates</h3>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="testimonials-carousel">
-                        <div class="single-slide">
-                            <div class="single">
-                                <div class="img-area">
-                                    <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                </div>
-                                <div class="info-area">
-                                    <p class="xlr">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                    <div class="bottom d-flex align-items-center">
-                                        <div class="img-area">
-                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                        </div>
-                                        <p>JAYLON SARIS</p>
-                                        <span>FIFA Gamer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-slide">
-                            <div class="single">
-                                <div class="img-area">
-                                    <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                </div>
-                                <div class="info-area">
-                                    <p class="xlr">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                    <div class="bottom d-flex align-items-center">
-                                        <div class="img-area">
-                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                        </div>
-                                        <p>JAYLON SARIS</p>
-                                        <span>FIFA Gamer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-slide">
-                            <div class="single">
-                                <div class="img-area">
-                                    <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                </div>
-                                <div class="info-area">
-                                    <p class="xlr">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                    <div class="bottom d-flex align-items-center">
-                                        <div class="img-area">
-                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                        </div>
-                                        <p>JAYLON SARIS</p>
-                                        <span>FIFA Gamer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-slide">
-                            <div class="single">
-                                <div class="img-area">
-                                    <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                </div>
-                                <div class="info-area">
-                                    <p class="xlr">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                    <div class="bottom d-flex align-items-center">
-                                        <div class="img-area">
-                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                        </div>
-                                        <p>JAYLON SARIS</p>
-                                        <span>FIFA Gamer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-slide">
-                            <div class="single">
-                                <div class="img-area">
-                                    <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                </div>
-                                <div class="info-area">
-                                    <p class="xlr">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                    <div class="bottom d-flex align-items-center">
-                                        <div class="img-area">
-                                            <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                        </div>
-                                        <p>JAYLON SARIS</p>
-                                        <span>FIFA Gamer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <form action="#">
+                    <div class="form-group d-flex align-items-center">
+                        <img src="/<?php echo STATIC_URL; ?>/gamesassets/images/ticketcity images/subscribe-icon.png" width="50%"alt="icon">
+                        <input type="text" placeholder="Your email address">
+                        <button class="cmn-btn" style="margin-left: 10px;">Subscribe</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-</section>
-<!-- Testomonial end -->
+    
+    <!-- Testomonial end -->
+    </section>
+    <!-- FAQs In end -->
