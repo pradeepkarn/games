@@ -54,18 +54,7 @@
         position: relative;
     }
 
-    .hero .info h2:after {
-        content: "";
-        position: absolute;
-        display: block;
-        width: 80px;
-        height: 4px;
-        background: #18FFFF;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-    }
+   
 
     @media (max-width: 768px) {
         .hero .info h2 {
@@ -75,7 +64,8 @@
 
     .hero .info p {
         color: rgba(255, 255, 255, 0.8);
-        font-size: 18px;
+        font-size: 28px;
+        margin-bottom: 30px;
     }
 
     .hero .info .btn-get-started {
@@ -89,11 +79,11 @@
         transition: 0.5s;
         margin: 10px;
         color: #fff;
-        border: 2px solid #18FFFF;
+        border: 2px solid #ff3c10;
     }
 
     .hero .info .btn-get-started:hover {
-        background: #00B8D4;
+        background: #ff3c10;
     }
 
     .hero .carousel-control-prev {
@@ -161,12 +151,12 @@
             <div class="carousel-item <?php echo $key === 0 ? 'active' : null; ?>" style="background-image: url(/<?php echo MEDIA_URL . "/images/pages/$hr->banner"; ?>)">
                 <div class="info d-flex align-items-center">
                     <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6 text-center">
-                                <h2 data-aos="fade-down"><?php echo $hr->title; ?></h2>
+                        <div class="row justify-content-left">
+                            <div class="col-lg-12 text-left">
                                 <p data-aos="fade-up">
                                     <?php echo $hr->content; ?>
                                 </p>
+                                <h2 data-aos="fade-down"><?php echo $hr->title; ?></h2>
                                 <a data-aos="fade-up" data-aos-delay="200" href="<?php echo $hr->link; ?>" class="btn-get-started">Get Started</a>
                             </div>
                         </div>
@@ -222,7 +212,7 @@
                 <div class="col-lg-7">
                     <div class="section-header text-center">
                        
-                        <p>TicketCity is a platform dedicated to helping players get better at the video games and esports they love most.</p>
+                       <h1 style="color: #494949">GAMES</h1>
                     </div>
                 </div>
             </div>
@@ -240,14 +230,14 @@
                                         <div class="thumb">
                                             <img style="height: 300px; object-fit:cover;" src="/<?php echo MEDIA_URL . "/images/pages/" . $gm->banner; ?>" class="w-100" alt="icon">
                                         </div>
-                                        <div class="text-area">
-                                            <h5><?php echo $gm->title; ?></h5>
+                                        <div class="text-area justify-content-center align-center">
+                                            <h5 style="color: white;"><?php echo $gm->title; ?></h5>
                                             <p class="my-2"><?php echo changeToAMPM($gm->opens_at); ?> - <?php echo changeToAMPM($gm->closes_at); ?> (<?php echo TIME_ZONE; ?>)</p>
                                             <div class="footer d-flex justify-content-between align-items-center">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="<?php echo USER ? BASEURI . route('gameRegister', ['gameid' => $gm->id]) : BASEURI . route('register'); ?>" style="background-image: linear-gradient(to right, #33001b, #ff0084);  padding: 0 25px; border-radius: 50px;"><?php echo USER ? "Play" : "Register"; ?></a>
+                                                    <a href="<?php echo USER ? BASEURI . route('gameRegister', ['gameid' => $gm->id]) : BASEURI . route('register'); ?>" style=" background-color: #ff3c10; padding: 0 25px; border-radius: 50px;"><?php echo USER ? "Play" : "Register"; ?></a>
                                                 </div>
-                                                <p class="mdr">$ <?php echo $gm->price; ?></p>
+                                                <p class="mdr">$ <?php echo $gm->price; ?> RTGS</p>
                                             </div>
 
                                         </div>
@@ -267,8 +257,8 @@
 <section class="features-second">
     <div class="overlay pt-120">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 justify-content-center align-items-center">
+        <div class="row justify-content-center">
+                    <div class="col-lg-7 text-center">
                     <div class="section-header">
                         
                         <h2 class="title" style="color: #524e4e" >How To Play</h2>
@@ -332,8 +322,8 @@
  <section class="features-second" style="background-color: #d1d4e7; margin-top: 30px; margin-bottom: 30px; ">
         <div class="overlay pt-120">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 justify-content-center">
+            <div class="row justify-content-center">
+                    <div class="col-lg-7 text-center">
                         <div class="section-header">
                             
                             <h2 class="title">Terms and Conditions</h2>
@@ -492,123 +482,16 @@
                 </div>
             </div>
         </div>
-         <!-- Testomonial start -->
-    <section class="testomonial">
-        <div class="overlay pt-120 pb-120">
-            <div class="container wow fadeInUp">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-text text-center">
-                            <h5 class="sub-title" style="color: white;">HEAR WHAT OUR PLAYERS HAVE TO SAY.</h5>
-                            <h2 class="title" style="color: white;">TESTIMONIAL</h2>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="testimonials-carousel">
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="img-area">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                    </div>
-                                    <div class="info-area">
-                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                        <div class="bottom d-flex align-items-center">
-                                            <div class="img-area">
-                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                            </div>
-                                            <p style="color: white;">JAYLON SARIS</p>
-                                            <span style="color: white;">FIFA Gamer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="img-area">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                    </div>
-                                    <div class="info-area">
-                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                        <div class="bottom d-flex align-items-center">
-                                            <div class="img-area">
-                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                            </div>
-                                            <p style="color: white;">JAYLON SARIS</p>
-                                            <span style="color: white;">FIFA Gamer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="img-area">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                    </div>
-                                    <div class="info-area">
-                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                        <div class="bottom d-flex align-items-center">
-                                            <div class="img-area">
-                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                            </div>
-                                            <p style="color: white;">JAYLON SARIS</p>
-                                            <span style="color: white;">FIFA Gamer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="img-area">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                    </div>
-                                    <div class="info-area">
-                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                        <div class="bottom d-flex align-items-center">
-                                            <div class="img-area">
-                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                            </div>
-                                            <p style="color: white;">JAYLON SARIS</p>
-                                            <span style="color: white;">FIFA Gamer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="img-area">
-                                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/testimonials-img.png" alt="image">
-                                    </div>
-                                    <div class="info-area">
-                                        <p class="xlr" style="color: white;">‘’Lorem is awesome! Had a great session with Saksham and got to learn a lot from a single workshop.’’</p>
-                                        <div class="bottom d-flex align-items-center">
-                                            <div class="img-area">
-                                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/check.png" alt="image">
-                                            </div>
-                                            <p style="color: white;">JAYLON SARIS</p>
-                                            <span style="color: white;">FIFA Gamer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+         
     <div class="newsletter">
         <div class="row justify-content-center">
-            <div class="col-lg-6 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px; border-radius: 30px;">
+            <div class="col-lg-6 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px 90px;  border-radius: 30px;">
                 <div class="section-area mb-30 text-center">
-                    <h5 class="sub-title" style="color: white;">Get ready for the next level</h5>
                     <h3 class="title" style="color: white;">Subscribe for updates</h3>
                 </div>
                 <form action="#">
                     <div class="form-group d-flex align-items-center">
-                        <img src="/<?php echo STATIC_URL; ?>/gamesassets/images/ticketcity images/subscribe-icon.png" width="50%"alt="icon">
+                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" width="50%"alt="icon">
                         <input type="text" placeholder="Your email address">
                         <button class="cmn-btn" style="margin-left: 10px;">Subscribe</button>
                     </div>

@@ -1407,7 +1407,7 @@ label {
 .games .single-item {
   padding: 10px;
   border-radius: 10px;
-  background-color: #353b68;
+  background-color: #494949;
   margin-bottom: 30px;
 }
 
@@ -1416,7 +1416,7 @@ label {
 }
 
 .games .single-item .text-area h5 {
-  border-bottom: 1px solid #454d92;
+  border-bottom: 1px solid white;
   margin-bottom: 20px;
   padding-bottom: 20px;
 }
