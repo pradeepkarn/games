@@ -10,3 +10,4 @@ error_log
 /.htaccess
 /payref/*.xml
 /payref/sms/*.json
+/media/images/pages
