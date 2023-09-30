@@ -655,6 +655,17 @@ label {
   
 }
 
+.header-section.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
+  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.916);
+}
+
 
 
 .header-section.header-fixed .nav-item a {
@@ -675,7 +686,7 @@ label {
 }
 
 .header-section .navbar-toggler i {
-  color: black;
+  color: white;
 }
 
 .header-section .navbar {
@@ -6669,7 +6680,7 @@ label {
     line-height: 1;
   }
   .header-section {
-    background-color: #1b1d4d;
+    background-color: rgba(0, 0, 0, 0.752);
   }
   .header-section .navbar-toggler {
     display: inline-block;
