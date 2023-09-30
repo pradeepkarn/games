@@ -427,7 +427,7 @@
                                 <div id="collapseLeftOne" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftOne" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p style="color: white;">PayTo Play is a game that you can play online and get paid, with cool non-cash rewards that .</p>
                                     </div>
                                 </div>
                             </div>
@@ -436,13 +436,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseLeftTwo" aria-expanded="false"
                                         aria-controls="collapseLeftTwo">
-                                        HOW DOES THE PAY2PLAY GAME WORK?
+                                         HOW DOES THE PAYTOPLAY GAME WORK?
                                     </button>
                                 </h6>
                                 <div id="collapseLeftTwo" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftTwo" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p style="color: white;">Register, select your game of choice and pay to play!! </p>
                                     </div>
                                 </div>
                             </div>
@@ -451,13 +451,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseLeftThree" aria-expanded="false"
                                         aria-controls="collapseLeftThree">
-                                        HOW DO I REGISTER? 
+                                         HOW DO I REGISTER?
                                     </button>
                                 </h6>
                                 <div id="collapseLeftThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftThree" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p style="color: white;">To register, you typically need to create an account here on our  landing page. Fill in the required information (your name, email address, and phone number).  Follow the registration process provided to complete your account creation.</p>
                                     </div>
                                 </div>
                             </div>
@@ -472,7 +472,37 @@
                                 <div id="collapseLeftFour" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftFour" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p style="color: white;">To claim your prize, simply respond to the email or SMS sent you and follow the details.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h6 class="accordion-header" id="headingLeftFour" style="color: white;">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLeftFour" aria-expanded="false"
+                                        aria-controls="collapseLeftFour">
+                                       IS THERE A TIME PERIOD IN WHICH TO CLAIM MY PRIZE?
+                                    </button>
+                                </h6>
+                                <div id="collapseLeftFour" class="accordion-collapse collapse"
+                                    aria-labelledby="headingLeftFour" data-bs-parent="#accordionFaqs">
+                                    <div class="accordion-body">
+                                        <p style="color: white;">Your results appear as soon as you finish the game. If you make it into the top 20,your score will be announced in the leaderboard 30 minutes after the game is closed for that day.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h6 class="accordion-header" id="headingLeftFour" style="color: white;">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLeftFour" aria-expanded="false"
+                                        aria-controls="collapseLeftFour">
+                                       ARE THE RESULTS ANNOUNCED LIVE?
+                                    </button>
+                                </h6>
+                                <div id="collapseLeftFour" class="accordion-collapse collapse"
+                                    aria-labelledby="headingLeftFour" data-bs-parent="#accordionFaqs">
+                                    <div class="accordion-body">
+                                        <p style="color: white;">Our influencer will announce the winners 30 minutes after the game is closed and all the winners will be announced on Ticket City social media platforms. Each winner received a personalized email and SMS with details to claim their prize.</p>
                                     </div>
                                 </div>
                             </div>
