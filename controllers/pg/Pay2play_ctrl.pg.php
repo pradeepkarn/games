@@ -1,6 +1,7 @@
 <?php
 
 use Paynow\Payments\Paynow;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Pay2play_ctrl
 {
@@ -53,22 +54,24 @@ class Pay2play_ctrl
             exit;
         }
         $sms = new SMS_ctrl;
-        $mobile = "$pmt->isd_code"."$pmt->mobile";
+        $mobile = "$pmt->isd_code" . "$pmt->mobile";
         $db->tableName = 'payment';
         $pmtarr = $db->pk($paymentid);
-        $co = (object)$db->showOne("select link from customer_order where payment_id = '$pmt->id'");
-        if ($pmtarr['status']=='paid') {
-            $pmtdata = json_decode($pmtarr['paynowjson']??[]);
-            $stsd = $pmtdata->status??null;
+        $co = (object)$db->showOne("select id,link,customer_email from customer_order where payment_id = '$pmt->id'");
+        $emailbody = "Payment confirmed!! TR No. {$pmt->unique_id}.  you have only one chance to use this coupon link, so don't share with anyone: {$co->link} Good luck!";
+        if ($pmtarr['status'] == 'paid') {
+            $pmtdata = json_decode($pmtarr['paynowjson'] ?? []);
+            $stsd = $pmtdata->status ?? null;
             if ($stsd) {
                 $data['msg'] = "Payment status";
-                $data['success'] = $stsd->status=='paid'?true:false;
+                $data['success'] = $stsd->status == 'paid' ? true : false;
                 $data['data'] = $stsd;
+                $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
                 // $sms->send(strval($pmt->id),strval($pmt->unique_id),$co->link??null,["$mobile"]);
                 echo json_encode($data);
                 $parr = null;
                 exit;
-            }else{
+            } else {
                 $data['msg'] = "Something went wrong";
                 $data['success'] = false;
                 $data['data'] = null;
@@ -77,17 +80,17 @@ class Pay2play_ctrl
                 exit;
             }
         }
-        if ($pmtarr['status']=='cancelled') {
-            $pmtdata = json_decode($pmtarr['paynowjson']??[]);
-            $stsd = $pmtdata->status??null;
+        if ($pmtarr['status'] == 'cancelled') {
+            $pmtdata = json_decode($pmtarr['paynowjson'] ?? []);
+            $stsd = $pmtdata->status ?? null;
             if ($stsd) {
                 $data['msg'] = "Payment status";
-                $data['success'] = $stsd->status=='paid'?true:false;
+                $data['success'] = $stsd->status == 'paid' ? true : false;
                 $data['data'] = $stsd;
                 echo json_encode($data);
                 $parr = null;
                 exit;
-            }else{
+            } else {
                 $data['msg'] = "Something went wrong";
                 $data['success'] = false;
                 $data['data'] = null;
@@ -111,7 +114,8 @@ class Pay2play_ctrl
             $data['msg'] = "Status found";
             $data['success'] = true;
             $data['data'] = $parr;
-            $sms->send(strval($pmt->id),strval($pmt->unique_id),$co->link??null,["$mobile"]);
+            $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
+            $sms->send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, ["$mobile"]);
             echo json_encode($data);
             $parr = null;
             exit;
@@ -144,6 +148,21 @@ class Pay2play_ctrl
             fwrite($file, $content);
             // Close the file
             fclose($file);
+        }
+    }
+    function send_email($receiver, $subject = null, $body = null)
+    {
+        try {
+            $mail = php_mailer(new PHPMailer());
+            $mail->setFrom(email, SITE_NAME . "Temporary password");
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+            $mail->addAddress("$receiver", "$receiver");
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            return false;
         }
     }
 }
