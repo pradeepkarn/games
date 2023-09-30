@@ -111,55 +111,54 @@
                     <div class="row">
                         <div class="col-xl-3 col-6">
                             <div class="footer-box">
-                                <h5>Company</h5>
+                                <h5 style="color: white;">Company</h5>
                                 <ul class="footer-link">
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="how-works.html">How It Works</a></li>
-                                    <li><a href="careers.html">Careers</a></li>
-                                    <li><a href="about-us.html">Customer Reviews</a></li>
+                                    <li><a style="color: white;" href="#">About Us</a></li>
+                                    <li><a style="color: white;" href="#">How2Play</a></li>
+                                    <li><a style="color: white;" href="#">Careers</a></li>
+                                    
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xl-3 col-6">
                             <div class="footer-box">
-                                <h5>COACHES</h5>
+                                <h5 style="color: white;">COMPANY</h5>
                                 <ul class="footer-link">
-                                    <li><a href="become-coach.html">Become a Coach</a></li>
-                                    <li><a href="coaches-grid-list.html">Our Coaches</a></li>
-                                    <li><a href="coaches-details.html">Coach Demo</a></li>
-                                    <li><a href="coaching-grid-list.html">Our Coaching</a></li>
+                                    <li><a style="color: white;" href="#">About us</a></li>
+                                    <li><a style="color: white;" href="#">How2Play</a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xl-3 col-6">
                             <div class="footer-box">
-                                <h5>SUPPORT</h5>
+                                <h5 style="color: white;">SUPPORT</h5>
                                 <ul class="footer-link">
-                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="terms-conditions.html">Terms of Use</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="terms-conditions.html">Security</a></li>
+                                    <li><a style="color: white;" href="#">Privacy Policy</a></li>
+                                    <li><a style="color: white;" href="#">Terms n Condition</a></li>
+                                    <li><a style="color: white;" href="#">Privacy Policy</a></li>
+                                    <li><a style="color: white;" href="#">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xl-3 col-6">
                             <div class="social">
-                                <h5>FOLLOW US</h5>
+                                <h5 style="color: white;">FOLLOW US</h5>
                                 <ul class="footer-link">
                                     <li><a href="javascript:void(0)">
-                                            <span><i class="fab fa-facebook-f"></i></span>
+                                            <span style="background-color: white;"><i class="fab fa-facebook-f"></i></span>
                                             facebook
                                         </a></li>
                                     <li><a href="javascript:void(0)">
-                                            <span><i class="fab fa-twitter"></i></span>
+                                            <span style="background-color: white;"><i class="fab fa-twitter"></i></span>
                                             twitter
                                         </a></li>
                                     <li><a href="javascript:void(0)">
-                                            <span><i class="fab fa-twitch"></i></span>
+                                            <span style="background-color: white;"><i class="fab fa-twitch"></i></span>
                                             twitch
                                         </a></li>
-                                    <li><a href="javascript:void(0)">
-                                            <span><i class="fab fa-youtube"></i></span>
+                                    <li><a  href="javascript:void(0)">
+                                            <span style="background-color: white;"><i  class="fab fa-youtube"></i></span>
                                             youtube
                                         </a></li>
                                 </ul>
@@ -171,7 +170,7 @@
                     <div class="row justify-content-between align-items-center">
                         <div class="col-lg-6 d-flex justify-content-center justify-content-lg-start order-lg-0 order-1">
                             <div class="copyright text-center">
-                                <p>Copyright © 2023 Webartvision | Designed by <a href="https://Webartvision.com">WEB ART VISION.</a></p>
+                                <p style="color: white;">All rights reserved. Copyright 2023 The Ticket City. </p>
                             </div>
                         </div>
 
