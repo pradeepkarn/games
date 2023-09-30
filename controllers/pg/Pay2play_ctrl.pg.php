@@ -154,7 +154,7 @@ class Pay2play_ctrl
     {
         try {
             $mail = php_mailer(new PHPMailer());
-            $mail->setFrom(email, SITE_NAME . "Temporary password");
+            $mail->setFrom(email, SITE_NAME . "SECRET LINK");
             $mail->isHTML(true);
             $mail->Subject = $subject;
             $mail->Body = $body;
