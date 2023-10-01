@@ -130,7 +130,7 @@ class Pay2play_ctrl
             $db->insertData['paynowjson'] = $json;
             $db->insertData['status'] = $status->status() ?? 'NA';
             $db->update();
-            $data['msg'] = "Payment not done";
+            $data['msg'] = "Your game link will be sent to your email shortly";
             $data['success'] = true;
             $data['data'] = $parr;
             echo json_encode($data);
