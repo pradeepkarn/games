@@ -257,11 +257,13 @@ class Game_ctrl
                 $csv = Reader::createFromPath($csvFilePath, 'r');
                 $csv->setHeaderOffset(0); // Assumes the first row contains headers
                 $db = new Dbobjects;
-                $db->tableName = 'content';
+                
                 $total = iterator_count($csv->getRecords());
                 foreach ($csv->getRecords() as $key => $record) {
                     set_time_limit(60);
                     $rc = obj($record);
+                    $exists = $db->showOne("select link from content where content_group='game' and link='{$rc->url}'");
+                    $db->tableName = 'content';
                     $db->insertData['title'] = $rc->url_title;
                     $db->insertData['content'] = $rc->details;
                     $db->insertData['price'] = $rc->price;
@@ -273,7 +275,9 @@ class Game_ctrl
                     $db->insertData['closes_at'] = $rc->closes_at;
                     $db->insertData['created_by'] = USER['id'];
                     try {
-                        $db->create();
+                        if (!$exists) {
+                            $db->create();
+                        }
                     } catch (PDOException $th) {
                         // throw $th;
                     };
