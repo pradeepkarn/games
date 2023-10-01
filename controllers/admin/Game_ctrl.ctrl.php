@@ -207,6 +207,7 @@ class Game_ctrl
 
         $rules = [
             'csvfile' => 'required|file',
+            'game_id' => 'required|numeric',
         ];
 
         $pass = validateData(data: $data, rules: $rules);
@@ -235,7 +236,7 @@ class Game_ctrl
                     $db->insertData['content'] = $rc->details;
                     $db->insertData['price'] = $rc->price;
                     $db->insertData['link'] = $rc->url;
-                    $db->insertData['parent_id'] = $rc->game_id;
+                    $db->insertData['parent_id'] = $req->game_id;
                     $db->insertData['content_group'] = 'game';
                     $db->insertData['slug'] = generate_slug(uniqid($rc->url_title));
                     $db->insertData['opens_at'] = $rc->opens_at;

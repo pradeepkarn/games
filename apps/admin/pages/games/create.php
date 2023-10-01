@@ -14,12 +14,27 @@ $catlist = $context->cat_list;
                     <input type="file" accept=".csv" name="csvfile" class="form-control">
                 </div>
                 <div class="col">
+                    <select name="game_id" class="form-select">
+                        <option value="">--Select game--</option>
+                        <?php foreach ($catlist as  $cv) {
+                            $cv = obj($cv);
+                        ?>
+                            <option value="<?php echo $cv->id; ?>"><?php echo $cv->title; ?></option>
+                        <?php } ?>
+                        <?php ?>
+                    </select>
+                </div>
+                <div class="col">
                     <button id="uploadcsvbtn" class="btn btn-primary">Import</button>
+                </div>
+                <div class="col">
+                    <h5 id="upload-info">Pleaase wait while uploading ...</h5>
                 </div>
                 <div class="col">
                     <a href="<?php echo BASEURI; ?>/data/csv/games.csv" download>Download Sample CSV</a>
                 </div>
                 <?php 
+                ajaxActive("#upload-info");
                 pkAjax_form("#uploadcsvbtn","#uploadcsvform","#resupload");
                 ?>
             </div>

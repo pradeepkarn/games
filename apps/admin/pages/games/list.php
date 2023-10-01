@@ -145,7 +145,7 @@ $active = $context->is_active;
                     </table>
                     <!-- End Table with stripped rows -->
                     <!-- Pagination -->
-                    <nav aria-label="Page navigation example">
+                    <!-- <nav aria-label="Page navigation example">
                         <ul class="pagination">
 
                             <?php
@@ -167,9 +167,75 @@ $active = $context->is_active;
 
 
                         </ul>
-                    </nav>
+                    </nav> -->
 
                     <!-- Pagination -->
+
+
+
+
+                    <div class="custom-pagination">
+                        <?php
+                        $pg = isset($_GET['page']) ? $_GET['page'] : 1;
+                        $tu = $tp; // Total pages
+                        $current_page = $cp; // Assuming first page is the current page
+                        if ($active == true) {
+                            $link =  route('gameList');
+                        } else {
+                            $link =  route('gameTrashList');
+                        }
+                        // Calculate start and end page numbers to display
+                        $start_page = max(1, $current_page - 2);
+                        $end_page = min($start_page + 4, $tu);
+
+                        // Show first page button if not on the first page
+                        if ($current_page > 1) {
+                            echo '<a class="first-button" href="/' . home . $link . '?page=1">&laquo;</a>';
+                        }
+
+                        // Show ellipsis if there are more pages before the start page
+                        if ($start_page > 1) {
+                            echo '<span>...</span>';
+                        }
+
+                        // Display page links within the range
+                        for ($i = $start_page; $i <= $end_page; $i++) {
+                            $active_class = ($pg == $i) ? "active" : null;
+                            echo '<a class="' . $active_class . '" href="/' . home . $link . '?page=' . $i . '">' . $i . '</a>';
+                        }
+
+                        // Show ellipsis if there are more pages after the end page
+                        if ($end_page < $tu) {
+                            echo '<span>...</span>';
+                        }
+
+                        // Show last page button if not on the last page
+                        if ($current_page < $tu) {
+                            echo '<a class="last-button" href="/' . home . $link . '?page=' . $tu . '">&raquo;</a>';
+                        }
+                        ?>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
 
             </div>
