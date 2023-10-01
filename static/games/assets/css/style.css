@@ -549,11 +549,7 @@ label {
   align-items: center;
 }
 
-.cmn-btn:hover {
-  background: transparent;
-  border: 1px solid #ff3c10;
-  color: white;
-}
+
 
 .cmn-btn:hover i {
   color: var(--bs-white);

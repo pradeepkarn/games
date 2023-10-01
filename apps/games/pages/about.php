@@ -38,11 +38,18 @@
                     </div>
                     <div class="col-lg-6 wow fadeInright">
                         <div class="section-text">
-                            <h5 class="sub-title">Elite Esports and Game Coaching</h5>
-                            <h2 class="title">An Ultimate gaming coaching Platform</h2>
-                            <p>Lorem is a platform for gamers who want to improve their gaming skills by playing with professional gamers.</p>
+                           
+                            <h2 class="title">About Us</h2>
+                            <p>Welcome to Pay To Play powered by Ticket City, the leading provider of advanced coupon and platform features in Africa. Get ready for an unmatched gaming experience with our state-of-the-art features.</p>
                             <br>
-                            <p>New gamers, say you want to improve your gaming skills, then search for gaming coaches who teach gaming tips and tricks while playing with you online.</p>
+                            <p>At Pay To Play, we blend cutting-edge technology with our expertise in coupons and platforms to deliver an exceptional gaming adventure. Our game offers thrilling entertainment and the chance to win incredible rewards.</p> <br>
+                            <p>As Africa's best, we've invested heavily in developing the most advanced features available. Our skilled team ensures every aspect, from gameplay mechanics to prize distribution, meets the highest standards.</p> <br>
+                            <p>Experience a seamless and user-friendly interface, making gameplay effortless. Our platform incorporates innovative and interactive elements to keep you engaged and entertained.</p> <br>
+                            <p>We prioritize fair play and maintain a secure gaming environment through robust security measures. Your privacy and data security are our utmost concerns, guaranteeing your information remains protected.</p> <br>
+                            <p>Pay To Play welcomes players of all levels, providing an inclusive and exciting experience. Whether you're an experienced gamer or new to online gaming, dive into our wide range of games and compete with players across Africa.</p> <br>
+                            <p>Join Pay To Play and embark on an unforgettable gaming journey. Explore our games, showcase your skills, and seize the opportunity to win amazing prizes. Experience the ultimate gaming adventure with Ticket City, Africa's finest.</p>
+
+
                         </div>
                         <div class="btn-area">
                             <a href="javascript:void(0)" class="cmn-btn">Learn more</a>
@@ -54,70 +61,7 @@
     </section>
     <!-- About Us end -->
 
-    <!-- How it works start -->
-    <section class="how-works">
-        <div class="overlay pt-120 pb-120">
-            <div class="container wow fadeInUp">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="section-header text-center">
-                            <h5 class="sub-title">Gaming Masterclasses & Coaching</h5>
-                            <h2 class="title">How Lorem works</h2>
-                            <p>A professional trainer will help you make better decisions, know what to watch out for, and level up quickly.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row cus-mar">
-                    <div class="col-md-4">
-                        <div class="single-item text-center">
-                            <div class="thumb">
-                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/how-works-icon-1.png" alt="icon">
-                                <span class="xlr">01</span>
-                            </div>
-                            <div class="text-area">
-                                <h5>Choose Your Game</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="single-item mid text-center">
-                            <div class="thumb">
-                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/how-works-icon-2.png" alt="icon">
-                                <span class="xlr">02</span>
-                            </div>
-                            <div class="text-area">
-                                <h5>Find Your Coach</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="single-item text-center">
-                            <div class="thumb">
-                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/how-works-icon-3.png" alt="icon">
-                                <span class="xlr">03</span>
-                            </div>
-                            <div class="text-area">
-                                <h5>Become a pro</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row pt-120 justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="magnific-area position-relative d-flex align-items-center justify-content-around">
-                            <div class="bg-area">
-                                <img class="bg-item" src="/<?php echo STATIC_URL; ?>/games/assets/images/how-works-popup.png" alt="image">
-                            </div>
-                            <a class="mfp-iframe popupvideo position-absolute" href="https://www.youtube.com/watch?v=Djz8Nc0Qxwk">
-                                <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/popup-icon.png" alt="icon">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- How it works end -->
+    
 
     <!-- FAQs In start -->
     <section class="faqs-section">
@@ -126,9 +70,8 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-7">
                         <div class="section-header text-center">
-                            <h5 class="sub-title">Frequently Asked Questions</h5>
-                            <h2 class="title">If you got questions we have answer</h2>
-                            <p>We have a list of frequently asked questions about us</p>
+                            <h2 class="title">FAQs </h2>
+                            <p>If you got questions we have answer</p>
                         </div>
                     </div>
                 </div>
@@ -140,13 +83,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseLeftOne" aria-expanded="false"
                                         aria-controls="collapseLeftOne">
-                                        WHAT IS Lorem?
+                                        What is PayToPlay?
                                     </button>
                                 </h6>
                                 <div id="collapseLeftOne" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftOne" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p>PayTo Play is a game that you can play online and get paid, with cool non-cash rewards that.</p>
                                     </div>
                                 </div>
                             </div>
@@ -155,13 +98,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseLeftTwo" aria-expanded="false"
                                         aria-controls="collapseLeftTwo">
-                                        I'VE MADE ORDER. WHAT NOW?
+                                        How does the PayTo Play Game work?
                                     </button>
                                 </h6>
                                 <div id="collapseLeftTwo" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftTwo" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p>Register, select your game of choice and pay to play!! </p>
                                     </div>
                                 </div>
                             </div>
@@ -170,13 +113,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseLeftThree" aria-expanded="false"
                                         aria-controls="collapseLeftThree">
-                                        CAN I GET A DISCOUNT ON THIS PRICE?
+                                        How do I register?
                                     </button>
                                 </h6>
                                 <div id="collapseLeftThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftThree" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p> To register, you typically need to create an account here on our  landing page. Fill in the required information (your name, email address, and phone number).  Follow the registration process provided to complete your account creation.</p>
                                     </div>
                                 </div>
                             </div>
@@ -185,13 +128,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseLeftFour" aria-expanded="false"
                                         aria-controls="collapseLeftFour">
-                                        HOW CAN I KNOW YOU ARE LEGIT?
+                                        How do I claim my prize?
                                     </button>
                                 </h6>
                                 <div id="collapseLeftFour" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftFour" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p>To claim your prize, simply respond to the email or SMS sent you and follow the details.</p>
                                     </div>
                                 </div>
                             </div>
@@ -200,13 +143,28 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseLeftFive" aria-expanded="false"
                                         aria-controls="collapseLeftFive">
-                                        WHY GET A COACH FROM Lorem?
+                                        Is there a time period in which to claim my prize?
                                     </button>
                                 </h6>
                                 <div id="collapseLeftFive" class="accordion-collapse collapse"
                                     aria-labelledby="headingLeftFive" data-bs-parent="#accordionFaqs">
                                     <div class="accordion-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nibh ut odio tempus malesuada ac bibendum diam. In sollicitudin, dui a rutrum semper, lectus dui ultrices nisl, vitae facilisis arcu sem in ligula.</p>
+                                        <p>Your results appear as soon as you finish the game. If you make it into the top 20,your score will be announced in the leaderboard 30 minutes after the game is closed for that day</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h6 class="accordion-header" id="headingLeftFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLeftFive" aria-expanded="false"
+                                        aria-controls="collapseLeftFive">
+                                        Are the results announced live?
+                                    </button>
+                                </h6>
+                                <div id="collapseLeftFive" class="accordion-collapse collapse"
+                                    aria-labelledby="headingLeftFive" data-bs-parent="#accordionFaqs">
+                                    <div class="accordion-body">
+                                        <p>Our influencer will announce the winners 30 minutes after the game is closed and all the winners will be announced on Ticket City social media platforms. Each winner received a personalized email and SMS with details to claim their prize.   </p>
                                     </div>
                                 </div>
                             </div>

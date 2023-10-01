@@ -521,7 +521,23 @@
             </div>
         </div>
     </div>
+     <style>
+        /* Media query for mobile devices with a maximum width of 767px */
+@media (max-width: 767px) {
+    .form-group img {
+        width: 50px; /* Set image width to 100% of its container on smaller screens */
+        margin-right: 20px; /* Remove negative margin on smaller screens */
+        
+    }
 
+    .form-group input[type="text"] {
+        width: 100%; /* Set input width to 100% of its container on smaller screens */
+    }
+    .cmn-btn{
+
+    }
+}
+     </style>
     <div class="newsletter">
         <div class="row justify-content-center">
             <div class="col-lg-7 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px 90px;  border-radius: 30px;">
@@ -531,10 +547,10 @@
 
                 <form action="#">
                     <div class="form-group d-flex align-items-center">
-
-                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" alt="icon">
+                    
+                        <img style="margin-left: -50px; width: 20%;" src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" alt="icon">
                         <input type="text" placeholder="Your email address">
-                        <button class="cmn-btn" style="background-color: white;">Subscribe</button>
+                        <button class="cmn-btn"  style="background-color: white; ">Subscribe</button>
                     </div>
                 </form>
             </div>
