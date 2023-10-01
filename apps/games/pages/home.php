@@ -515,15 +515,17 @@
          
     <div class="newsletter">
         <div class="row justify-content-center">
-            <div class="col-lg-6 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px 90px;  border-radius: 30px;">
+            <div class="col-lg-7 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px 90px;  border-radius: 30px;">
                 <div class="section-area mb-30 text-center">
                     <h3 class="title" style="color: white;">Subscribe for updates</h3>
                 </div>
+                
                 <form action="#">
                     <div class="form-group d-flex align-items-center">
-                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" width="50%"alt="icon">
+
+                    <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" alt="icon">
                         <input type="text" placeholder="Your email address">
-                        <button class="cmn-btn" style="margin-left: 10px;">Subscribe</button>
+                        <button class="cmn-btn" style="background-color: white;">Subscribe</button>
                     </div>
                 </form>
             </div>

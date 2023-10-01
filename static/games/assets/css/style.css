@@ -129,7 +129,7 @@ textarea {
   width: 100%;
   font-family: var(--body-font);
   border: 1px solid #eeecf7;
-  border-radius: 10px;
+  
 }
 
 ::placeholder {
@@ -540,10 +540,9 @@ label {
   font-weight: 600;
   text-align: center;
   background: none;
-  color: white;
+  color: orangered;
   transition: 0.3s;
   text-transform: uppercase;
-  border-radius: 10px;
   border: 1px solid transparent;
   display: inline-flex;
   justify-content: center;
