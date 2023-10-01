@@ -58,7 +58,7 @@ class Game_home_ctrl extends  Main_ctrl
         foreach ($cats as $key => $ct) {
             $ct = obj($ct);
             // $sql = "SELECT * FROM `content` WHERE content_group='game' and parent_id='$ct->id' AND '$now' BETWEEN `opens_at` AND `closes_at` and is_active=1 and is_sold=0 order by id $ord limit $limit;";
-            $sql = "SELECT * FROM `content` WHERE content_group='game' and parent_id='$ct->id' and is_active=1 and is_sold=0 order by id $ord limit $limit;";
+            $sql = "SELECT * FROM `content` WHERE content_group='game' and parent_id='$ct->id' and is_active=1 and is_sold=0 order by RAND() limit $limit;";
             $game = $cntobj->showOne($sql);
             if ($game) {
                 // Assuming $gm->opens_at, $gm->closes_at, and $now contain opening, closing, and current times respectively
