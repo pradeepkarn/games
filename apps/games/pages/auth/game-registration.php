@@ -68,7 +68,7 @@
                                  <input type="hidden" name="gameid" value="<?php echo $game->id; ?>">
                                  <input type="hidden" name="price" value="<?php echo $game->price; ?>">
                                  <button id="reg-btn" type="button" class="cmn-btn mt-40 w-100">
-                                     $<?php echo $game->price; ?>/- Buy Now
+                                     $<?php echo $game->price; ?> RTGS/- Buy Now
                                  </button>
                                  <div id="res" class="text-white"></div>
                              </form>

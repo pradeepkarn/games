@@ -114,9 +114,7 @@
                                 <h5 style="color: white;">Company</h5>
                                 <ul class="footer-link">
                                     <li><a style="color: white;" href="#">About Us</a></li>
-                                    <li><a style="color: white;" href="#">How2Play</a></li>
-                                    <li><a style="color: white;" href="#">Careers</a></li>
-                                    
+                                    <li><a style="color: white;" href="#">How2Play</a></li>  
                                 </ul>
                             </div>
                         </div>
@@ -124,9 +122,7 @@
                             <div class="footer-box">
                                 <h5 style="color: white;">COMPANY</h5>
                                 <ul class="footer-link">
-                                    <li><a style="color: white;" href="#">About us</a></li>
-                                    <li><a style="color: white;" href="#">How2Play</a></li>
-                                   
+                                    <li><a style="color: white;" href="#">About us</a></li> 
                                 </ul>
                             </div>
                         </div>
@@ -136,7 +132,6 @@
                                 <ul class="footer-link">
                                     <li><a style="color: white;" href="#">Privacy Policy</a></li>
                                     <li><a style="color: white;" href="#">Terms n Condition</a></li>
-                                    <li><a style="color: white;" href="#">Privacy Policy</a></li>
                                     <li><a style="color: white;" href="#">Contact Us</a></li>
                                 </ul>
                             </div>
