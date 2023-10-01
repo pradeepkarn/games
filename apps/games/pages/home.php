@@ -330,6 +330,7 @@
         z-index: -1;
       }
     }
+    
                 </style>
                 <div class="col-lg-5 mobile-hidden" style="position: absolute; margin-left: 50%; ">
                         <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/player.jpg"  alt="">
