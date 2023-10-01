@@ -701,7 +701,7 @@ label {
 
 .header-section .navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover,
 .header-section .navbar .navbar-collapse .navbar-nav .nav-item .dropdown-item:hover {
-  color: var(--primary-color);
+  color: #ff3c10;
   transition: 0.3s;
 }
 
@@ -4157,9 +4157,9 @@ label {
 .coaching-details-second .ui-datepicker .ui-state-active, .coaching-details-second .ui-datepicker .ui-widget-content .ui-state-active,
 .coaching-details-second .ui-datepicker .ui-widget-header .ui-state-active, .coaching-details-second .ui-datepicker a.ui-button:active,
 .coaching-details-second .ui-datepicker .ui-button:active, .coaching-details-second .ui-datepicker .ui-button.ui-state-active:hover {
-  color: var(--para-color);
+  color: #ff3c10;
   border-radius: 50%;
-  background-color: #0ecdb9;
+  background-color: #ff3c10;
 }
 
 .coaching-details-second .ui-datepicker .ui-datepicker-prev {
