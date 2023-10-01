@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
 
-    <link rel="shortcut icon" href="/<?php echo STATIC_URL; ?>/games/assets/images/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/<?php echo STATIC_URL; ?>/games/assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/games/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/games/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/games/assets/css/jquery-ui.css">
