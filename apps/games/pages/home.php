@@ -205,7 +205,26 @@
 
 <!-- Games start -->
 <section class="games carousel">
+<style>
+    .single-slide.closed .thumb img {
+    filter: blur(5px); /* Apply a blur effect */
+}
 
+.single-slide.closed .text-area::before {
+    content: ''; /* Create a pseudo-element for the disabled ribbon */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1;
+    content: 'Inactive'; /* Text content for the ribbon */
+}
+
+</style>
     <div class="overlay pt-120 pb-120">
         <div class="container wow fadeInUp">
             <div class="row justify-content-center">
@@ -223,8 +242,11 @@
                         $games = $context->data->game_list;
                         foreach ($games as $key => $gm) {
                             $gm = obj($gm);
+                            $isGameClosed = $gm->is_closed;
+                            $gameregurl = $isGameClosed?"#":BASEURI.route('gameRegister', ['gameid' => $gm->id]);
+                            $gameText = $isGameClosed?"Inactive":"Play";
                         ?>
-                            <div class="single-slide">
+                            <div class="single-slide <?php echo $isGameClosed ? 'closed' : ''; ?>">
                                 <div class="single">
                                     <div class="single-item">
                                         <div class="thumb">
@@ -235,7 +257,7 @@
                                             <p class="my-2"><?php echo changeToAMPM($gm->opens_at); ?> - <?php echo changeToAMPM($gm->closes_at); ?> (<?php echo TIME_ZONE; ?>)</p>
                                             <div class="footer d-flex justify-content-between align-items-center">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="<?php echo USER ? BASEURI . route('gameRegister', ['gameid' => $gm->id]) : BASEURI . route('register'); ?>" style=" background-color: #ff3c10; padding: 0 25px; border-radius: 50px;"><?php echo USER ? "Play" : "Register"; ?></a>
+                                                    <a href="<?php echo USER ? $gameregurl : BASEURI . route('register'); ?>" style=" background-color: #ff3c10; padding: 0 25px; border-radius: 50px;"><?php echo USER ? "$gameText" : "Register"; ?></a>
                                                 </div>
                                                 <p class="mdr">$ <?php echo $gm->price; ?> RTGS</p>
                                             </div>
@@ -515,17 +537,15 @@
          
     <div class="newsletter">
         <div class="row justify-content-center">
-            <div class="col-lg-7 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px 90px;  border-radius: 30px;">
+            <div class="col-lg-6 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px 90px;  border-radius: 30px;">
                 <div class="section-area mb-30 text-center">
                     <h3 class="title" style="color: white;">Subscribe for updates</h3>
                 </div>
-                
                 <form action="#">
                     <div class="form-group d-flex align-items-center">
-
-                    <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" alt="icon">
+                        <img src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" width="50%"alt="icon">
                         <input type="text" placeholder="Your email address">
-                        <button class="cmn-btn" style="background-color: white;">Subscribe</button>
+                        <button class="cmn-btn" style="margin-left: 10px;">Subscribe</button>
                     </div>
                 </form>
             </div>

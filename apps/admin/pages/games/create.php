@@ -85,12 +85,12 @@ $catlist = $context->cat_list;
                         <?php } ?>
                         <?php ?>
                     </select>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col">
                             <label for="">Game URL</label>
                             <input type="text" class="form-control my-2" name="link">
                         </div>
-                    </div>
+                    </div> -->
                     <h4>Price</h4>
                     <input type="number" scope="any" name="price" class="form-control my-3" placeholder="Price">
                     <h4>Live timing:</h4>
