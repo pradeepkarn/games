@@ -87,7 +87,7 @@
                                 <?php if (!USER) : ?>
                                     <a href="<?php echo BASEURI . route('userLogin'); ?>" class="login">Login</a>
                                     <a href="<?php echo BASEURI . route('register'); ?>" class="cmn-btn">Sign Up
-                                        <i class="icon-d-right-arrow-2"></i>
+                                        
                                     </a>
                                 <?php else: ?>
                                     <a href="<?php echo BASEURI . route('logout'); ?>" class="login">Logout</a>

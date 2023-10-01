@@ -434,7 +434,7 @@ label {
   right: 30px;
   width: 45px;
   height: 45px;
-  background-color: var(--primary-color);
+  background-color: #ff3c10;
   border-radius: 5px;
   color: #fff;
   line-height: 45px;
@@ -539,8 +539,8 @@ label {
   padding: 10px 30px;
   font-weight: 600;
   text-align: center;
-  background: var(--secondary-color);
-  color: var(--para-color);
+  background: none;
+  color: white;
   transition: 0.3s;
   text-transform: uppercase;
   border-radius: 10px;
@@ -552,8 +552,8 @@ label {
 
 .cmn-btn:hover {
   background: transparent;
-  border: 1px solid var(--secondary-color);
-  color: var(--bs-white);
+  border: 1px solid #ff3c10;
+  color: white;
 }
 
 .cmn-btn:hover i {
@@ -1938,7 +1938,7 @@ label {
   right: 25px;
   width: 40px;
   height: 40px;
-  background: #0ecdb9;
+  background: #ff3c10;
   border-radius: 10px;
 }
 

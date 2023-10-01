@@ -401,7 +401,7 @@
 
 
 <!-- FAQs In start -->
-<section class="faqs-section index-3" style="background-image: url(https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80); margin-top: -30px;" >
+<section class="faqs-section index-3" style="background-image: url(/<?php echo STATIC_URL; ?>/games/assets/images/wallpaperflare.com_wallpaper.jpg); margin-top: -30px;" >
         <div class="overlay pt-120 pb-120">
             <div class="container" style="margin-top: 30px;">
                 <div class="row d-flex justify-content-center">
