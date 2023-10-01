@@ -14,4 +14,5 @@ $admin_game_routes =[
 '/admin/game/edit/{id}/save-by-ajax' => 'Game_ctrl@update@name.gameUpdateAjax',
 '/admin/game/toggle-marked-page' => 'Game_ctrl@toggle_trending@name.gameToggleMarked',
 '/admin/game/upload-csv-games-ajax' => 'Game_ctrl@upload_bulk_game@name.uploadGameViaCsvAjax',
+'/admin/game/delete-bulk-games-ajax' => 'Game_ctrl@delete_bulk_game@name.gameDeleteBulkAJax',
 ];

@@ -198,6 +198,36 @@ class Game_ctrl
             }
         }
     }
+    function delete_bulk_game() {
+        $action = $_POST['action']??null;
+        $ids = $_POST['selected_ids']??null;
+        if ($action!=null && $action=="delete_selected_items" && $ids!=null) {
+            $num = count($ids);
+            if($num==0){
+                echo js_alert('Object not seleted');
+                exit;
+            };
+            $idsString = implode(',', $ids);
+            $db = new Dbobjects;
+            $pdo = $db->conn;
+            $pdo->beginTransaction();
+            $sql = "DELETE FROM content WHERE id IN ($idsString) and content_group='game'";
+            try {
+                $db->show($sql);
+                $pdo->commit();
+                echo js_alert("$num Selected item deleted");
+                echo RELOAD;
+                return true;
+            } catch (PDOException $pd) {
+                $pdo->rollBack();
+                echo js_alert('Database quer error');
+                return false;
+            }
+        }else{
+            echo js_alert('Action not or items not selected');
+            exit;
+        }
+    }
     function upload_bulk_game($req = null)
     {
         $req = obj($req);
