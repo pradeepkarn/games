@@ -92,7 +92,7 @@ class SMS_ctrl
 
     curl_close($curl);
 
-    echo $response;
+    // echo $response;
   }
   function test()
   {
