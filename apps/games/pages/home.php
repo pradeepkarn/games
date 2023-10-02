@@ -69,6 +69,7 @@
     }
 
     .hero .info .btn-get-started {
+        position: relative;
         font-family: Poppins, sans-serif;
         font-weight: 500;
         font-size: 16px;
@@ -81,6 +82,7 @@
         color: #fff;
         border: 2px solid #ff3c10;
         z-index: +9999999999;
+        margin-left: 60px;
     }
 
     .hero .info .btn-get-started:hover {
