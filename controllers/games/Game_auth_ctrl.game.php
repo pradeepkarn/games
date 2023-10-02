@@ -128,8 +128,8 @@ class Game_auth_ctrl extends Main_ctrl
             'email' => 'required|email',
             'username' => 'required|string|min:4|max:12',
             // 'otp' => 'required|integer|min:4|max:6',
-            'password' => 'required|string|min:6|max:20',
-            'confirm_password' => 'required|string|min:6|max:16',
+            'password' => 'required|string|min:6',
+            'confirm_password' => 'required|string|min:6',
             'terms_and_conditions_and_privacy_policy' => 'required',
         ];
         $pass = validateData(data: $_POST, rules: $rules);
@@ -145,8 +145,8 @@ class Game_auth_ctrl extends Main_ctrl
                 echo js_alert(msg_ssn(return: true));
                 exit;
             }
-            if ($data->username != generate_clean_username($data->username)) {
-                $_SESSION['msg'][] = 'Invalid character in username';
+            if (strtolower($data->username) != generate_clean_username($data->username)) {
+                $_SESSION['msg'][] = 'Only alphanumeric is allowed in lower characters';
                 echo js_alert(msg_ssn(return: true));
                 exit;
             }
