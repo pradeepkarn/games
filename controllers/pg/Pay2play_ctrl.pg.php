@@ -130,6 +130,24 @@ class Pay2play_ctrl
             $json = json_encode($pd);
             $db->insertData['paynowjson'] = $json;
             $db->insertData['status'] = $status->status() ?? 'NA';
+            if (!isset($_SESSION['message_sent'])) {
+                switch (strtolower($db->insertData['status'])) {
+                    case 'paid':
+                        $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                        $_SESSION['message_sent'] = true;
+                        break;
+                    case 'awaiting delivery':
+                        $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                        $_SESSION['message_sent'] = true;
+                        break;
+                    case 'delivered':
+                        $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                        $_SESSION['message_sent'] = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
             $db->update();
             $data['msg'] = "Your game link will be sent to your email shortly";
             $data['success'] = true;
