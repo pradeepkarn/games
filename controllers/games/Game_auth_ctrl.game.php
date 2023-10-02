@@ -128,13 +128,23 @@ class Game_auth_ctrl extends Main_ctrl
             'email' => 'required|email',
             'username' => 'required|string|min:4|max:12',
             // 'otp' => 'required|integer|min:4|max:6',
-            'password' => 'required|string|min:6',
-            'confirm_password' => 'required|string|min:6',
+            // 'password' => 'required|string|min:6',
+            // 'confirm_password' => 'required|string|min:6',
             'terms_and_conditions_and_privacy_policy' => 'required',
         ];
         $pass = validateData(data: $_POST, rules: $rules);
         if ($pass) {
             $data = obj($data);
+            if (!isset($data->password) || !isset($data->confirm_password)) {
+                $_SESSION['msg'][] = 'Password and confirm password are required';
+                echo js_alert(msg_ssn(return: true));
+                exit;
+            }
+            if (empty($data->password) || empty($data->confirm_password)) {
+                $_SESSION['msg'][] = 'Password and confirm password must not be empty';
+                echo js_alert(msg_ssn(return: true));
+                exit;
+            }
             if ($data->password != $data->confirm_password) {
                 $_SESSION['msg'][] = 'Password and confirm password must be same';
                 msg_ssn();
@@ -150,6 +160,7 @@ class Game_auth_ctrl extends Main_ctrl
                 echo js_alert(msg_ssn(return: true));
                 exit;
             }
+            
             $username = generate_clean_username($data->username);
             $obj = new stdClass;
             $obj->col = 'email';

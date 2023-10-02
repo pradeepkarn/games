@@ -157,8 +157,7 @@
                                     <?php echo $hr->content; ?>
                                 </p>
                                 <h2 data-aos="fade-down"><?php echo $hr->title; ?></h2>
-                                <a data-aos="fade-up" data-aos-delay="200" href="<?php echo USER?$hr->link:BASEURI.route('register'); ?>" class="btn-get-started">
-                            </a>
+                                <a data-aos="fade-up" data-aos-delay="200" href="<?php echo USER?$hr->link:BASEURI.route('register'); ?>" class="btn-get-started"><?php echo USER?"Get Started":"Sign Up"; ?></a>
                             </div>
                         </div>
                     </div>
@@ -534,9 +533,9 @@
     .form-group input[type="text"] {
         width: 100%; /* Set input width to 100% of its container on smaller screens */
     }
-    .cmn-btn{
+    /* .cmn-btn{
 
-    }
+    } */
 }
      </style>
     <div class="newsletter">
