@@ -23,7 +23,7 @@ class SMS_ctrl
         'headers' => [
           'accept' => 'application/json',
           'content-type' => 'application/json',
-          'Authorization' => 'Basic ' . $base64Credentials 
+          'Authorization' => 'Basic ' . $base64Credentials
         ],
       ]);
 
@@ -44,8 +44,8 @@ class SMS_ctrl
       // echo 'Error: ' . $e->getMessage();
     }
   }
- 
-  function clicksms_send( string $pmtid, string $trn, string $link, string $to = "263780995266")
+
+  function clicksms_send(string $pmtid, string $trn, string $link, string $to = "263780995266")
   {
 
     $curl = curl_init();
@@ -56,41 +56,45 @@ class SMS_ctrl
       "message" => "Payment confirmed!! TR No. $trn.  you have only one chance to use this coupon link, so don't share with anyone: $link Good luck!",
       "refId" => "INV{$pmtid}"
     );
-    curl_setopt_array($curl, array(
+    try {
+      curl_setopt_array($curl, array(
 
-      CURLOPT_URL => 'https://clicksmsgateway.com',
+        CURLOPT_URL => 'https://clicksmsgateway.com',
 
-      CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_RETURNTRANSFER => true,
 
-      CURLOPT_ENCODING => '',
+        CURLOPT_ENCODING => '',
 
-      CURLOPT_MAXREDIRS => 10,
+        CURLOPT_MAXREDIRS => 10,
 
-      CURLOPT_TIMEOUT => 0,
+        CURLOPT_TIMEOUT => 0,
 
-      CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_FOLLOWLOCATION => true,
 
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 
-      CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_CUSTOMREQUEST => 'POST',
 
-      CURLOPT_POSTFIELDS => json_encode($postdata),
+        CURLOPT_POSTFIELDS => json_encode($postdata),
 
-      CURLOPT_HTTPHEADER => array(
+        CURLOPT_HTTPHEADER => array(
 
-        'Accept: application/json',
+          'Accept: application/json',
 
-        'Content-Type: application/json',
+          'Content-Type: application/json',
 
-        'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0OTYiLCJvaWQiOjQ5NiwidWlkIjoiYjUzNDEwODYtNmMzNy00NjQ5LWJjNzYtZDFkOTdiOWZlNWQ4IiwiYXBpZCI6Mjc3LCJpYXQiOjE2OTYyMzk0OTQsImV4cCI6MjAzNjIzOTQ5NH0.tLyDYskyHR2_ZhXkCR9WEQKGidSN_lqMYy8YNqLJnPJYG7qtmecEPWmeA7BLhAZ2ijcfF-hqPjnfykoVymab1A'
+          'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0OTYiLCJvaWQiOjQ5NiwidWlkIjoiYjUzNDEwODYtNmMzNy00NjQ5LWJjNzYtZDFkOTdiOWZlNWQ4IiwiYXBpZCI6Mjc3LCJpYXQiOjE2OTYyMzk0OTQsImV4cCI6MjAzNjIzOTQ5NH0.tLyDYskyHR2_ZhXkCR9WEQKGidSN_lqMYy8YNqLJnPJYG7qtmecEPWmeA7BLhAZ2ijcfF-hqPjnfykoVymab1A'
 
-      ),
+        ),
 
-    ));
+      ));
+      $response = curl_exec($curl);
+      curl_close($curl);
+      return true;
+    } catch (Exception $e) {
+      return false;
+    }
 
-    $response = curl_exec($curl);
-
-    curl_close($curl);
 
     // echo $response;
   }

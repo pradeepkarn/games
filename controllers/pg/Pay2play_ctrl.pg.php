@@ -116,7 +116,7 @@ class Pay2play_ctrl
             $data['data'] = $parr;
             $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
             // $sms->send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, ["$mobile"]);
-            $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+            $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
             echo json_encode($data);
             $parr = null;
             exit;
@@ -133,16 +133,13 @@ class Pay2play_ctrl
             if (!isset($_SESSION['message_sent'])) {
                 switch (strtolower($db->insertData['status'])) {
                     case 'paid':
-                        $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
-                        $_SESSION['message_sent'] = true;
+                        $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
                         break;
                     case 'awaiting delivery':
-                        $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
-                        $_SESSION['message_sent'] = true;
+                        $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
                         break;
                     case 'delivered':
-                        $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
-                        $_SESSION['message_sent'] = true;
+                        $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
                         break;
                     default:
                         break;
