@@ -146,7 +146,7 @@ class Game_auth_ctrl extends Main_ctrl
                 exit;
             }
             if (strtolower($data->username) != generate_clean_username($data->username)) {
-                $_SESSION['msg'][] = 'Only alphanumeric is allowed in lower characters';
+                $_SESSION['msg'][] = 'Only alpha-numeric is allowed in lower characters';
                 echo js_alert(msg_ssn(return: true));
                 exit;
             }

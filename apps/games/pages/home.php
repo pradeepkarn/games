@@ -157,7 +157,8 @@
                                     <?php echo $hr->content; ?>
                                 </p>
                                 <h2 data-aos="fade-down"><?php echo $hr->title; ?></h2>
-                                <a data-aos="fade-up" data-aos-delay="200" href="<?php echo $hr->link; ?>" class="btn-get-started">Get Started</a>
+                                <a data-aos="fade-up" data-aos-delay="200" href="<?php echo USER?$hr->link:BASEURI.route('register'); ?>" class="btn-get-started">
+                            </a>
                             </div>
                         </div>
                     </div>
