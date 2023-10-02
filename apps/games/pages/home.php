@@ -84,6 +84,7 @@
 
     .hero .info .btn-get-started:hover {
         background: #ff3c10;
+        z-index: +100;
     }
 
     .hero .carousel-control-prev {
