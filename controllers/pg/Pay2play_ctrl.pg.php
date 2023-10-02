@@ -115,7 +115,8 @@ class Pay2play_ctrl
             $data['success'] = true;
             $data['data'] = $parr;
             $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
-            $sms->send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, ["$mobile"]);
+            // $sms->send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, ["$mobile"]);
+            $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
             echo json_encode($data);
             $parr = null;
             exit;
