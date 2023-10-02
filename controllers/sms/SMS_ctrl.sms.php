@@ -23,7 +23,7 @@ class SMS_ctrl
         'headers' => [
           'accept' => 'application/json',
           'content-type' => 'application/json',
-          'Authorization' => 'Basic ' . $base64Credentials // Basic Auth header
+          'Authorization' => 'Basic ' . $base64Credentials 
         ],
       ]);
 
