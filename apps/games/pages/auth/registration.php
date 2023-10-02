@@ -20,10 +20,10 @@
                                              <div class="input-box">
                                                  <input type="text" id="email" name="email" class="email" placeholder="Enter Your Email">
                                              </div>
-                                             <button type="button" id="send-otp-btn" class="btn btn-sm btn-primary my-2">Send me OTP</button>
+                                             <!-- <button type="button" id="send-otp-btn" class="btn btn-sm btn-primary my-2">Send me OTP</button>
                                              <div class="input-box">
                                                  <input type="text" id="otp" name="otp" class="otp" placeholder="Enter the OTP you just received on above email">
-                                             </div>
+                                             </div> -->
                                          </div>
                                          <div class="single-input">
                                              <label for="name">User Name</label>

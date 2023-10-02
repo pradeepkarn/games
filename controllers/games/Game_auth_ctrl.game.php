@@ -127,7 +127,7 @@ class Game_auth_ctrl extends Main_ctrl
         $rules = [
             'email' => 'required|email',
             'username' => 'required|string|min:4|max:12',
-            'otp' => 'required|integer|min:4|max:6',
+            // 'otp' => 'required|integer|min:4|max:6',
             'password' => 'required|string|min:6|max:20',
             'confirm_password' => 'required|string|min:6|max:16',
             'terms_and_conditions_and_privacy_policy' => 'required',
@@ -168,17 +168,17 @@ class Game_auth_ctrl extends Main_ctrl
                 msg_ssn();
                 exit;
             }
-            if (!isset($_SESSION['registration_otp'])) {
-                $_SESSION['msg'][] = 'Otp not created yet';
-                msg_ssn();
-                exit;
-            }
-            if ($_SESSION['registration_otp'] != $data->otp) {
-                $_SESSION['msg'][] = 'Invalid otp, please try again';
-                msg_ssn();
-                exit;
-            }
-            // $username = generate_username_by_email($data->email);
+            // if (!isset($_SESSION['registration_otp'])) {
+            //     $_SESSION['msg'][] = 'Otp not created yet';
+            //     msg_ssn();
+            //     exit;
+            // }
+            // if ($_SESSION['registration_otp'] != $data->otp) {
+            //     $_SESSION['msg'][] = 'Invalid otp, please try again';
+            //     msg_ssn();
+            //     exit;
+            // }
+            $username = generate_username_by_email($data->email);
             $password = md5($data->password);
             $role = 'subscriber';
 
