@@ -249,7 +249,7 @@ class Game_auth_ctrl extends Main_ctrl
                 exit;
             }
             $game = obj($game);
-            $cat = $db->showOne("select price where content_group='product_category' and content.id = '$game->parent_id'");
+            $cat = $db->showOne("select id,price where content_group='product_category' and content.id = '$game->parent_id'");
             if (!$cat) {
                 $_SESSION['msg'][] = 'Game price available';
                 msg_ssn("msg");
