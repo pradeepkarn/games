@@ -244,7 +244,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="games-carousel">
-                        <?php
+                        
+                            <div class="single-slide <?php echo $isGameClosed ? 'closed' : ''; ?>">
+                                <div class="single">
+                                    <div class="single-item">
+                                    <?php
                         $games = $context->data->game_list;
                         foreach ($games as $key => $gm) {
                             $gm = obj($gm);
@@ -252,9 +256,6 @@
                             $gameregurl = $isGameClosed ? "#" : BASEURI . route('gameRegister', ['gameid' => $gm->link_id]);
                             $gameText = $isGameClosed ? "Inactive" : "Play";
                         ?>
-                            <div class="single-slide <?php echo $isGameClosed ? 'closed' : ''; ?>">
-                                <div class="single">
-                                    <div class="single-item">
                                         <div class="thumb">
                                             <img style="height: 300px; object-fit:cover;" src="/<?php echo MEDIA_URL . "/images/pages/" . $gm->banner; ?>" class="w-100" alt="icon">
                                         </div>
