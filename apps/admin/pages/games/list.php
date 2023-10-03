@@ -25,8 +25,8 @@ $active = $context->is_active;
                         <div class="col my-3">
                             <h5 class="card-title">All games</h5>
                             <nav class="nav">
-                                <a class="nav-link <?php echo $active ? "btn btn-sm btn-primary text-white" : ""; ?>" href="/<?php echo home . route('gameList'); ?>">Active List</a>
-                                <a class="nav-link <?php echo $active ? "" : "btn btn-sm btn-danger text-white"; ?>" href="/<?php echo home . route('gameTrashList'); ?>">Trash List</a>
+                                <a class="nav-link <?php echo $active ? "btn btn-sm btn-primary text-white" : ""; ?>" href="/<?php echo home . route('gameListByGame',['game_id'=>$context->req->game_id]); ?>">Active List</a>
+                                <a class="nav-link <?php echo $active ? "" : "btn btn-sm btn-danger text-white"; ?>" href="/<?php echo home . route('gameTrashListByGame',['game_id'=>$context->req->game_id]); ?>">Trash List</a>
                             </nav>
 
                         </div>
@@ -183,29 +183,7 @@ $active = $context->is_active;
                     </table>
                     <!-- End Table with stripped rows -->
                     <!-- Pagination -->
-                    <!-- <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-
-                            <?php
-                            $tp = $tp;
-                            $current_page = $cp; // Assuming first page is the current page
-                            if ($active == true) {
-                                $link =  route('gameList');
-                            } else {
-                                $link =  route('gameTrashList');
-                            }
-                            // Show first two pages
-                            for ($i = 1; $i <= $tp; $i++) {
-                            ?>
-                                <li class="page-item"><a class="page-link" href="/<?php echo home . $link . "?page=$i"; ?>"><?php echo $i; ?></a></li>
-                            <?php
-                            } ?>
-
-
-
-
-                        </ul>
-                    </nav> -->
+                   
 
                     <!-- Pagination -->
 
@@ -218,9 +196,9 @@ $active = $context->is_active;
                         $tu = $tp; // Total pages
                         $current_page = $cp; // Assuming first page is the current page
                         if ($active == true) {
-                            $link =  route('gameList');
+                            $link =  route('gameListByGame',['game_id'=>$context->req->game_id]);
                         } else {
-                            $link =  route('gameTrashList');
+                            $link =  route('gameTrashListByGame',['game_id'=>$context->req->game_id]);
                         }
                         // Calculate start and end page numbers to display
                         $start_page = max(1, $current_page - 2);

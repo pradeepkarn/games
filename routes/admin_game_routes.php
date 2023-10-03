@@ -7,6 +7,7 @@ $admin_game_routes =[
 '/admin/game/list' => 'Game_ctrl@list@name.gameList',
 '/admin/game/list/{game_id}' => 'Game_ctrl@list@name.gameListByGame',
 '/admin/game/trash-list' => 'Game_ctrl@trash_list@name.gameTrashList',
+'/admin/game/trash-list/{game_id}' => 'Game_ctrl@trash_list@name.gameTrashListByGame',
 '/admin/game/edit/{id}' => 'Game_ctrl@edit@name.gameEdit',
 '/admin/game/delete-more-img-ajax' => 'Game_ctrl@delete_more_img@name.gameDeleteMoreImgAjax',
 '/admin/game/trash/{id}' => 'Game_ctrl@move_to_trash@name.gameTrash',

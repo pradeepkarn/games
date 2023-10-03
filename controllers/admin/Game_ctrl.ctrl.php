@@ -31,7 +31,7 @@ class Game_ctrl
             $current_page = (abs($req->page) - 1) * $data_limit;
             $page_limit = "$current_page,$data_limit";
         }
-        $total_page = $this->game_list(ord: "DESC", limit: 10000, active: 1);
+        $total_page = $this->game_list(ord: "DESC", limit: 10000, active: 1, game_id:$game_id);
         $tp = count($total_page);
         if ($tp %  $data_limit == 0) {
             $tp = $tp / $data_limit;
@@ -59,7 +59,7 @@ class Game_ctrl
     public function trash_list($req = null)
     {
         $req = obj($req);
-
+        $game_id = $req->game_id??null;
         $current_page = 0;
         $data_limit = DB_ROW_LIMIT;
         $page_limit = "0,$data_limit";
@@ -69,7 +69,7 @@ class Game_ctrl
             $current_page = (abs($req->page) - 1) * $data_limit;
             $page_limit = "$current_page,$data_limit";
         }
-        $total_page = $this->game_list(ord: "DESC", limit: 10000, active: 0);
+        $total_page = $this->game_list(ord: "DESC", limit: 10000, active: 0,game_id:$game_id);
         $tp = count($total_page);
         if ($tp %  $data_limit == 0) {
             $tp = $tp / $data_limit;
@@ -77,9 +77,9 @@ class Game_ctrl
             $tp = floor($tp / $data_limit) + 1;
         }
         if (isset($req->search)) {
-            $game_list = $this->game_search_list($keyword = $req->search, $ord = "DESC", $limit = $page_limit, $active = 0);
+            $game_list = $this->game_search_list($keyword = $req->search, $ord = "DESC", $limit = $page_limit, $active = 0, $game_id=$game_id);
         } else {
-            $game_list = $this->game_list(ord: "DESC", limit: $page_limit, active: 0);
+            $game_list = $this->game_list(ord: "DESC", limit: $page_limit, active: 0, game_id:$game_id);
         }
         $context = (object) array(
             'page' => 'games/list.php',
