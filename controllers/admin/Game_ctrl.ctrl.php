@@ -279,7 +279,7 @@ class Game_ctrl
                             $db->create();
                         }
                     } catch (PDOException $th) {
-                        // throw $th;
+                        throw $th;
                     };
                     echo server_progress($key,$total)."<br>";
                 }
