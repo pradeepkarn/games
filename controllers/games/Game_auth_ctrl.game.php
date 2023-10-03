@@ -241,13 +241,22 @@ class Game_auth_ctrl extends Main_ctrl
             $db = new Dbobjects;
             $pdo = $db->dbpdo();
             $pdo->beginTransaction();
-            $game = $db->showOne("select id,is_sold,price,qty,link from content where is_sold = 0 and content_group='game' and content.id = $data->gameid");
+            $game = $db->showOne("select id,is_sold,price,qty,link,parent_id from content where is_sold = 0 and content_group='game' and content.id = $data->gameid");
+            
             if (!$game) {
                 $_SESSION['msg'][] = 'Game not available';
                 msg_ssn("msg");
                 exit;
             }
             $game = obj($game);
+            $cat = $db->showOne("select price content_group='product_category' and content.parent_id = '$game->parent_id'");
+            if (!$cat) {
+                $_SESSION['msg'][] = 'Game price available';
+                msg_ssn("msg");
+                exit;
+            }
+            $cat = obj($cat);
+            $game->price = $cat->price;
             $db->tableName = 'payment';
             $db->insertData = array(
                 'user_id' => $data->gameid,
@@ -256,7 +265,7 @@ class Game_auth_ctrl extends Main_ctrl
                 'mobile' => $data->mobile,
                 'first_name' => $data->first_name,
                 'last_name' => $data->last_name,
-                'amount' => $game->price,
+                'amount' => $cat->price,
                 'status' => $status,
                 'payment_method' => 'paynow',
                 'user_id' => USER['id'],
@@ -269,7 +278,7 @@ class Game_auth_ctrl extends Main_ctrl
                     'item_id' => $data->gameid,
                     'payment_id' => $paymentid,
                     'qty' => 1,
-                    'price' => $game->price,
+                    'price' => $cat->price,
                     'status' => 'confirmed',
                     'customer_email' => $data->email,
                     'user_id' => USER['id'],
@@ -288,12 +297,12 @@ class Game_auth_ctrl extends Main_ctrl
                 $_SESSION['cp'] = array(
                     'user_id'=>USER['id'],
                     'payment_id'=>$paymentid,
-                    'amount'=>floatval($game->price),
+                    'amount'=>floatval($cat->price),
                 );
                 // $email="virgil@dealcity.co.ke";
                 // $mobile="0772222222";
                 $mobileglobalwith0 = strval("0".$data->isd_code.$data->mobile);
-                $paycheck = $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
+                $paycheck = $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($cat->price),$mobile=$mobileglobalwith0,$email=$data->email);
                 if ($paycheck==true) {
                     $link = BASEURI.route("checkStatusPage",['pid'=>$paymentid]);
                     echo "<a class='btn btn-warning text-dark' href='$link'>Check Status</a>";
@@ -722,11 +731,18 @@ class Game_auth_ctrl extends Main_ctrl
     {
         $req = obj($req);
         $db = new Dbobjects;
-        $game = $db->showOne("select id,title,content,banner,price,is_sold,imgs from content where content_group='game' and content.id='$req->gameid'");
+        $game = $db->showOne("select id,parent_id,title,content,banner,price,is_sold,imgs from content where content_group='game' and content.id='$req->gameid'");
         if (!is_numeric($req->gameid) || !$game) {
             header('location:' . BASEURI);
             return;
         }
+        $cat = $db->showOne("select price content_group='product_category' and content.parent_id = {$game['parent_id']}");
+        if (!$cat) {
+            header('location:' . BASEURI);
+            return;
+        }
+        $cat = obj($cat);
+        $game['price'] = $cat->price;
         $context = (object) array(
             'page' => 'auth/game-registration.php',
             'data' => (object) array(
