@@ -46,6 +46,11 @@
             })
         }
     </script>
+    <style>
+      .hide{
+        display: none !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -301,7 +306,7 @@
         </li><!-- End Dashboard Nav -->
 
         <!-- Post components -->
-        <li class="nav-item">
+        <li class="nav-item hide">
           <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Posts</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
@@ -329,7 +334,7 @@
           </ul>
         </li>
         <!-- Page components -->
-        <li class="nav-item">
+        <li class="nav-item hide">
           <a class="nav-link collapsed" data-bs-target="#components-pages" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
@@ -388,16 +393,16 @@
               </a>
             </li>
             <hr>
-            <li>
+            <!-- <li>
               <a href="/<?php echo home . route('gameCreate'); ?>">
                 <i class="bi bi-circle"></i><span>Add Games URL</span>
               </a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <a href="/<?php echo home . route('gameList'); ?>">
                 <i class="bi bi-circle"></i><span>All Games URL</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </li>
         <!-- End Components  -->

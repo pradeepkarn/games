@@ -249,7 +249,7 @@
                         foreach ($games as $key => $gm) {
                             $gm = obj($gm);
                             $isGameClosed = $gm->is_closed;
-                            $gameregurl = $isGameClosed ? "#" : BASEURI . route('gameRegister', ['gameid' => $gm->id]);
+                            $gameregurl = $isGameClosed ? "#" : BASEURI . route('gameRegister', ['gameid' => $gm->link_id]);
                             $gameText = $isGameClosed ? "Inactive" : "Play";
                         ?>
                             <div class="single-slide <?php echo $isGameClosed ? 'closed' : ''; ?>">

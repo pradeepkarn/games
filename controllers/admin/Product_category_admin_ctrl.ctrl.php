@@ -1,4 +1,7 @@
 <?php
+
+use League\Csv\Reader;
+
 class Product_category_admin_ctrl
 {
      // Cretae page
@@ -102,6 +105,61 @@ class Product_category_admin_ctrl
          );
          $this->render_main($context);
      }
+     function upload_bulk_game_with_cat(object $db, array $data = [])
+    {
+        $data['csvfile'] = $_FILES['csvfile'] ?? null;
+        if ($data['csvfile']==null) {
+            return false;
+        }
+        $rules = [
+            'csvfile' => 'required|file',
+            'game_id' => 'required|numeric',
+        ];
+
+        $pass = validateData(data: $data, rules: $rules);
+        if (!$pass) {
+            echo js_alert(msg_ssn("msg", true));
+            exit;
+        }
+        $req = obj($data);
+        if ($req->csvfile['name'] != "" && $req->csvfile['error'] == 0) {
+            $ext = pathinfo($req->csvfile['name'], PATHINFO_EXTENSION);
+            if ($ext != 'csv') {
+                msg_set('Invalid file format, please provide .csv');
+                echo js_alert(msg_ssn("msg", true));
+                exit;
+            } else {
+                $csvFilePath = $req->csvfile['tmp_name'];
+                $csv = Reader::createFromPath($csvFilePath, 'r');
+                $csv->setHeaderOffset(0); // Assumes the first row contains headers
+                $total = iterator_count($csv->getRecords());
+                foreach ($csv->getRecords() as $key => $record) {
+                    set_time_limit(60);
+                    $rc = obj($record);
+                    $exists = $db->showOne("select link from content where content_group='game' and link='{$rc->url}'");
+                    $db->tableName = 'content';
+                    $db->insertData['title'] = $req->title;
+                    // $db->insertData['content'] = $req->details;
+                    // $db->insertData['price'] = $rc->price;
+                    $db->insertData['link'] = $rc->url;
+                    $db->insertData['parent_id'] = $req->game_id;
+                    $db->insertData['content_group'] = 'game';
+                    $db->insertData['slug'] = generate_slug(uniqid($req->title));
+                    // $db->insertData['opens_at'] = $rc->opens_at;
+                    // $db->insertData['closes_at'] = $rc->closes_at;
+                    $db->insertData['created_by'] = USER['id'];
+                    try {
+                        if (!$exists) {
+                            $db->create();
+                        }
+                    } catch (PDOException $th) {
+                        throw $th;
+                    };
+                    echo server_progress($key,$total)."<br>";
+                }
+            }
+        }
+    }
      // Save by ajax call
      public function save($req = null)
      {
@@ -112,7 +170,10 @@ class Product_category_admin_ctrl
          $rules = [
              'title' => 'required|string',
              'content' => 'required|string',
-             'banner' => 'required|file'
+             'banner' => 'required|file',
+             'price' => 'required|numeric',
+             'opens_at' => 'required|datetime',
+             'closes_at' => 'required|datetime',
          ];
          $pass = validateData(data: $data, rules: $rules);
          if (!$pass) {
@@ -125,6 +186,9 @@ class Product_category_admin_ctrl
              $arr['content_group'] = "product_category";
              $arr['title'] = $request->title;
              $arr['slug'] = generate_slug($request->title);
+             $arr['price'] = generate_slug($request->price);
+             $arr['opens_at'] = $request->opens_at;
+             $arr['closes_at'] = $request->closes_at;
              $arr['content'] = $request->content;
              $postid = (new Model('content'))->store($arr);
              if (intval($postid)) {
@@ -134,6 +198,13 @@ class Product_category_admin_ctrl
                  $upload = move_uploaded_file($request->banner['tmp_name'], $dir);
                  if ($upload) {
                      (new Model('content'))->update($postid, array('banner' => $imgname));
+                 }
+                 if (isset($_FILES['csvfile']) && $_FILES['csvfile']['error']==UPLOAD_ERR_OK) {
+                    $db = new Dbobjects;
+                    $this->upload_bulk_game_with_cat($db,[
+                       'game_id' => $postid,
+                       'title' => $request->title
+                    ]);
                  }
                  echo js_alert('Content created');
                  echo go_to(route('productCatList'));
@@ -161,7 +232,10 @@ class Product_category_admin_ctrl
          $rules = [
              'id' => 'required|integer',
              'title' => 'required|string',
-             'content' => 'required|string'
+             'content' => 'required|string',
+             'price' => 'required|numeric',
+             'opens_at' => 'required|datetime',
+             'closes_at' => 'required|datetime',
          ];
          $pass = validateData(data: $data, rules: $rules);
          if (!$pass) {
@@ -175,6 +249,9 @@ class Product_category_admin_ctrl
              $arr['title'] = $request->title;
              $arr['slug'] = generate_slug($request->title);
              $arr['content'] = $request->content;
+             $arr['price'] = generate_slug($request->price);
+             $arr['opens_at'] = $request->opens_at;
+             $arr['closes_at'] = $request->closes_at;
              if ($request->banner['name'] != "" && $request->banner['error'] == 0) {
                  $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);
                  $imgname = str_replace(" ","_",getUrlSafeString($request->title)).uniqid("_") . "." . $ext;

@@ -46,25 +46,25 @@ if ($pd->json_obj != "") {
                     <h5 class="card-title">Edit game</h5>
                 </div>
                 <div class="col text-end my-3">
-                    <a class="btn btn-dark" href="/<?php echo home . route('gameList'); ?>">Back</a>
+                    <a class="btn btn-dark" href="/<?php echo home . route('gameListByGame',['game_id'=>$pd->parent_id]); ?>">Back</a>
                 </div>
             </div>
             <div id="res"></div>
             <div class="row">
                 <div class="col-md-8">
-                    <h4>Title</h4>
+                    <!-- <h4>Title</h4>
                     <input type="text" name="title" value="<?php echo $pd->title; ?>" class="form-control my-3" placeholder="Title">
                     <h6>Slug</h6>
-                    <input type="text" name="slug" value="<?php echo $pd->slug; ?>" class="form-control my-3" placeholder="slug">
+                    <input type="text" name="slug" value="<?php echo $pd->slug; ?>" class="form-control my-3" placeholder="slug"> -->
 
 
-                    <textarea class="tinymce-editor" name="content" id="mce_0" aria-hidden="true"><?php echo $pd->content; ?></textarea>
+                    <!-- <textarea class="tinymce-editor" name="content" id="mce_0" aria-hidden="true"><?php echo $pd->content; ?></textarea>
                     <h4>Tags</h4>
                     <textarea class="form-control" name="meta_tags" aria-hidden="true"><?php echo $meta_tags; ?></textarea>
                     <h4>Meta description</h4>
-                    <textarea class="form-control" name="meta_description" aria-hidden="true"><?php echo $meta_desc; ?></textarea>
+                    <textarea class="form-control" name="meta_description" aria-hidden="true"><?php echo $meta_desc; ?></textarea> -->
 
-                    <section id="add-review">
+                    <!-- <section id="add-review">
                         <label for="">Name</label>
                         <input type="text" name="name_of_user" class="form-control review-data-send">
                         <label for="">Rating Point</label>
@@ -122,11 +122,11 @@ if ($pd->json_obj != "") {
 
 
                         </table>
-                    </section>
+                    </section> -->
 
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <!-- <h4>Banner</h4>
                     <input accept="image/*" id="image-input" type="file" name="banner" class="form-control my-3">
                     <img style="width:100%; max-height:300px; object-fit:contain;" id="banner" src="/<?php //echo MEDIA_URL; ?>/images/pages/<?php //echo $pd->banner; ?>" alt="<?php //echo $pd->banner; ?>">
@@ -147,9 +147,9 @@ if ($pd->json_obj != "") {
                             <hr>
                         <?php } */ ?>
                     </div> -->
-                    <h4>Category</h4>
+                    <h4>Games</h4>
                     <select name="parent_id" class="form-select my-3">
-                        <option <?php echo $pd->parent_id == 0 ? "selected" : null; ?> value="0">Uncategorised</option>
+                        <option <?php echo $pd->parent_id == 0 ? "selected" : null; ?> value="0">--select game--</option>
                         <?php foreach ($catlist as  $cv) {
                             $cv = obj($cv);
                         ?>
@@ -157,13 +157,13 @@ if ($pd->json_obj != "") {
                         <?php } ?>
                         <?php ?>
                     </select>
-                    <h4>Live timing:</h4>
+                    <!-- <h4>Live timing:</h4>
                     <label for="fromTime">Opens at</label>
-                    <input type="time" class="form-control" name="opens_at" value="<?php echo $pd->opens_at??null; ?>" id="fromTime">
+                    <input type="datetime-local" class="form-control" name="opens_at" value="<?php echo $pd->opens_at??null; ?>" id="fromTime">
                     <label for="toTime">Closes at</label>
-                    <input type="time" class="form-control" name="closes_at" value="<?php echo $pd->closes_at??null; ?>" id="toTime">
-                    <h4>Price/Unit</h4>
-                    <input type="number" scope="any" name="price" value="<?php echo $pd->price; ?>" class="form-control my-3" placeholder="Price">
+                    <input type="datetime-local" class="form-control" name="closes_at" value="<?php echo $pd->closes_at??null; ?>" id="toTime"> -->
+                    <!-- <h4>Price/Unit</h4>
+                    <input type="number" scope="any" name="price" value="<?php echo $pd->price; ?>" class="form-control my-3" placeholder="Price"> -->
 
                     <h4>Game Link</h4>
                     <input type="text" name="link" value="<?php echo $pd->link; ?>" class="form-control my-3" placeholder="Game link">

@@ -1,4 +1,5 @@
 <?php
+
 use League\Csv\Reader;
 
 class Game_ctrl
@@ -19,7 +20,8 @@ class Game_ctrl
     public function list($req = null)
     {
         $req = obj($req);
-
+        $game_id = $req->game_id??null;
+        // myprint($req);
         $current_page = 0;
         $data_limit = DB_ROW_LIMIT;
         $page_limit = "0,$data_limit";
@@ -37,9 +39,9 @@ class Game_ctrl
             $tp = floor($tp / $data_limit) + 1;
         }
         if (isset($req->search)) {
-            $game_list = $this->game_search_list($keyword = $req->search, $ord = "DESC", $limit = $page_limit, $active = 1);
+            $game_list = $this->game_search_list($keyword = $req->search, $ord = "DESC", $limit = $page_limit, $active = 1, $game_id = $game_id);
         } else {
-            $game_list = $this->game_list(ord: "DESC", limit: $page_limit, active: 1);
+            $game_list = $this->game_list(ord: "DESC", limit: $page_limit, active: 1,game_id:$game_id);
         }
         $context = (object) array(
             'page' => 'games/list.php',
@@ -119,18 +121,18 @@ class Game_ctrl
         $request = null;
         $data = null;
         $data = $_POST;
-        $data['banner'] = $_FILES['banner']??null;
+        // $data['banner'] = $_FILES['banner']??null;
 
         $rules = [
-            'title' => 'required|string',
-            'slug' => 'required|string',
-            'content' => 'required|string',
+            // 'title' => 'required|string',
+            // 'slug' => 'required|string',
+            // 'content' => 'required|string',
             // 'banner' => 'required|file',
             'parent_id' => 'required|integer',
-            'price' => 'required|numeric',
+            // 'price' => 'required|numeric',
             'link' => 'required|string',
-            'opens_at' => 'required|time',
-            'closes_at' => 'required|time',
+            // 'opens_at' => 'required|time',
+            // 'closes_at' => 'required|time',
         ];
 
         $pass = validateData(data: $data, rules: $rules);
@@ -146,64 +148,63 @@ class Game_ctrl
         if (isset($request->meta_description)) {
             $json_arr['meta']['description'] = $request->meta_description;
         }
-        if (isset($request->title)) {
-            $arr = null;
-            $arr['json_obj'] = json_encode($json_arr);
-            $arr['content_group'] = "game";
-            $arr['title'] = $request->title;
-            $arr['slug'] = generate_slug(trim($request->slug));
-            $arr['price'] = $request->price;
-            $arr['content'] = $request->content;
-            $arr['parent_id'] = $request->parent_id;
-            $arr['created_at'] = date('Y-m-d H:i:s');
-            $arr['link'] = $request->link;
-            $arr['opens_at'] = $request->opens_at;
-            $arr['closes_at'] = $request->closes_at;
+        $arr = null;
+        $arr['json_obj'] = json_encode($json_arr);
+        $arr['content_group'] = "game";
+        $arr['title'] = "gameurl";
+        $arr['slug'] = generate_slug(uniqid('slug'));
+        // $arr['price'] = $request->price;
+        // $arr['content'] = $request->content;
+        $arr['parent_id'] = $request->parent_id;
+        // $arr['created_at'] = date('Y-m-d H:i:s');
+        $arr['link'] = $request->link;
+        // $arr['opens_at'] = $request->opens_at;
+        // $arr['closes_at'] = $request->closes_at;
 
-            $moreimg = [];
-            if (isset($_FILES['moreimgs'])) {
-                $fl = $_FILES['moreimgs'];
-                for ($i = 0; $i < count($fl['name']); $i++) {
-                    if ($fl['name'][$i] != '' && $fl['error'][$i] === UPLOAD_ERR_OK) {
-                        $ext = pathinfo($fl['name'][$i], PATHINFO_EXTENSION);
-                        $imgstr = getUrlSafeString($fl['name'][$i]);
-                        $moreimgname = str_replace(" ", "_", $imgstr) . uniqid("_moreimg_") . "." . $ext;
-                        $dir = MEDIA_ROOT . "images/pages/" . $moreimgname;
-                        $upload = move_uploaded_file($fl['tmp_name'][$i], $dir);
-                        if ($upload) {
-                            $moreimg[] = $moreimgname;
-                        }
-                    }
-                }
-                $arr['imgs'] = json_encode($moreimg);
+        $moreimg = [];
+        // if (isset($_FILES['moreimgs'])) {
+        //     $fl = $_FILES['moreimgs'];
+        //     for ($i = 0; $i < count($fl['name']); $i++) {
+        //         if ($fl['name'][$i] != '' && $fl['error'][$i] === UPLOAD_ERR_OK) {
+        //             $ext = pathinfo($fl['name'][$i], PATHINFO_EXTENSION);
+        //             $imgstr = getUrlSafeString($fl['name'][$i]);
+        //             $moreimgname = str_replace(" ", "_", $imgstr) . uniqid("_moreimg_") . "." . $ext;
+        //             $dir = MEDIA_ROOT . "images/pages/" . $moreimgname;
+        //             $upload = move_uploaded_file($fl['tmp_name'][$i], $dir);
+        //             if ($upload) {
+        //                 $moreimg[] = $moreimgname;
+        //             }
+        //         }
+        //     }
+        //     $arr['imgs'] = json_encode($moreimg);
+        // }
+        $postid = (new Model('content'))->store($arr);
+        if (intval($postid)) {
+            $upload = false;
+            if (isset($request->banner)) {
+                $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);
+                $imgstr = getUrlSafeString($request->title);
+                $imgname = str_replace(" ", "_", $imgstr) . uniqid("_") . "." . $ext;
+                $dir = MEDIA_ROOT . "images/pages/" . $imgname;
+                $upload = move_uploaded_file($request->banner['tmp_name'], $dir);
             }
-            $postid = (new Model('content'))->store($arr);
-            if (intval($postid)) {
-                $upload = false;
-                if (isset($request->banner)) {
-                    $ext = pathinfo($request->banner['name'], PATHINFO_EXTENSION);
-                    $imgstr = getUrlSafeString($request->title);
-                    $imgname = str_replace(" ", "_", $imgstr) . uniqid("_") . "." . $ext;
-                    $dir = MEDIA_ROOT . "images/pages/" . $imgname;
-                    $upload = move_uploaded_file($request->banner['tmp_name'], $dir);
-                }
-                if ($upload) {
-                    (new Model('content'))->update($postid, array('banner' => $imgname));
-                }
-                echo js_alert('game created');
-                echo go_to(route('gameList'));
-            } else {
-                echo js_alert('game not created');
-                return false;
+            if ($upload) {
+                (new Model('content'))->update($postid, array('banner' => $imgname));
             }
+            echo js_alert('game created');
+            echo go_to(route('gameList'));
+        } else {
+            echo js_alert('game not created');
+            return false;
         }
     }
-    function delete_bulk_game() {
-        $action = $_POST['action']??null;
-        $ids = $_POST['selected_ids']??null;
-        if ($action!=null && $action=="delete_selected_items" && $ids!=null) {
+    function delete_bulk_game()
+    {
+        $action = $_POST['action'] ?? null;
+        $ids = $_POST['selected_ids'] ?? null;
+        if ($action != null && $action == "delete_selected_items" && $ids != null) {
             $num = count($ids);
-            if($num==0){
+            if ($num == 0) {
                 echo js_alert('Object not seleted');
                 exit;
             };
@@ -223,7 +224,7 @@ class Game_ctrl
                 echo js_alert('Database quer error');
                 return false;
             }
-        }else{
+        } else {
             echo js_alert('Action not or items not selected');
             exit;
         }
@@ -257,7 +258,7 @@ class Game_ctrl
                 $csv = Reader::createFromPath($csvFilePath, 'r');
                 $csv->setHeaderOffset(0); // Assumes the first row contains headers
                 $db = new Dbobjects;
-                
+
                 $total = iterator_count($csv->getRecords());
                 foreach ($csv->getRecords() as $key => $record) {
                     set_time_limit(60);
@@ -281,7 +282,7 @@ class Game_ctrl
                     } catch (PDOException $th) {
                         throw $th;
                     };
-                    echo server_progress($key,$total)."<br>";
+                    echo server_progress($key, $total) . "<br>";
                 }
             }
         }
@@ -328,16 +329,16 @@ class Game_ctrl
         $data = null;
         $data = $_POST;
         $data['id'] = $req->id;
-        $data['banner'] = $_FILES['banner']??null;
+        $data['banner'] = $_FILES['banner'] ?? null;
         $rules = [
             'id' => 'required|integer',
-            'title' => 'required|string',
-            'content' => 'required|string',
+            // 'title' => 'required|string',
+            // 'content' => 'required|string',
             'parent_id' => 'required|integer',
-            'price' => 'required|numeric',
+            // 'price' => 'required|numeric',
             'link' => 'required|string',
-            'opens_at' => 'required|time',
-            'closes_at' => 'required|time',
+            // 'opens_at' => 'required|time',
+            // 'closes_at' => 'required|time',
         ];
 
         $pass = validateData(data: $data, rules: $rules);
@@ -353,23 +354,23 @@ class Game_ctrl
         if (isset($request->meta_description)) {
             $json_arr['meta']['description'] = $request->meta_description;
         }
-        if (isset($request->title)) {
+        if (isset($request->link)) {
             $arr = null;
             $arr['json_obj'] = json_encode($json_arr);
             $arr['content_group'] = "game";
-            $arr['title'] = $request->title;
-            if ($content->slug != $request->slug) {
-                $arr['slug'] = generate_slug(trim($request->slug));
-            }
-            $arr['content'] = $request->content;
-            // $arr['days'] = $request->days;
-            $arr['price'] = $request->price;
+            // $arr['title'] = $request->title;
+            // if ($content->slug != $request->slug) {
+            //     $arr['slug'] = generate_slug(trim($request->slug));
+            // }
+            // $arr['content'] = $request->content;
+            // // $arr['days'] = $request->days;
+            // $arr['price'] = $request->price;
             // $arr['city'] = $request->city;
             $arr['parent_id'] = $request->parent_id;
             $arr['updated_at'] = date('Y-m-d H:i:s');
             $arr['link'] = $request->link;
-            $arr['opens_at'] = $request->opens_at;
-            $arr['closes_at'] = $request->closes_at;
+            // $arr['opens_at'] = $request->opens_at;
+            // $arr['closes_at'] = $request->closes_at;
             $arr['is_sold'] = isset($request->is_sold) ? 1 : 0;
             $imsgjsn = json_decode($content->imgs ?? '[]', true);
             $moreimg = [];
@@ -584,12 +585,15 @@ class Game_ctrl
         import("apps/admin/layouts/admin-main.php", $context);
     }
     // Post list
-    public function game_list($ord = "DESC", $limit = 5, $active = 1, $sort_by = 'id')
+    public function game_list($ord = "DESC", $limit = 5, $active = 1, $sort_by = 'id',$game_id=null)
     {
         $cntobj = new Model('content');
+        if ($game_id!=null) {
+            return $cntobj->filter_index(array('parent_id'=>$game_id,'content_group' => 'game', 'is_active' => $active), $ord, $limit, $change_order_by_col = $sort_by);
+        }
         return $cntobj->filter_index(array('content_group' => 'game', 'is_active' => $active), $ord, $limit, $change_order_by_col = $sort_by);
     }
-    public function game_search_list($keyword, $ord = "DESC", $limit = 5, $active = 1)
+    public function game_search_list($keyword, $ord = "DESC", $limit = 5, $active = 1,$game_id=null)
     {
         $cntobj = new Model('content');
         $search_arr['id'] = $keyword;
@@ -598,6 +602,14 @@ class Game_ctrl
         $search_arr['author'] = $keyword;
         // $search_arr['created_at'] = $keyword;
         // $search_arr['updated_at'] = $keyword;
+        if ($game_id!=null) {
+            return $cntobj->search(
+                assoc_arr: $search_arr,
+                ord: $ord,
+                limit: $limit,
+                whr_arr: array('parent_id'=>$game_id,'content_group' => 'game', 'is_active' => $active)
+            );
+        }
         return $cntobj->search(
             assoc_arr: $search_arr,
             ord: $ord,

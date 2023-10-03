@@ -1406,7 +1406,7 @@ function showStars($rating)
 }
 function changeToAMPM($timeString)
 {
-  $formattedTime = date("g:i A", strtotime($timeString));
+  $formattedTime = date("Y-m-d g:i A", strtotime($timeString));
   return $formattedTime;
 }
 function server_progress($current, $total)

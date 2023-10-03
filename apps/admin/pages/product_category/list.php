@@ -45,7 +45,7 @@ $active = $context->is_active;
                                 <th scope="col">Id</th>
                                 <th scope="col">Banner</th>
                                 <th scope="col">Name</th>
-                                
+                                <th>Links</th>
                                 <th scope="col">Publish Date</th>
                                 <?php
                                 if ($active == true) { ?>
@@ -82,7 +82,9 @@ $active = $context->is_active;
                                         <img style="width:100%; max-height:30px; object-fit:cover;" id="banner" src="/<?php echo MEDIA_URL; ?>/images/pages/<?php echo $pv->banner; ?>" alt="">
                                     </th>
                                     <td><?php echo $pv->title; ?></td>
-                                   
+                                   <td>
+                                    <a href="<?php echo BASEURI.route('gameListByGame',['game_id'=>$pv->id]); ?>" class="btn-sm btn btn-success">Open</a>
+                                   </td>
                                     <td><?php echo $pv->created_at; ?></td>
                                     <?php
                                     if ($active == true) { ?>

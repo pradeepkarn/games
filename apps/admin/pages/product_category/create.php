@@ -24,10 +24,45 @@ $createData = $context;
                     <h4>Banner</h4>
                     <input accept="image/*" id="image-input" type="file" name="banner" class="form-control my-3">
                     <img style="width:100%; max-height:300px; object-fit:contain;" id="banner" src="" alt="">
+                    <!-- <h4>Single Game Link</h4>
+                    <input type="text" name="link" class="form-control my-3" placeholder="Game link"> -->
+                    <!-- <h4>OR</h4> -->
+                    <!-- Game url -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Import Bulk URLs (.csv file)</h4>
+                            <div id="resupload" style="max-height: 100px; overflow-y:scroll;"></div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="file" accept=".csv" name="csvfile" class="form-control">
+                        </div>
+                        <!-- <div class="col-md-12">
+                        <button id="uploadcsvbtn" class="btn btn-primary">Import</button>
+                    </div> -->
+                        <div class="col-md-12">
+                            <h5 id="upload-info">Pleaase wait while uploading in database ...</h5>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="<?php echo BASEURI; ?>/data/csv/games.csv" download>Download Sample CSV</a>
+                        </div>
+                        <?php
+                        ajaxActive("#upload-info");
+                        // pkAjax_form("#uploadcsvbtn", "#uploadcsvform", "#resupload");
+                        ?>
+                    </div>
+                    <!-- Game url end -->
+                    <h4>Price</h4>
+                    <input type="number" scope="any" name="price" class="form-control my-3" placeholder="Price">
+                    <h4>Live timing:</h4>
+                    <label for="fromTime">Opens at</label>
+                    <input type="datetime-local" class="form-control" name="opens_at" id="fromTime">
+                    <label for="toTime">Closes at</label>
+                    <input type="datetime-local" class="form-control" name="closes_at" id="toTime">
                     <div class="d-grid">
                         <button id="save-post-btn" type="button" class="btn btn-primary my-3">Save</button>
                     </div>
                 </div>
+
             </div>
 
         </div>

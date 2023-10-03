@@ -10,6 +10,10 @@ $active = $context->is_active;
     .trending-post {
         font-size: 30px;
     }
+
+    .hide {
+        display: none !important;
+    }
 </style>
 <section class="section">
     <div class="row">
@@ -38,40 +42,45 @@ $active = $context->is_active;
                                 </div>
                             </form>
                         </div>
+                        <!-- <div class="col text-end my-3">
+                            <a class="btn btn-dark" href="/<?php //echo home . route('gameCreate'); ?>">Add New</a>
+                        </div> -->
+
+                    </div>
+                    <div class="row">
                         <div class="col text-end my-3">
-                            <a class="btn btn-dark" href="/<?php echo home . route('gameCreate'); ?>">Add New</a>
+                            <a class="btn btn-dark" href="/<?php echo home . route('productCatList'); ?>">Back</a>
                         </div>
                     </div>
+                    <form action="<?php echo BASEURI . route('gameDeleteBulkAJax'); ?>" id="delete-bulk-form">
+                        <div id="deletebulkres"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <select name="action" class="form-select" id="">
+                                    <option value="">Action</option>
+                                    <option value="delete_selected_items">Delete selected (Parmanently)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
 
-                   <form action="<?php echo BASEURI.route('gameDeleteBulkAJax'); ?>" id="delete-bulk-form">
-                   <div id="deletebulkres"></div>
-                   <div class="row">
-                        <div class="col-md-4">
-                            <select name="action" class="form-select" id="">
-                                <option value="">Action</option>
-                                <option value="delete_selected_items">Delete selected (Parmanently)</option>
-                            </select>
+                                <button type="submit" id="delete-bulk-btn" class="btn btn-danger">Done</button>
+
+                            </div>
                         </div>
-                        <div class="col-md-4">
-
-                            <button type="submit" id="delete-bulk-btn" class="btn btn-danger">Done</button>
-
-                        </div>
-                    </div>
-                   </form>
-                    <?php 
-                ajaxActive("#upload-info");
-                pkAjax_form("#delete-bulk-btn","#delete-bulk-form","#deletebulkres");
-                ?>
+                    </form>
+                    <?php
+                    ajaxActive("#upload-info");
+                    pkAjax_form("#delete-bulk-btn", "#delete-bulk-form", "#deletebulkres");
+                    ?>
                     <!-- Table with stripped rows -->
-                    <table class="table ">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">
                                     <input type="checkbox" id="selct_all_ids"> Select
                                 </th>
                                 <th scope="col">Id</th>
-                                <th scope="col">
+                                <!-- <th scope="col">
                                     <div class="text-center">
                                         Trending
                                     </div>
@@ -80,13 +89,13 @@ $active = $context->is_active;
                                     <div class="text-center">
                                         Featured
                                     </div>
-                                </th>
+                                </th> -->
                                 <!-- <th scope="col">Banner</th> -->
-                                <th scope="col">Title</th>
+                                <!-- <th scope="col">Title</th> -->
                                 <th scope="col">Game</th>
                                 <!-- <th scope="col">Hits</th> -->
                                 <th scope="col">Status</th>
-                                <th scope="col">Publish Date</th>
+                                <!-- <th scope="col">Publish Date</th> -->
                                 <?php
                                 if ($active == true) { ?>
 
@@ -123,29 +132,31 @@ $active = $context->is_active;
                                         <input type="checkbox" name="selected_game_id" value="<?php echo $pv->id; ?>">
                                     </th>
                                     <th scope="row"><?php echo $pv->id; ?></th>
-                                    <th scope="row">
-                                        <div class="text-center">
-                                            <?php echo $pv->is_trending ? "<i data-trending='{$pv->id}' class='trending-post pk-pointer text-primary bx bxs-star'></i>" : "<i data-trending='{$pv->id}' class='trending-post pk-pointer bx bx-star'></i>"; ?>
-                                        </div>
-                                    </th>
-                                    <th scope="row">
-                                        <div class="text-center">
-                                            <?php echo $pv->is_featured ? "<i data-featured='{$pv->id}' class='featured-post pk-pointer text-success bx bxs-star'></i>" : "<i data-featured='{$pv->id}' class='featured-post pk-pointer bx bx-star'></i>"; ?>
-                                        </div>
-                                    </th>
+
+                                    <div class="text-center hide">
+                                        <?php echo $pv->is_trending ? "<i data-trending='{$pv->id}' class='trending-post pk-pointer text-primary bx bxs-star'></i>" : "<i data-trending='{$pv->id}' class='trending-post pk-pointer bx bx-star'></i>"; ?>
+                                    </div>
+
+
+                                    <div class="text-center hide">
+                                        <?php echo $pv->is_featured ? "<i data-featured='{$pv->id}' class='featured-post pk-pointer text-success bx bxs-star'></i>" : "<i data-featured='{$pv->id}' class='featured-post pk-pointer bx bx-star'></i>"; ?>
+                                    </div>
+
                                     <!-- <th>
                                         <img style="width:100%; max-height:30px; object-fit:cover;" id="banner" src="/<?php // echo MEDIA_URL; 
                                                                                                                         ?>/images/pages/<?php //echo $pv->banner; 
                                                                                                                                         ?>" alt="">
                                     </th> -->
-                                    <td><?php echo $pv->title; ?></td>
+                                    <!-- <td><?php //echo $pv->title; 
+                                                ?></td> -->
                                     <td><?php echo $cat_title; ?></td>
                                     <!-- <td><?php //echo $pv->views; 
                                                 ?></td> -->
                                     <td>
                                         <span class="<?php echo $pv->is_sold == 1 ? 'badge bg-success text-white' : null; ?>"><?php echo $pv->is_sold ? 'Sold' : 'Not sold'; ?></span>
                                     </td>
-                                    <td><?php echo $pv->created_at; ?></td>
+                                    <!-- <td><?php // echo $pv->created_at; 
+                                                ?></td> -->
                                     <?php
                                     if ($active == true) { ?>
                                         <td>
@@ -350,52 +361,51 @@ $active = $context->is_active;
 </script>
 <script>
     const selectAllCheckbox = document.getElementById('selct_all_ids');
-const individualCheckboxes = document.querySelectorAll('input[name="selected_game_id"]');
-const deleteBulkForm = document.getElementById('delete-bulk-form');
+    const individualCheckboxes = document.querySelectorAll('input[name="selected_game_id"]');
+    const deleteBulkForm = document.getElementById('delete-bulk-form');
 
-selectAllCheckbox.addEventListener('change', function () {
-    individualCheckboxes.forEach(checkbox => {
-        checkbox.checked = selectAllCheckbox.checked;
-        updateFormInputs(checkbox);
+    selectAllCheckbox.addEventListener('change', function() {
+        individualCheckboxes.forEach(checkbox => {
+            checkbox.checked = selectAllCheckbox.checked;
+            updateFormInputs(checkbox);
+        });
     });
-});
 
-individualCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function () {
-        updateFormInputs(checkbox);
-        selectAllCheckbox.checked = Array.from(individualCheckboxes).every(checkbox => checkbox.checked);
-    });
-});
-
-function updateFormInputs(checkbox) {
-    if (checkbox.checked) {
-        appendInput(deleteBulkForm, 'selected_ids[]', checkbox.value);
-    } else {
-        removeInput(deleteBulkForm, 'selected_ids[]', checkbox.value);
-    }
-}
-
-function appendInput(form, name, value) {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-}
-
-function removeInput(form, name, value) {
-    const inputToRemove = form.querySelector(`input[name="${name}"][value="${value}"]`);
-    if (inputToRemove) {
-        form.removeChild(inputToRemove);
-    }
-}
-
-deleteBulkForm.addEventListener('submit', function (event) {
     individualCheckboxes.forEach(checkbox => {
-        if (!checkbox.checked) {
+        checkbox.addEventListener('change', function() {
+            updateFormInputs(checkbox);
+            selectAllCheckbox.checked = Array.from(individualCheckboxes).every(checkbox => checkbox.checked);
+        });
+    });
+
+    function updateFormInputs(checkbox) {
+        if (checkbox.checked) {
+            appendInput(deleteBulkForm, 'selected_ids[]', checkbox.value);
+        } else {
             removeInput(deleteBulkForm, 'selected_ids[]', checkbox.value);
         }
-    });
-});
+    }
 
+    function appendInput(form, name, value) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    }
+
+    function removeInput(form, name, value) {
+        const inputToRemove = form.querySelector(`input[name="${name}"][value="${value}"]`);
+        if (inputToRemove) {
+            form.removeChild(inputToRemove);
+        }
+    }
+
+    deleteBulkForm.addEventListener('submit', function(event) {
+        individualCheckboxes.forEach(checkbox => {
+            if (!checkbox.checked) {
+                removeInput(deleteBulkForm, 'selected_ids[]', checkbox.value);
+            }
+        });
+    });
 </script>

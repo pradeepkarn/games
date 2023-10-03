@@ -2,7 +2,7 @@
 $createData = $context;
 $catlist = $context->cat_list;
 ?>
-<form action="<?php echo BASEURI.route('uploadGameViaCsvAjax'); ?>" id="uploadcsvform">
+<!-- <form action="<?php echo BASEURI.route('uploadGameViaCsvAjax'); ?>" id="uploadcsvform">
     <div class="card">
         <div class="card-body">
         <div class="row">
@@ -40,35 +40,35 @@ $catlist = $context->cat_list;
             </div>
         </div>
     </div>
-</form>
+</form> -->
 <form action="/<?php echo home . route('gameStoreAjax'); ?>" id="save-new-page-form">
     <div class="card">
         <div class="card-body">
            
             <div class="row">
-                <div class="col">
+                <!-- <div class="col">
                     <h5 class="card-title">Or add game manually</h5>
-                </div>
+                </div> -->
                 <div class="col text-end my-3">
-                    <a class="btn btn-dark" href="/<?php echo home . route('gameList'); ?>">Back</a>
+                    <a class="btn btn-dark" href="/<?php echo home . route('gameListByGame',['game_id'=>$req->game_id]); ?>">Back</a>
                 </div>
             </div>
             <div id="res"></div>
 
             <div class="row">
                 <div class="col-md-8">
-                    <h4>Title</h4>
-                    <input type="text" name="title" class="form-control my-3" placeholder="Title">
-                    <h6>Slug</h6>
-                    <input type="text" name="slug" class="form-control my-3" placeholder="slug">
+                    <!-- <h4>Title</h4> -->
+                    <!-- <input type="text" name="title" class="form-control my-3" placeholder="Title"> -->
+                    <!-- <h6>Slug</h6> -->
+                    <!-- <input type="text" name="slug" class="form-control my-3" placeholder="slug"> -->
 
-                    <textarea class="tinymce-editor" name="content" id="mce_0" aria-hidden="true"></textarea>
-                    <h4>Tags</h4>
+                    <!-- <textarea class="tinymce-editor" name="content" id="mce_0" aria-hidden="true"></textarea> -->
+                    <!-- <h4>Tags</h4>
                     <textarea class="form-control" name="meta_tags" aria-hidden="true"></textarea>
                     <h4>Meta description</h4>
-                    <textarea class="form-control" name="meta_description" aria-hidden="true"></textarea>
+                    <textarea class="form-control" name="meta_description" aria-hidden="true"></textarea> -->
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <!-- <h4>Banner</h4>
                     <input accept="image/*" id="image-input" type="file" name="banner" class="form-control my-3">
                     <img style="width:100%; max-height:300px; object-fit:contain;" id="banner" src="" alt=""> -->
@@ -91,13 +91,13 @@ $catlist = $context->cat_list;
                             <input type="text" class="form-control my-2" name="link">
                         </div>
                     </div> -->
-                    <h4>Price</h4>
+                    <!-- <h4>Price</h4>
                     <input type="number" scope="any" name="price" class="form-control my-3" placeholder="Price">
                     <h4>Live timing:</h4>
                     <label for="fromTime">Opens at</label>
                     <input type="time" class="form-control" name="opens_at" id="fromTime">
                     <label for="toTime">Closes at</label>
-                    <input type="time" class="form-control" name="closes_at"  id="toTime">
+                    <input type="time" class="form-control" name="closes_at"  id="toTime"> -->
                     
                     <h4>Game Link</h4>
                     <input type="text" name="link" class="form-control my-3" placeholder="Game link">

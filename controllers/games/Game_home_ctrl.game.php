@@ -53,26 +53,30 @@ class Game_home_ctrl extends  Main_ctrl
     {
         $cntobj = new Dbobjects;
         $cats = $cntobj->show("select * from content where content_group='product_category'");
-        $now = date('H:i:s');
+        $now = date('Y-m-d H:i:s');
         $allgames = [];
         foreach ($cats as $key => $ct) {
             $ct = obj($ct);
             // $sql = "SELECT * FROM `content` WHERE content_group='game' and parent_id='$ct->id' AND '$now' BETWEEN `opens_at` AND `closes_at` and is_active=1 and is_sold=0 order by id $ord limit $limit;";
-            $sql = "SELECT * FROM `content` WHERE content_group='game' and parent_id='$ct->id' and is_active=1 and is_sold=0 order by RAND() limit $limit;";
+            $sql = "SELECT id,link FROM `content` WHERE content_group='game' and parent_id='$ct->id' and is_active=1 and is_sold=0 order by RAND() limit $limit;";
             $game = $cntobj->showOne($sql);
             if ($game) {
                 // Assuming $gm->opens_at, $gm->closes_at, and $now contain opening, closing, and current times respectively
-                $opensAt = strtotime($game['opens_at']); // Convert opening time to a timestamp
-                $closesAt = strtotime($game['closes_at']); // Convert closing time to a timestamp
+                $opensAt = strtotime($ct->opens_at); // Convert opening time to a timestamp
+                $closesAt = strtotime($ct->closes_at); // Convert closing time to a timestamp
                 $currentTime = strtotime($now); // Convert current time to a timestamp
                 if ($currentTime >= $opensAt && $currentTime <= $closesAt) {
                     $is_closed = false;
                 } else {
                     $is_closed = true;
                 }
-                $game['banner'] = $ct->banner;
-                $game['is_closed'] = $is_closed;
-                $allgames[] = $game;
+                $gameNew = arr($ct);
+                $gameNew['link_id'] = $game['id'];
+                $gameNew['link'] = $game['link'];
+                // $game['closes_at'] = $ct->closes_at;
+                // $game['banner'] = $ct->banner;
+                $gameNew['is_closed'] = $is_closed;
+                $allgames[] = $gameNew;
             }
         }
         return $allgames;
