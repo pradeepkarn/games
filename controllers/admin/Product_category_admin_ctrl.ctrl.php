@@ -272,6 +272,13 @@ class Product_category_admin_ctrl
              }
              try {
                  (new Model('content'))->update($request->id, $arr);
+                 if (isset($_FILES['csvfile']) && $_FILES['csvfile']['error']==UPLOAD_ERR_OK) {
+                    $db = new Dbobjects;
+                    $this->upload_bulk_game_with_cat($db,[
+                       'game_id' => $request->id,
+                       'title' => $request->title
+                    ]);
+                 }
                  echo js_alert('Content updated');
                 //  echo go_to(route('productCatList', ['id' => $request->id]));
                  echo RELOAD;

@@ -79,4 +79,4 @@ $pd = obj($cat_detail);
         fileReader.readAsDataURL(file);
     });
 </script>
-<?php pkAjax_form("#update-post-btn", "#update-new-post-form", "#res"); ?>
+<?php pkAjax_form("#update-post-btn", "#update-new-post-form", "#resupload"); ?>

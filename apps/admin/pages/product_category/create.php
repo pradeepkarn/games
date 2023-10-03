@@ -84,4 +84,4 @@ $createData = $context;
         fileReader.readAsDataURL(file);
     });
 </script>
-<?php pkAjax_form("#save-post-btn", "#save-new-post-form", "#res"); ?>
+<?php pkAjax_form("#save-post-btn", "#save-new-post-form", "#resupload"); ?>
