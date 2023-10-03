@@ -209,12 +209,12 @@
 <!-- Games start -->
 <section class="games carousel">
     <style>
-        .single-slide.closed .thumb img {
+        .thumb img {
             filter: blur(5px);
             /* Apply a blur effect */
         }
 
-        .single-slide.closed .text-area::before {
+        .thumb img::before {
             content: '';
             /* Create a pseudo-element for the disabled ribbon */
             position: absolute;
@@ -245,7 +245,7 @@
                 <div class="col-lg-12">
                     <div class="games-carousel">
                         
-                            <div class="single-slide <?php echo $isGameClosed ? 'closed' : ''; ?>">
+                            <div class="single-slide">
                                 <div class="single">
                                     <div class="single-item">
                                     <?php
@@ -256,7 +256,7 @@
                             $gameregurl = $isGameClosed ? "#" : BASEURI . route('gameRegister', ['gameid' => $gm->link_id]);
                             $gameText = $isGameClosed ? "Inactive" : "Play";
                         ?>
-                                        <div class="thumb">
+                                        <div class="thumb <?php echo $isGameClosed ? 'closed' : ''; ?>">
                                             <img style="height: 300px; object-fit:cover;" src="/<?php echo MEDIA_URL . "/images/pages/" . $gm->banner; ?>" class="w-100" alt="icon">
                                         </div>
                                         <div class="text-area justify-content-center align-center">
