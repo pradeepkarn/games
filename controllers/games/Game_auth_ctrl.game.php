@@ -736,7 +736,7 @@ class Game_auth_ctrl extends Main_ctrl
             header('location:' . BASEURI);
             return;
         }
-        $cat = $db->showOne("select price content_group='product_category' and content.parent_id = {$game['parent_id']}");
+        $cat = $db->showOne("select price content_group='product_category' and content.parent_id = '{$game['parent_id']}'");
         if (!$cat) {
             header('location:' . BASEURI);
             return;
