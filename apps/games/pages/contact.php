@@ -1,4 +1,31 @@
-    <!-- Contact Info start -->
+ <!-- Banner Section start -->
+ <section class="banner-section inner-banner coach cart">
+        <div class="overlay">
+            <div class="banner-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10">
+                            <div class="main-content">
+                                <h2>Contact Us</h2>
+                                <div class="breadcrumb-area">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb d-flex align-items-center">
+                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Pages</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section end -->
+
+<!-- Contact Info start -->
     <section class="contact-info">
         <div class="overlay pb-120">
             <div class="container">
@@ -8,7 +35,7 @@
                             <div class="icon-area">
                                 <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/headphones.png" alt="icon">
                             </div>
-                            <h5>Help & Support</h5>
+                            <h5 style="color: white;">Help & Support</h5>
                             <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbb8bebbbba4b9bf8baeacaaa6a7a2a4e5a8a4a6">[email&#160;protected]</a></p>
                             <span>(219) 555-0114</span>
                         </div>
@@ -18,7 +45,7 @@
                             <div class="icon-area">
                                 <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/sales.png" alt="icon">
                             </div>
-                            <h5>sales</h5>
+                            <h5 style="color: white;">sales</h5>
                             <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c3f393c3c233e380c292b2d21202523622f2321">[email&#160;protected]</a></p>
                             <span>(480) 555-0103</span>
                         </div>
@@ -28,7 +55,7 @@
                             <div class="icon-area">
                                 <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/press.png" alt="icon">
                             </div>
-                            <h5>press</h5>
+                            <h5 style="color: white;">press</h5>
                             <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="592a2c2929362b2d193c3e3834353036773a3634">[email&#160;protected]</a></p>
                             <span>(219) 555-0114</span>
                         </div>

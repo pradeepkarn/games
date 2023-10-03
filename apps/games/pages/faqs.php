@@ -33,7 +33,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-7">
                         <div class="section-header text-center">
-                            <h5 class="sub-title">Frequently Asked Questions</h5>
+                            <h5 class="sub-title" style="color: #ff3c10">Frequently Asked Questions</h5>
                             <h2 class="title">If you got questions we have answer</h2>
                             <p>We have a list of frequently asked questions about us</p>
                         </div>
