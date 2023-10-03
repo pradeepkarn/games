@@ -9,7 +9,7 @@
                             <div class="form-area">
                                 <div class="section-text">
                                     <h4>Welcome Back!</h4>
-                                    <p>We're so excited to see you again! Log In to your Egamlio Account!</p>
+                                    <p>We're so excited to see you again! Log In to your Ticket City Account!</p>
                                 </div>
                                 <form id="my-form" action="/<?php echo home . route('userLoginAjax'); ?>">
                                     <div class="row">

@@ -45,7 +45,7 @@
                                                 <span class="mdr">Guides</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Basic Guide to Items in Teamfight Tactics</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Basic Guide to Items in Teamfight Tactics</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -63,7 +63,7 @@
                                                 <span class="mdr">Guides</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>A Self Portrait Who we are and the Roleof Esports Coaching during COVID-19</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">A Self Portrait Who we are and the Roleof Esports Coaching during COVID-19</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -81,7 +81,7 @@
                                                 <span class="mdr">Guides</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Apex Legends Guide: The Easiest WayTo Drop Faster And Further</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Apex Legends Guide: The Easiest WayTo Drop Faster And Further</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -99,7 +99,7 @@
                                                 <span class="mdr">Guides</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Win from the Champion Select inLeague of Legends – Part 5</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Win from the Champion Select inLeague of Legends – Part 5</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -111,7 +111,7 @@
                                     <nav aria-label="Page navigation" class="d-flex justify-content-center pagination-area mt-40">
                                         <a class="page-btn previous" href="javascript:void(0)" aria-label="Previous">
                                             <i class="icon-e-double-right-arrow"></i>
-                                            <span>Previous</span>
+                                            <span style="color: white;">Previous</span>
                                         </a>
                                         <ul class="pagination justify-content-center align-items-center">
                                             <li class="page-item"><a class="page-link" href="javascript:void(0)">01</a></li>
@@ -120,7 +120,7 @@
                                             <li class="page-item"><a class="page-link" href="javascript:void(0)">04</a></li>
                                         </ul>
                                         <a class="page-btn next" href="javascript:void(0)" aria-label="Next">
-                                            <span>Next</span>
+                                            <span style="color: white;">Next</span>
                                             <i class="icon-e-double-right-arrow"></i>
                                         </a>
                                     </nav>
@@ -138,7 +138,7 @@
                                                 <span class="mdr">Updates</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Basic Guide to Items in Teamfight Tactics</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Basic Guide to Items in Teamfight Tactics</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -156,7 +156,7 @@
                                                 <span class="mdr">Updates</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>A Self Portrait Who we are and the Roleof Esports Coaching during COVID-19</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">A Self Portrait Who we are and the Roleof Esports Coaching during COVID-19</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -174,7 +174,7 @@
                                                 <span class="mdr">Updates</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Apex Legends Guide: The Easiest WayTo Drop Faster And Further</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Apex Legends Guide: The Easiest WayTo Drop Faster And Further</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -192,7 +192,7 @@
                                                 <span class="mdr">Updates</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Win from the Champion Select inLeague of Legends – Part 5</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Win from the Champion Select inLeague of Legends – Part 5</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -231,7 +231,7 @@
                                                 <span class="mdr">Coach</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Basic Guide to Items in Teamfight Tactics</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Basic Guide to Items in Teamfight Tactics</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -249,7 +249,7 @@
                                                 <span class="mdr">Coach</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>A Self Portrait Who we are and the Roleof Esports Coaching during COVID-19</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">A Self Portrait Who we are and the Roleof Esports Coaching during COVID-19</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -267,7 +267,7 @@
                                                 <span class="mdr">Coach</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Apex Legends Guide: The Easiest WayTo Drop Faster And Further</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Apex Legends Guide: The Easiest WayTo Drop Faster And Further</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -285,7 +285,7 @@
                                                 <span class="mdr">Coach</span>
                                                 <p class="mdr">JULY 4, 2022</p>
                                             </div>
-                                            <a href="blog-single.html"><h5>Win from the Champion Select inLeague of Legends – Part 5</h5></a>
+                                            <a href="blog-single.html"><h5 style="color: white;">Win from the Champion Select inLeague of Legends – Part 5</h5></a>
                                             <a href="blog-single.html" class="learn-more">
                                                 Learn More
                                                 <div class="icon-area">
@@ -320,7 +320,7 @@
                                 <div class="icon-area">
                                     <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/blog-sidebar-icon-1.png" alt="image">
                                 </div>
-                                <h5>Subscribe to Our News Letter!</h5>
+                                <h5 style="color: white;">Subscribe to Our News Letter!</h5>
                                 <form action="#">
                                     <div class="single-input">
                                         <input type="text" placeholder="Enter Your Email">
@@ -332,7 +332,7 @@
                                 <div class="icon-area">
                                     <img src="/<?php echo STATIC_URL; ?>/games/assets/images/icon/blog-sidebar-icon-2.png" alt="image">
                                 </div>
-                                <h5>Search on the blog</h5>
+                                <h5 style="color: white;">Search on the blog</h5>
                                 <form action="#">
                                     <div class="single-input">
                                         <input type="text" placeholder="Search for address">
@@ -341,24 +341,24 @@
                                 </form>
                             </div>
                             <div class="single-side pt-2">
-                                <h5>Popular Articles</h5>
+                                <h5 style="color: white;">Popular Articles</h5>
                                 <div class="items">
                                     <div class="icon-area">
                                         <img src="/<?php echo STATIC_URL; ?>/games/assets/images/blog-sidebar-image-1.png" alt="image">
                                     </div>
-                                    <a href="blog-single.html"><h6>What is Ability Hastein Wild Rift?</h6></a>
+                                    <a href="blog-single.html"><h6 style="color: white;">What is Ability Hastein Wild Rift?</h6></a>
                                 </div>
                                 <div class="items">
                                     <div class="icon-area">
                                         <img src="/<?php echo STATIC_URL; ?>/games/assets/images/blog-sidebar-image-2.png" alt="image">
                                     </div>
-                                    <a href="blog-single.html"><h6>5 Mistakes That CouldBe Costing You Wins</h6></a>
+                                    <a href="blog-single.html"><h6 style="color: white;">5 Mistakes That CouldBe Costing You Wins</h6></a>
                                 </div>
                                 <div class="items">
                                     <div class="icon-area">
                                         <img src="/<?php echo STATIC_URL; ?>/games/assets/images/blog-sidebar-image-3.png" alt="image">
                                     </div>
-                                    <a href="blog-single.html"><h6>What Is Offlane inDota 2</h6></a>
+                                    <a href="blog-single.html"><h6 style="color: white;">What Is Offlane inDota 2</h6></a>
                                 </div>
                             </div>
                         </div>

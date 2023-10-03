@@ -296,7 +296,7 @@ label {
 }
 
 .sub-title {
-  color: var(--secondary-color);
+  color: #ff3c10;
   margin-bottom: 25px;
 }
 
@@ -1038,7 +1038,7 @@ label {
 }
 
 .banner-section.coach .overlay {
-  background-image: url(../images/coach-banner-bg.png);
+  background-image: url(../images/cart-banner-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1049,7 +1049,7 @@ label {
 }
 
 .banner-section.blog-single .overlay {
-  background-image: url(../images/blog-banner-bg.png);
+  background-image: url(../images/cart-banner-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1964,8 +1964,8 @@ label {
 }
 
 .faqs-section.contact .container {
-  background: #1f2340;
-  background: linear-gradient(360deg, #1f2340 0%, #202371 100%);
+  background: #181927;
+  
 }
 
 .explore-now .cus-mar {
@@ -3179,7 +3179,7 @@ label {
 }
 
 .pagination-area .page-link:hover, .pagination-area .page-link.active {
-  background-color: var(--secondary-color);
+  background-color: #ff3c10;
   box-shadow: 2px 3.464px 24px 0px rgba(14, 205, 185, 0.25);
   color: var(--para-color);
 }
@@ -4584,7 +4584,7 @@ label {
 
 .blog-section .bottom-item {
   border-radius: 10px;
-  background-color: #212472;
+  background-color: #ff3c10;
   padding: 30px;
   transform: translateZ(5px);
   margin: auto;
@@ -4599,7 +4599,7 @@ label {
 .blog-section .bottom-item .learn-more {
   display: flex;
   align-items: center;
-  color: #09d4ea;
+  color: black;
   text-transform: uppercase;
 }
 
@@ -4609,7 +4609,7 @@ label {
 
 .blog-section .single-side {
   border-radius: 10px;
-  background-color: #212472;
+  background-color: #ff3c10;
   margin-bottom: 30px;
   padding: 40px 30px;
   text-align: center;
@@ -5217,7 +5217,7 @@ label {
 
 .contact-info .single-info::before {
   border-radius: 15px;
-  background-color: #212472;
+  background-color: #ff3c10;
   position: absolute;
   content: '';
   width: 100%;
@@ -5229,7 +5229,7 @@ label {
 
 .contact-info .single-info .icon-area {
   border-radius: 20px;
-  background-color: #272b97;
+  background-color: #ef6041;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5248,7 +5248,7 @@ label {
 }
 
 .contact-info .single-info span {
-  color: #09d4ea;
+  color: black;
   font-weight: bold;
 }
 
@@ -5262,8 +5262,8 @@ label {
 }
 
 .contact-section .single-input input, .contact-section .single-input textarea {
-  border: 1px solid #3c418f;
-  background-color: #282d4f;
+  border: 1px solid #ff3c10;
+  background-color: #181927;
   font-size: 16px;
 }
 
@@ -5273,7 +5273,7 @@ label {
 
 .contact-section .single-input .nice-select {
   background-color: transparent;
-  border: 1px solid #3c418f;
+  border: 1px solid #ff3c10;
   border-radius: 10px;
   float: initial;
   width: 100%;
@@ -5304,7 +5304,7 @@ label {
 }
 
 .contact-section p {
-  color: var(--para-alt-color);
+  color: black;
 }
 
 .contact-section .social p {
@@ -5313,7 +5313,7 @@ label {
 
 .contact-section .social a {
   border-radius: 10px;
-  background-color: var(--secondary-color);
+  background-color: #ff3c10;
   border: 1px solid transparent;
   transition: 0.3s;
   margin-right: 10px;
@@ -5332,7 +5332,7 @@ label {
 .contact-section form {
   border: 1px solid #2d2f5b;
   border-radius: 10px;
-  background-color: #232744;
+  background-color: #181927;
   padding: 30px;
 }
 
