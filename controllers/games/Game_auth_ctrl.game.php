@@ -241,13 +241,22 @@ class Game_auth_ctrl extends Main_ctrl
             $db = new Dbobjects;
             $pdo = $db->dbpdo();
             $pdo->beginTransaction();
-            $game = $db->showOne("select id,is_sold,price,qty,link from content where is_sold = 0 and content_group='game' and content.id = $data->gameid");
+            $game = $db->showOne("select id,is_sold,price,qty,link,parent_id from content where is_sold = 0 and content_group='game' and content.id = $data->gameid");
+            
             if (!$game) {
                 $_SESSION['msg'][] = 'Game not available';
                 msg_ssn("msg");
                 exit;
             }
             $game = obj($game);
+            $cat = $db->showOne("select price content_group='product_category' and content.parent_id = '$game->parent_id'");
+            if (!$cat) {
+                $_SESSION['msg'][] = 'Game price available';
+                msg_ssn("msg");
+                exit;
+            }
+            $cat = obj($cat);
+            $game->price = $cat->price;
             $db->tableName = 'payment';
             $db->insertData = array(
                 'user_id' => $data->gameid,
