@@ -265,7 +265,7 @@ class Game_auth_ctrl extends Main_ctrl
                 'mobile' => $data->mobile,
                 'first_name' => $data->first_name,
                 'last_name' => $data->last_name,
-                'amount' => $game->price,
+                'amount' => $cat->price,
                 'status' => $status,
                 'payment_method' => 'paynow',
                 'user_id' => USER['id'],
@@ -278,7 +278,7 @@ class Game_auth_ctrl extends Main_ctrl
                     'item_id' => $data->gameid,
                     'payment_id' => $paymentid,
                     'qty' => 1,
-                    'price' => $game->price,
+                    'price' => $cat->price,
                     'status' => 'confirmed',
                     'customer_email' => $data->email,
                     'user_id' => USER['id'],
@@ -297,12 +297,12 @@ class Game_auth_ctrl extends Main_ctrl
                 $_SESSION['cp'] = array(
                     'user_id'=>USER['id'],
                     'payment_id'=>$paymentid,
-                    'amount'=>floatval($game->price),
+                    'amount'=>floatval($cat->price),
                 );
                 // $email="virgil@dealcity.co.ke";
                 // $mobile="0772222222";
                 $mobileglobalwith0 = strval("0".$data->isd_code.$data->mobile);
-                $paycheck = $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($game->price),$mobile=$mobileglobalwith0,$email=$data->email);
+                $paycheck = $this->pay($db,$paymentid,"Pay2Play_{$data->gameid}",floatval($cat->price),$mobile=$mobileglobalwith0,$email=$data->email);
                 if ($paycheck==true) {
                     $link = BASEURI.route("checkStatusPage",['pid'=>$paymentid]);
                     echo "<a class='btn btn-warning text-dark' href='$link'>Check Status</a>";
@@ -736,6 +736,13 @@ class Game_auth_ctrl extends Main_ctrl
             header('location:' . BASEURI);
             return;
         }
+        $cat = $db->showOne("select price content_group='product_category' and content.parent_id = {$game['parent_id']}");
+        if (!$cat) {
+            header('location:' . BASEURI);
+            return;
+        }
+        $cat = obj($cat);
+        $game['price'] = $cat->price;
         $context = (object) array(
             'page' => 'auth/game-registration.php',
             'data' => (object) array(
