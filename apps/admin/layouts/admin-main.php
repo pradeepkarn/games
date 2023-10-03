@@ -435,7 +435,7 @@
 
           </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item hide">
           <a class="nav-link collapsed" data-bs-target="#components-comments" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Comments</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
