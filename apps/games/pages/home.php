@@ -160,7 +160,7 @@
                                     <?php echo $hr->content; ?>
                                 </p>
                                 <h2 data-aos="fade-down"><?php echo $hr->title; ?></h2>
-                                <a data-aos="fade-up" data-aos-delay="200" href="<?php echo USER ? $hr->link : BASEURI . route('register'); ?>" class="btn-get-started"><?php echo USER ? "Get Started" : "Sign Up"; ?></a>
+                                <a data-aos="fade-up" data-aos-delay="200" href="<?php echo USER?$hr->link:BASEURI.route('register'); ?>" class="btn-get-started"><?php echo USER?"Get Started":"Sign Up"; ?></a>
                             </div>
                         </div>
                     </div>
@@ -209,12 +209,12 @@
 <!-- Games start -->
 <section class="games carousel">
     <style>
-        .thumb img {
+        .single-slide.closed .thumb img {
             filter: blur(5px);
             /* Apply a blur effect */
         }
 
-        .thumb img::before {
+        .single-slide.closed .text-area::before {
             content: '';
             /* Create a pseudo-element for the disabled ribbon */
             position: absolute;
@@ -244,19 +244,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="games-carousel">
-                        
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="single-item">
-                                    <?php
+                        <?php
                         $games = $context->data->game_list;
                         foreach ($games as $key => $gm) {
                             $gm = obj($gm);
                             $isGameClosed = $gm->is_closed;
-                            $gameregurl = $isGameClosed ? "#" : BASEURI . route('gameRegister', ['gameid' => $gm->link_id]);
+                            $gameregurl = $isGameClosed ? "#" : BASEURI . route('gameRegister', ['gameid' => $gm->id]);
                             $gameText = $isGameClosed ? "Inactive" : "Play";
                         ?>
-                                        <div class="thumb <?php echo $isGameClosed ? 'closed' : ''; ?>">
+                            <div class="single-slide <?php echo $isGameClosed ? 'closed' : ''; ?>">
+                                <div class="single">
+                                    <div class="single-item">
+                                        <div class="thumb">
                                             <img style="height: 300px; object-fit:cover;" src="/<?php echo MEDIA_URL . "/images/pages/" . $gm->banner; ?>" class="w-100" alt="icon">
                                         </div>
                                         <div class="text-area justify-content-center align-center">
@@ -525,27 +524,23 @@
             </div>
         </div>
     </div>
-    <style>
+     <style>
         /* Media query for mobile devices with a maximum width of 767px */
-        @media (max-width: 767px) {
-            .form-group img {
-                width: 50px;
-                /* Set image width to 100% of its container on smaller screens */
-                margin-right: 20px;
-                /* Remove negative margin on smaller screens */
+@media (max-width: 767px) {
+    .form-group img {
+        width: 50px; /* Set image width to 100% of its container on smaller screens */
+        margin-right: 20px; /* Remove negative margin on smaller screens */
+        
+    }
 
-            }
-
-            .form-group input[type="text"] {
-                width: 100%;
-                /* Set input width to 100% of its container on smaller screens */
-            }
-
-            /* .cmn-btn{
+    .form-group input[type="text"] {
+        width: 100%; /* Set input width to 100% of its container on smaller screens */
+    }
+    /* .cmn-btn{
 
     } */
-        }
-    </style>
+}
+     </style>
     <div class="newsletter">
         <div class="row justify-content-center">
             <div class="col-lg-7 " style=" background-color: rgba(255, 64, 0, 0.8); padding: 30px 90px;  border-radius: 30px;">
@@ -555,10 +550,10 @@
 
                 <form action="#">
                     <div class="form-group d-flex align-items-center">
-
+                    
                         <img style="margin-left: -50px; width: 20%;" src="/<?php echo STATIC_URL; ?>/games/assets/images/ticketcity images/subscribe-icon.png" alt="icon">
                         <input type="text" placeholder="Your email address">
-                        <button class="cmn-btn" style="background-color: white; ">Subscribe</button>
+                        <button class="cmn-btn"  style="background-color: white; ">Subscribe</button>
                     </div>
                 </form>
             </div>
