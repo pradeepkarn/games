@@ -731,7 +731,7 @@ class Game_auth_ctrl extends Main_ctrl
     {
         $req = obj($req);
         $db = new Dbobjects;
-        $game = $db->showOne("select id,title,content,banner,price,is_sold,imgs from content where content_group='game' and content.id='$req->gameid'");
+        $game = $db->showOne("select id,parent_id,title,content,banner,price,is_sold,imgs from content where content_group='game' and content.id='$req->gameid'");
         if (!is_numeric($req->gameid) || !$game) {
             header('location:' . BASEURI);
             return;
