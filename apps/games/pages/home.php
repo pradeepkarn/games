@@ -208,28 +208,13 @@
 
 <!-- Games start -->
 <section class="games carousel">
-    <style>
-        .thumb img {
+<style>
+           .single-slide.closed .thumb img {
             filter: blur(5px);
             /* Apply a blur effect */
         }
 
-        .thumb img::before {
-            content: '';
-            /* Create a pseudo-element for the disabled ribbon */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            /* Semi-transparent background */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 1;
-            content: 'Inactive';
-            /* Text content for the ribbon */
-        }
+       
     </style>
     <div class="overlay pt-120 pb-120">
         <div class="container wow fadeInUp">
@@ -244,11 +229,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="games-carousel">
-                        
-                            <div class="single-slide">
-                                <div class="single">
-                                    <div class="single-item">
-                                    <?php
+                    <?php
                         $games = $context->data->game_list;
                         foreach ($games as $key => $gm) {
                             $gm = obj($gm);
@@ -256,7 +237,12 @@
                             $gameregurl = $isGameClosed ? "#" : BASEURI . route('gameRegister', ['gameid' => $gm->link_id]);
                             $gameText = $isGameClosed ? "Inactive" : "Play";
                         ?>
-                                        <div class="thumb <?php echo $isGameClosed ? 'closed' : ''; ?>">
+                            <div class="single-slide <?php echo $isGameClosed ? 'closed' : ''; ?>">
+                                <div class="single">
+                               
+                                    <div class="single-item">
+                                    
+                                        <div class="thumb">
                                             <img style="height: 300px; object-fit:cover;" src="/<?php echo MEDIA_URL . "/images/pages/" . $gm->banner; ?>" class="w-100" alt="icon">
                                         </div>
                                         <div class="text-area justify-content-center align-center">
@@ -271,9 +257,10 @@
 
                                         </div>
                                     </div>
+                                     
                                 </div>
                             </div>
-                        <?php } ?>
+                            <?php } ?>
                     </div>
                 </div>
             </div>
