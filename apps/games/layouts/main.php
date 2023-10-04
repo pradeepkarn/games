@@ -79,9 +79,9 @@
                                     <a class="nav-link" href="<?php //echo BASEURI; ?>#">Newsroom</a>
                                 </li> -->
 
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a class="nav-link" href="<?php echo BASEURI.route('contact');; ?>">Contact Us</a>
-                                </li>
+                                </li>-->
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
                                 <?php if (!USER) : ?>
@@ -132,7 +132,7 @@
                                 <ul class="footer-link">
                                     <li><a style="color: white;" href="#">Privacy Policy</a></li>
                                     <li><a style="color: white;" href="#">Terms n Condition</a></li>
-                                    <li><a style="color: white;" href="#">Contact Us</a></li>
+                                    <!--<li><a style="color: white;" href="#">Contact Us</a></li>-->
                                 </ul>
                             </div>
                         </div>
