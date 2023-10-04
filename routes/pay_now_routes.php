@@ -6,4 +6,5 @@ $pay_now_routes = [
     '/pay-now-token-verify'=>'Pay_now_ctrl@verify_test@name.payNowVerifyTest',
     '/pay-now'=>'Pay2play_ctrl@pay@name.pay',
     '/pay-now-status'=>'Pay2play_ctrl@check_status@name.payStatusAjax',
+    '/pay-now-status-admin'=>'Pay2play_ctrl@check_status_admin@name.payStatusAjaxAdmin',
 ];

@@ -5,6 +5,47 @@ $cp = $context->current_page;
 $active = $context->is_active;
 // myprint($pl)
 ?>
+<script>
+    function handleOtpSend(res) {
+        let amount = null;
+        let reference = null;
+        let paynowReference = null;
+        let status = null;
+        if (res.data && res.data['status']) {
+            const paystatus = res.data;
+            amount = paystatus['amount'];
+            reference = paystatus['reference'];
+            paynowReference = paystatus['paynowReference'];
+            status = paystatus['status'];
+        }
+        let msgshow = `Amount: ${amount}<br> 
+             Reference: ${reference}<br> 
+             PaynowReference: ${paynowReference}<br>
+             Status: ${status}<br>
+             <button class='btn btn-success mt-2' onclick='window.location.reload()'>Reload Page</button>
+             `;
+        if (res.success === true) {
+            // console.log(res.data['status']);
+            swalert({
+                title: 'Success',
+                msg: msgshow,
+                icon: 'success'
+            });
+        } else if (res.success === false) {
+            swalert({
+                title: 'Payment not done',
+                msg: msgshow,
+                icon: 'error'
+            });
+        } else {
+            swalert({
+                title: 'Failed',
+                msg: 'Something went wrong',
+                icon: 'error'
+            });
+        }
+    }
+</script>
 <style>
     .featured-post,
     .trending-post {
@@ -35,7 +76,7 @@ $active = $context->is_active;
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
 
                     <!-- Table with stripped rows -->
@@ -53,19 +94,50 @@ $active = $context->is_active;
                             </tr>
                         </thead> -->
                         <tbody>
-                            <?php 
+                            <?php
                             $db = new Dbobjects;
-                           
+
                             foreach ($pl as $key => $pv) :
                                 $pv = obj($pv);
                                 $trn = strtoupper($pv->unique_id);
                                 $amt = $pv->amount;
+                                $statuscheck = false;
+                                $btnClass = 'warning';
+                                switch (strtolower($pv->status)) {
+                                    case 'paid':
+                                        $btnClass = 'success';
+                                        break;
+                                    case 'awaiting delivery':
+                                        $btnClass = 'success';
+                                        break;
+                                    case 'delivered':
+                                        $btnClass = 'success';
+                                        break;
+                                    case 'cancelled':
+                                        $btnClass = 'danger';
+                                        break;
+                                    case 'initiated':
+                                        $btnClass = 'info';
+                                        break;
+                                    default:
+                                        $btnClass = 'warning';
+                                        break;
+                                }
                                 echo "<tr>
                                 <th>ORDER ID: {$pv->id}</th>
                                 <th>TR No.: $trn</th>
                                 <th>Amount: &#x24;{$amt}/-</th>
-                                <th>Status: {$pv->status}</th>
-                                </tr>";
+                                <th>Status: <span class='text-{$btnClass}'>{$pv->status}</span>    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan='4'>
+                                        <input type='checkbox' name='send_forcely_if_already_paid' value='1' class='checkStatu{$pv->id}'> Check to Send SMS if already paid <br>
+                                        <input type='hidden' name='paymentid' value='{$pv->id}' class='checkStatu{$pv->id}'>
+                                        <button type='button' id='update-status{$pv->id}' class='mt-3 btn-{$btnClass} btn btn-sm checkStatu{$pv->id}'>Update status</button>
+                                    </td>
+                                </tr>
+                                ";
+                                send_to_server_wotf("#update-status{$pv->id}", ".checkStatu{$pv->id}", "handleOtpSend", route('payStatusAjaxAdmin'));
                                 $sql = "SELECT customer_order.*, content.id as game_id, content.title as game_name,
                                 content.link as game_link, content.banner, content.is_sold
                                 FROM customer_order
@@ -78,24 +150,17 @@ $active = $context->is_active;
                                     $ord = obj($ord);
                             ?>
 
-                                <tr>
-                                    
-                                    <td>Game: <?php echo $ord->game_name; ?></td>
-                                    <td>Email: <?php echo $ord->customer_email; ?></td>
-                                    <td>Mobile: <?php echo "{$pv->isd_code}{$pv->mobile}"; ?></td>
-                                    <td>Link: <?php echo $ord->link; ?></td>
-                                    <td>Date: <?php echo $pv->created_at; ?></td>
-                                    <?php
-                                    if ($active == true) { ?>
-                                        <td>
-                                            <!-- <a class="btn-primary btn btn-sm" href="#">Open</a> -->
-                                        </td>
-                                    <?php    }
-                                    ?>
+                                    <tr style="border-bottom: 2px dashed black;">
 
-                                </tr>
+                                        <td>Game: <?php echo $ord->game_name; ?></td>
+                                        <td>Email: <?php echo $ord->customer_email; ?></td>
+                                        <td>Mobile: <?php echo "{$pv->isd_code}{$pv->mobile}"; ?></td>
+                                        <td>Link: <?php echo $ord->link; ?></td>
+                                        <td>Date: <?php echo $pv->created_at; ?></td>
+                                    </tr>
 
-                            <?php endforeach; ?>
+
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
