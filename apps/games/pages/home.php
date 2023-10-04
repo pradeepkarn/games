@@ -169,13 +169,13 @@
         <?php } ?>
 
 
-        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+        <!--<a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon fa fa-chevron-left" aria-hidden="true"></span>
         </a>
 
         <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon fa fa-chevron-right" aria-hidden="true"></span>
-        </a>
+        </a>-->
 
     </div>
 
