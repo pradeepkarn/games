@@ -208,6 +208,10 @@ class Pay2play_ctrl
         $pmtarr = $db->pk($paymentid);
         $co = (object)$db->showOne("select id,link,customer_email from customer_order where payment_id = '$pmt->id'");
         $emailbody = "Payment confirmed!! TR No. {$pmt->unique_id}.  you have only one chance to use this coupon link, so don't share with anyone: {$co->link} Good luck!";
+        $send_forcely_if_already_paid = false;
+        if (isset($_POST['send_forcely_if_already_paid'])) {
+            $send_forcely_if_already_paid= true;
+        }
         if ($pmtarr['status'] == 'paid') {
             $pmtdata = json_decode($pmtarr['paynowjson'] ?? []);
             $stsd = $pmtdata->status ?? null;
@@ -215,7 +219,12 @@ class Pay2play_ctrl
                 $data['msg'] = "Payment status";
                 $data['success'] = $stsd->status == 'paid' ? true : false;
                 $data['data'] = $stsd;
-                // $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
+                if ($send_forcely_if_already_paid==true) {
+                    $try = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                    if ($try==true) {
+                        $db->insertData['sms_sent'] = $pmt->sms_sent??0+1;
+                    }
+                }
                 echo json_encode($data);
                 $parr = null;
                 exit;

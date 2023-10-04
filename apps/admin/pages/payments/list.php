@@ -130,9 +130,10 @@ $active = $context->is_active;
                                 <th>Status: {$pv->status}</th>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td colspan='4'>
+                                        <input type='checkbox' name='send_forcely_if_already_paid' value='1' class='checkStatu{$pv->id}'> Check to Send SMS if already paid <br>
                                         <input type='hidden' name='paymentid' value='{$pv->id}' class='checkStatu{$pv->id}'>
-                                        <button type='button' id='update-status{$pv->id}' class='btn-{$btnClass} btn btn-sm checkStatu{$pv->id}'>Update status</button>
+                                        <button type='button' id='update-status{$pv->id}' class='mt-3 btn-{$btnClass} btn btn-sm checkStatu{$pv->id}'>Update status</button>
                                     </td>
                                 </tr>
                                 ";
