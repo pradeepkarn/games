@@ -127,7 +127,7 @@ $active = $context->is_active;
                                 <th>ORDER ID: {$pv->id}</th>
                                 <th>TR No.: $trn</th>
                                 <th>Amount: &#x24;{$amt}/-</th>
-                                <th>Status: {$pv->status}</th>
+                                <th>Status: <span class='text-{$btnClass}'>{$pv->status}</span>    </th>
                                 </tr>
                                 <tr>
                                     <td colspan='4'>
