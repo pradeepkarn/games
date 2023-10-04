@@ -72,9 +72,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo BASEURI.route('faqs'); ?>">FAQs</a>
                                 </li>
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a class="nav-link" href="<?php echo BASEURI.route('blog'); ?>">Blog</a>
-                                </li>
+                                </li>-->
                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="<?php //echo BASEURI; ?>#">Newsroom</a>
                                 </li> -->
