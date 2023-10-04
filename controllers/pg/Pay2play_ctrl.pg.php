@@ -115,8 +115,10 @@ class Pay2play_ctrl
             $data['success'] = true;
             $data['data'] = $parr;
             $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
-            // $sms->send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, ["$mobile"]);
-            $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+            $tryifsuccess = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+            if ($tryifsuccess==true) {
+                $db->insertData['sms_sent'] = $pmt->sms_sent??0+1;
+            }
             echo json_encode($data);
             $parr = null;
             exit;
@@ -130,19 +132,27 @@ class Pay2play_ctrl
             $json = json_encode($pd);
             $db->insertData['paynowjson'] = $json;
             $db->insertData['status'] = $status->status() ?? 'NA';
-            if (!isset($_SESSION['message_sent'])) {
+            $send=false;
+            if ($pmt->sms_sent=='0' || $pmt->sms_sent==null) {
                 switch (strtolower($db->insertData['status'])) {
                     case 'paid':
-                        $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                        $send=true;
                         break;
                     case 'awaiting delivery':
-                        $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                        $send=true;
                         break;
                     case 'delivered':
-                        $_SESSION['message_sent'] = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                        $send=true;
                         break;
                     default:
+                        $send=false;
                         break;
+                }
+            }
+            if ($send===true) {
+                $try = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                if ($try==true) {
+                    $db->insertData['sms_sent'] = $pmt->sms_sent??0+1;
                 }
             }
             $db->update();
@@ -271,7 +281,7 @@ class Pay2play_ctrl
             $db->insertData['paynowjson'] = $json;
             $db->insertData['status'] = $status->status() ?? 'NA';
             $send=false;
-            if ($pmt->sms_sent==0 || $pmt->sms_sent==null) {
+            if ($pmt->sms_sent=='0' || $pmt->sms_sent==null) {
                 switch (strtolower($db->insertData['status'])) {
                     case 'paid':
                         $send=true;
