@@ -154,6 +154,155 @@ class Pay2play_ctrl
             exit;
         }
     }
+    // admin status check
+    function check_status_admin()
+    {
+        if (isset($_POST['paymentid']) && is_numeric($_POST['paymentid'])) {
+            $db = new Dbobjects;
+            $db->tableName = 'payment';
+            $pmt = $db->pk(intval($_POST['paymentid']));
+            if (!$pmt) {
+                $data['msg'] = "Payment not found";
+                $data['success'] = false;
+                $data['data'] = null;
+                echo json_encode($data);
+                exit;
+            }
+            $pmt = obj($pmt);
+            if (!is_superuser()) {
+                $data['msg'] = "You are not authorized to check this payment status";
+                $data['success'] = false;
+                $data['data'] = null;
+                echo json_encode($data);
+                exit;
+            }
+            $pollUrl = $pmt->pollurl;
+            $paymentid = $pmt->id;
+        } else {
+            $data['msg'] = "Invalid payment id";
+            $data['success'] = false;
+            $data['data'] = null;
+            echo json_encode($data);
+            exit;
+        }
+        if ($pollUrl == '') {
+            $data['msg'] = "Payment not done";
+            $data['success'] = false;
+            $data['data'] = null;
+            echo json_encode($data);
+            exit;
+        }
+        $sms = new SMS_ctrl;
+        $mobile = "$pmt->isd_code" . "$pmt->mobile";
+        $db->tableName = 'payment';
+        $pmtarr = $db->pk($paymentid);
+        $co = (object)$db->showOne("select id,link,customer_email from customer_order where payment_id = '$pmt->id'");
+        $emailbody = "Payment confirmed!! TR No. {$pmt->unique_id}.  you have only one chance to use this coupon link, so don't share with anyone: {$co->link} Good luck!";
+        if ($pmtarr['status'] == 'paid') {
+            $pmtdata = json_decode($pmtarr['paynowjson'] ?? []);
+            $stsd = $pmtdata->status ?? null;
+            if ($stsd) {
+                $data['msg'] = "Payment status";
+                $data['success'] = $stsd->status == 'paid' ? true : false;
+                $data['data'] = $stsd;
+                // $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            } else {
+                $data['msg'] = "Something went wrong";
+                $data['success'] = false;
+                $data['data'] = null;
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            }
+        }
+        if ($pmtarr['status'] == 'cancelled') {
+            $pmtdata = json_decode($pmtarr['paynowjson'] ?? []);
+            $stsd = $pmtdata->status ?? null;
+            if ($stsd) {
+                $data['msg'] = "Payment status";
+                $data['success'] = $stsd->status == 'paid' ? true : false;
+                $data['data'] = $stsd;
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            } else {
+                $data['msg'] = "Something went wrong";
+                $data['success'] = false;
+                $data['data'] = null;
+                echo json_encode($data);
+                $parr = null;
+                exit;
+            }
+        }
+        $status = $this->paynow->pollTransaction($pollUrl);
+        if ($status->paid()) {
+            $parr = null;
+            $parr['reference'] = $status->reference();
+            $parr['paynowReference'] = $status->paynowReference();
+            $parr['amount'] = $status->amount();
+            $parr['status'] = $status->status();
+            $pd = array('status' => $parr);
+            $json = json_encode($pd);
+            $db->insertData['paynowjson'] = $json;
+            $db->insertData['status'] = 'paid';
+            $this->send_email($receiver = $co->customer_email, $subject = "Secret Link", $body = $emailbody);
+            $tryifsuccess = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+            if ($tryifsuccess==true) {
+                $db->insertData['sms_sent'] = $pmt->sms_sent??0+1;
+            }
+            $db->update();
+            $data['msg'] = "Status found";
+            $data['success'] = true;
+            $data['data'] = $parr;
+            echo json_encode($data);
+            $parr = null;
+            exit;
+        } else if ($status->status()) {
+            $parr = null;
+            $parr['reference'] = $status->reference() ?? 'NA';
+            $parr['paynowReference'] = $status->paynowReference() ?? 'NA';
+            $parr['amount'] = $status->amount() ?? 0;
+            $parr['status'] = $status->status() ?? 'NA';
+            $pd = array('status' => $parr);
+            $json = json_encode($pd);
+            $db->insertData['paynowjson'] = $json;
+            $db->insertData['status'] = $status->status() ?? 'NA';
+            $send=false;
+            if ($pmt->sms_sent==0 || $pmt->sms_sent==null) {
+                switch (strtolower($db->insertData['status'])) {
+                    case 'paid':
+                        $send=true;
+                        break;
+                    case 'awaiting delivery':
+                        $send=true;
+                        break;
+                    case 'delivered':
+                        $send=true;
+                        break;
+                    default:
+                        $send=false;
+                        break;
+                }
+            }
+            if ($send===true) {
+                $try = $sms->clicksms_send(strval($pmt->id), strval($pmt->unique_id), $co->link ?? null, $mobile);
+                if ($try==true) {
+                    $db->insertData['sms_sent'] = $pmt->sms_sent??0+1;
+                }
+            }
+            $db->update();
+            $data['msg'] = "Your game link will be sent to your email shortly";
+            $data['success'] = true;
+            $data['data'] = $parr;
+            echo json_encode($data);
+            $parr = null;
+            exit;
+        }
+    }
+    // admin satus end
     function save_json_file($response)
     {
         $filename = "payref/" . uniqid(time() . '_json') . '.json';
