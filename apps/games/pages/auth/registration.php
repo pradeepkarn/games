@@ -80,7 +80,7 @@
                              </div>
                          </div>
                          <div class="account mt-30">
-                            <p>Have an account? <a href="<?php echo BASEURI.route('login'); ?>">Login</a></p>
+                            <p>Have an account? <a href="<?php echo BASEURI.route('userLogin'); ?>">Login</a></p>
                          </div>
                      </div>
                  </div>

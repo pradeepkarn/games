@@ -23,13 +23,13 @@
                                              </div>
                                          </div>
                                          <div class="single-input">
-                                             <label for="isdcode">ISD CODE</label>
+                                             <label for="isdcode">Country CODE</label>
                                              <div class="input-box">
                                                  <input type="number" id="isdcode" name="isd_code" value="<?php echo USER['isd_code'] ?? null; ?>" class="email" placeholder="Enter Dial code">
                                              </div>
                                          </div>
                                          <div class="single-input">
-                                             <label for="mobile">Mobile</label>
+                                             <label for="mobile">Mobile(without country code)</label>
                                              <div class="input-box">
                                                  <input type="text" id="mobile" name="mobile" value="<?php echo USER['mobile'] ?? null; ?>" class="email" placeholder="Enter Your Mobile">
                                              </div>

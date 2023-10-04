@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="account mt-30">
-                                <p>Don't have an account? <a href="register.html">Sign Up Here</a></p>
+                                <p>Don't have an account? <a href="<?php echo BASEURI.route('register'); ?>">Sign Up Here</a></p>
                             </div>
                         </div>
                     </div>

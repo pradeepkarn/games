@@ -10,18 +10,18 @@ import("settings.php");
 define("direct_access", 1);
 ############################################################################
 exit;
-// function send2($to = "263780995266")
-// {
 
+// function send2(string $pmtid, string $trn, string $link, string $to = "263780995266")  {
 //     $curl = curl_init();
 
 //     $postdata =  array(
-//         "from" => "Pay2Play",
-//         "to" => "$to",
-//         "message" => "Testing Detail City account",
-//         "refId" => "detail1244"
+//       "from" => "Pay2Play",
+//       "to" => "$to",
+//       "message" => "Payment confirmed!! TR No. $trn.  you have only one chance to use this coupon link, so don't share with anyone: $link Good luck!",
+//       "refId" => "INV{$pmtid}"
 //     );
-//     curl_setopt_array($curl, array(
+//     try {
+//       curl_setopt_array($curl, array(
 
 //         CURLOPT_URL => 'https://clicksmsgateway.com',
 
@@ -43,24 +43,28 @@ exit;
 
 //         CURLOPT_HTTPHEADER => array(
 
-//             'Accept: application/json',
+//           'Accept: application/json',
 
-//             'Content-Type: application/json',
+//           'Content-Type: application/json',
 
-//             'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0OTYiLCJvaWQiOjQ5NiwidWlkIjoiYjUzNDEwODYtNmMzNy00NjQ5LWJjNzYtZDFkOTdiOWZlNWQ4IiwiYXBpZCI6Mjc3LCJpYXQiOjE2OTYyMzk0OTQsImV4cCI6MjAzNjIzOTQ5NH0.tLyDYskyHR2_ZhXkCR9WEQKGidSN_lqMYy8YNqLJnPJYG7qtmecEPWmeA7BLhAZ2ijcfF-hqPjnfykoVymab1A'
+//           'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0OTYiLCJvaWQiOjQ5NiwidWlkIjoiYjUzNDEwODYtNmMzNy00NjQ5LWJjNzYtZDFkOTdiOWZlNWQ4IiwiYXBpZCI6Mjc3LCJpYXQiOjE2OTYyMzk0OTQsImV4cCI6MjAzNjIzOTQ5NH0.tLyDYskyHR2_ZhXkCR9WEQKGidSN_lqMYy8YNqLJnPJYG7qtmecEPWmeA7BLhAZ2ijcfF-hqPjnfykoVymab1A'
 
 //         ),
 
-//     ));
+//       ));
+//       $response = curl_exec($curl);
+//       curl_close($curl);
+//       echo $response;
+//       return true;
+//     } catch (Exception $e) {
+//         echo $e;
+//       return false;
+//     }
 
-//     $response = curl_exec($curl);
 
-//     curl_close($curl);
-
-//     echo $response;
 // }
-// send2();
-// exit;
+
+// send2($pmtid="2676", $trn="jhkhh", $link="testing", $to = "263787218195");
 
 function updateProgressBar($current, $total)
 {
